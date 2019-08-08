@@ -1,0 +1,223 @@
+/* generics */
+
+
+body {
+    background-color: rgb(229, 226, 226);
+}
+
+#main-container {
+    padding-top: 60px;
+}
+
+.centralized {
+    text-align: center;
+}
+
+.description-wrapper {
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: solid 6px black;
+    border-radius: 5px;
+}
+
+.no-line:hover {
+    text-decoration: none;
+}
+
+/* navbar */
+
+.navbar {
+    background-color: black;
+}
+
+/* logo */
+
+#logo {
+    display: inline-block;
+    background-color: wheat;
+    color: black;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 20%;
+}
+
+#logo-icon {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: wheat;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+/* search button */
+
+.search {
+    border-color: wheat;
+}
+
+.search:focus {
+    box-shadow: 0 0 0 0;
+    border-color: wheat;
+}
+
+#search-btn:hover {
+    background-color: wheat;
+}
+
+#search-btn:focus {
+    border-color: rgb(235, 157, 12);
+}
+
+#search-btn:hover .wheat-item {
+    color: black;
+}
+
+/* login button */
+
+#login-btn {
+    background-color: wheat;
+}
+
+#login-btn:hover {
+    background-color: rgb(243, 195, 105);
+}
+
+/* nav-toggler */
+
+.burger-menu {
+    width: 40px;
+    height: 40px;
+    background-color: wheat;
+}
+
+.burger-menu:focus {
+    outline-color: transparent;
+}
+
+.burger-menu span {
+    position: relative;
+    background-color: rgb(36, 31, 31);
+    display: block;
+    height: 6px;
+    width: 30px;
+    border-radius: 9px;
+    left: -7px;
+    transition: .25s ease-in-out;
+}
+
+.burger-menu span:nth-child(1) {
+    top: -4px;
+}
+
+.burger-menu span:nth-child(2) {
+    top: 0px;
+}
+
+.burger-menu span:nth-child(3) {
+    top: 4px;
+}
+
+.burger-menu.open {
+    background-color: rgb(243, 195, 105);
+    outline-color: transparent;
+}
+
+.burger-menu.open span:nth-child(1) {
+    top: 5.9px;
+    transform: rotate(135deg);
+}
+
+.burger-menu.open span:nth-child(2) {
+    left: -30px;
+    opacity: 0;
+}
+
+
+.burger-menu.open span:nth-child(3) {
+    top: -5.9px;
+    transform: rotate(-135deg);
+}
+
+
+/* other navbar components */
+
+.wheat-link:hover {
+    color: rgb(235, 157, 12);
+}
+
+.wheat-item {
+    color: wheat;
+}
+
+.active {
+    color: rgb(235, 157, 12);
+}
+
+.active:hover {
+    color: rgb(235, 157, 12);
+}
+
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+/* breadcrumb */
+
+.crumb {
+    background-color: rgb(56, 54, 54);
+}
+
+.bc-item {
+    color: white;
+}
+
+.bc-item:hover {
+    color: rgb(235, 157, 12);
+}
+
+.bc-active {
+    color: rgb(156, 154, 154);
+}
+
+/* footer */
+
+.footer {
+    background-color: rgb(56, 54, 54);
+}
+
+.footer-line {
+    color: white;
+    font-size: 20px;
+}
+
+.footer-line:hover {
+    color: rgb(235, 157, 12);
+}
+
+.footer-bottom-line {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 10px;
+}
+
+.footer .row {
+    padding-top: 15px;
+}
+
+@media (min-width: 992px) {
+    #search-bar {
+        max-width: 500px;
+        margin-right: 15px;
+    }
+
+    #login-btn {
+        max-width: 80px;
+    }
+}
