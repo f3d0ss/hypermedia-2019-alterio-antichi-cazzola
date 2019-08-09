@@ -1,0 +1,4 @@
+module.exports = 
+{
+    SECRET: "turangalella"
+}
