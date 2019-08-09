@@ -107,6 +107,17 @@ a.icoInstagram {
     margin-right: 0;
 }
 
+#slider-container {
+    padding-top: 50px;
+}
+
+.carousel-item img {
+    height: 350px;
+    width: 960px;
+    border-radius: 5px;
+    border: solid 2px rgb(180, 165, 138);
+}
+
 /* performance images */
 
 .display-img {
