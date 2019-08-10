@@ -10,8 +10,9 @@ const passportConf = require('../passport');
 const User = require('../models/user');
 
 router.post('/signup', validateBodyFunc(schemas.authSchema), userController.signUp);
+
 router.get('/superSecret', passport.authenticate('jwt', {
     session: false
-}), userController.getSuperSicret);
+}), userController.getSuperSecret);
 
 module.exports = router;

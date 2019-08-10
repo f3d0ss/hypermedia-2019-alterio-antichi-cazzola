@@ -13,7 +13,7 @@ app.set('views', 'public/pages');
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public/assets')));
-app.use('/users', userRoutes);
+app.use('/user', userRoutes);
 app.use('/', pageRoutes);
 
 // Start the server
