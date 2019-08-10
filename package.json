@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/f-cazzola/hypermedia-2019-alterio-antichi-cazzola#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "joi": "^14.3.1",
