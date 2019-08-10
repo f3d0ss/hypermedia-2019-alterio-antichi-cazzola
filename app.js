@@ -1,22 +1,22 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const publicFolderPath = path.join(__dirname, 'public');
-const pagesPath = path.join(publicFolderPath, 'pages');
+const userRoutes = require('./routes/users');
+const pageRoutes = require('./routes/page');
+
+const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'public/pages');
 
 app.use(bodyParser.json());
 
-//app.use(express.static('public'));
-app.use('/users', require('./routes/users'));
-app.use('/public', require)
-app.set('views', pagesPath);
-app.get('/', (req, res) => res.sendFile(path.join(pagesPath, 'home.html')))
-app.get('/*', (req, res) => res.sendFile(path.join(publicFolderPath, req.url))
-);
+app.use(express.static(path.join(__dirname, 'public/assets')));
+app.use('/users', userRoutes);
+app.use('/', pageRoutes);
 
 // Start the server
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 app.listen(port);
 console.log(`Server listening at ${port}`);
