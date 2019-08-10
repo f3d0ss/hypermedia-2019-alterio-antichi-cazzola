@@ -12,7 +12,6 @@ module.exports =
             this.id = null
             this.email = email;
             this.password = password;
-            // console.log(this);
         }
 
         newToken() {
@@ -24,30 +23,29 @@ module.exports =
             }, SECRET);
         }
 
-        save() {
+        async save() {
             if (this.id) {
                 return db.query(
                     "UPDATE User SET email = ?, password = ? WHERE id = ?;",
                     [this.email, this.password, this.id]
                 );
             }
-            return db.query(
-                "INSERT INTO User (email, password) VALUES (? ,?)", [this.email, this.password]
-            ).then(([ResultSetHeader]) => {
-                console.log(ResultSetHeader);
-                this.id = ResultSetHeader.insertId;
-                console.log(this);
-                return;
-            });
+            var ResultSetHeader = await db.query(
+                "INSERT INTO User (email, password) VALUES (? ,?)", 
+                [this.email, this.password]
+            );
+            console.log(ResultSetHeader[0]);
+            this.id = ResultSetHeader[0].insertId;
+            console.log(this);
         }
 
-        static getUserById(userId) {
+        static async getUserById(userId) {
             return db.query(
                 "SELECT * FROM User WHERE id = ?", [userId]
             );
         }
 
-        static getUsers() {
+        static async getUsers() {
             return db.query(
                 "SELECT * FROM User"
             );
