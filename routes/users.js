@@ -1,4 +1,5 @@
 const express = require('express');
+const passportConf = require('../passport');
 const router = express.Router();
 const {
     validateBodyFunc,
