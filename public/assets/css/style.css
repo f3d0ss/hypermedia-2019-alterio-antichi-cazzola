@@ -3,6 +3,7 @@
 
 body {
     background-color: rgb(229, 226, 226);
+    overflow-x: hidden;
 }
 
 #main-container {

@@ -1,0 +1,59 @@
+/* generics */
+
+.row {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* breadcrumb */
+.crumb {
+    margin-bottom: 0px;
+}
+
+/* carousel */
+
+.carousel-item {
+    background-image: url(../images/chicago.jpg);
+    height: 86vh;
+}
+
+/* featuring section */
+
+#artist-wrapper {
+    padding-top: 20px;
+    border: solid 2px wheat;
+    background-color: black;
+}
+
+.artist-box {
+    margin-right: 15px;
+    margin-left: 15px;
+    height: 240px;
+    width: 240px;
+}
+
+.artist-img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    border: solid 2px wheat;
+}
+
+.a-name {
+    cursor: pointer;
+}
+
+/* factsheet */
+
+.card-header {
+    cursor: pointer;
+}
+
+@media (min-width: 1400px) {
+    .artist-img:hover {
+        height: 230px;
+        width: 230px;
+    }
+}
