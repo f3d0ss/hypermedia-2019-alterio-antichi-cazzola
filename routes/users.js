@@ -1,4 +1,5 @@
 const express = require('express');
+const passportConf = require('../passport');
 const router = express.Router();
 const {
     validateBodyFunc,
@@ -6,8 +7,6 @@ const {
 } = require('../helpers/routeHelpers')
 const userController = require('../controllers/users');
 const passport = require('passport');
-const passportConf = require('../passport');
-const User = require('../models/user');
 
 router.post('/signup', validateBodyFunc(schemas.authSchema), userController.signUp);
 
