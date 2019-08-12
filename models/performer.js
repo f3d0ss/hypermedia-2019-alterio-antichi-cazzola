@@ -1,10 +1,10 @@
 const db = require('../util/database');
 
 module.exports = class Performer {
-    constructor(name, achivments, detail, company_id, main_field, photos, id) {
+    constructor(name, achivements, detail, company_id, main_field, photos, id) {
         this.id = id ? id : null;
         this.name = name;
-        this.achivments = achivments;
+        this.achivements = achivements;
         this.detail = detail;
         this.company_id = company_id;
         this.main_field = main_field;
@@ -19,12 +19,23 @@ module.exports = class Performer {
                     [photo, this.id]
                 );
             }
-            return db.query("UPDATE Performer SET name = ?, achivments = ?, detail = ?, company_id = ?, main_field = ? WHERE id = ?;",
-                [this.name, this.achivments, this.detail, this.company_id, this.main_field, this.id]);
+            let queryQuestionMarks = '';
+            if (this.achivements && this.achivements.length > 0) {
+                queryQuestionMarks = '?';
+                for (let i = 0; i < this.achivements.length - 1; i++) {
+                    queryQuestionMarks += ', ?';
+                }
+            }
+            await db.query(
+                "DELETE FROM Achivement WHERE performer_id = ? AND id NOT IN (" + queryQuestionMarks + ")",
+                this.achivements
+            );
+            return db.query("UPDATE Performer SET name = ?, detail = ?, company_id = ?, main_field = ? WHERE id = ?;",
+                [this.name, this.detail, this.company_id, this.main_field, this.id]);
         }
         const ResultSetHeader = await db.query(
-            "INSERT INTO Performer (name, achivments, detail, company_id, main_field, id) VALUES (? ,? ,? ,? ,? ,?);",
-            [this.name, this.achivments, this.detail, this.company_id, this.main_field, this.id]
+            "INSERT INTO Performer (name, detail, company_id, main_field, id) VALUES (? ,? ,? ,? ,?);",
+            [this.name, this.detail, this.company_id, this.main_field, this.id]
         );
         this.id = ResultSetHeader[0].insertId;
         for (const photo of this.photos) {
@@ -37,11 +48,18 @@ module.exports = class Performer {
 
     static async getPerformerById(performerId) {
         try {
-            const res = await db.query(
+            const photoRes = await db.query(
                 " SELECT path FROM PerformerPhoto WHERE performer_id = ?",
-                [companyId]
+                [performerId]
             );
-            const photos = res[0].map(pathObj => pathObj.path);
+            const photos = photoRes[0].map(pathObj => pathObj.path);
+
+            const achivementRes = await db.query(
+                "SELECT id FROM Achivement WHERE performer_id = ?",
+                [performerId]
+            );
+            const achivements = achivementRes[0].map(achivementRow => achivementRow.id);
+
             const [rows] = await db.query(
                 "SELECT * FROM Performer WHERE id = ?",
                 [performerId]
@@ -51,7 +69,7 @@ module.exports = class Performer {
             const performer = rows[0];
             return new Performer(
                 performer.name,
-                performer.achivments,
+                achivements,
                 performer.detail,
                 performer.company_id,
                 performer.main_field,
@@ -76,14 +94,20 @@ module.exports = class Performer {
                 LIMIT ?,?`, [startRow, startRow + pageSize]
         );
         for (const performer of rows) {
-            const res = await db.query(
+            const achivementRes = await db.query(
+                "SELECT id FROM Achivement WHERE performer_id = ?",
+                [performer.id]
+            );
+            const achivements = achivementRes[0].map(achivementRow => achivementRow.id);
+
+            const photoRes = await db.query(
                 " SELECT path FROM PerformerPhoto WHERE performer_id = ?",
                 [performer.id]
             );
-            const photos = res[0].map(pathObj => pathObj.path);
+            const photos = photoRes[0].map(pathObj => pathObj.path);
             performers.push(new Performer(
                 performer.name,
-                performer.achivments,
+                achivements,
                 performer.detail,
                 performer.company_id,
                 performer.main_field,

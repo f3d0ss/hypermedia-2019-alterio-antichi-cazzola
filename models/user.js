@@ -3,7 +3,7 @@ const JWT = require('jsonwebtoken');
 const db = require('../util/database');
 const {
     SECRET
-} = require('../configuration/configuration')
+} = require('../configuration/configuration');
 
 
 module.exports =
