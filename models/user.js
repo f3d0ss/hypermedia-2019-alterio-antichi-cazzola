@@ -1,38 +1,11 @@
 const JWT = require('jsonwebtoken');
-<<<<<<< Updated upstream
-const { SECRET } = require('../configuration/configuration')
-const bcrypt = require('bcrypt');
-=======
 
 const db = require('../util/database');
 const {
     SECRET
 } = require('../configuration/configuration')
->>>>>>> Stashed changes
 
-const saltRounds = 10;
-const users = [];
 
-<<<<<<< Updated upstream
-module.exports = 
-class User
-{
-    constructor(email, passwordHash)
-    {
-        this.id = Date.now();
-        this.email = email;
-        this.password = passwordHash;
-        this.token = this.newToken(this);
-        users.push(this);
-        console.log(this);
-    }
-
-    static async createUser(email, password) 
-    {
-       const hash = await bcrypt.hash(password, saltRounds);
-       return new User(email, hash);
-    }
-=======
 module.exports =
     class User {
         constructor(email, password, id) {
@@ -50,6 +23,7 @@ module.exports =
             }, SECRET);
         }
 
+
         async save() {
             if (this.id) {
                 return db.query(
@@ -65,17 +39,16 @@ module.exports =
             this.id = ResultSetHeader[0].insertId;
             console.log(this);
         }
->>>>>>> Stashed changes
 
-    newToken(user)
-    {
-        return JWT.sign({
-            iss: 'turlell',
-            sub: user.id,
-            iat: new Date().getTime(), // current time
-            exp: new Date().setDate(new Date().getDate() + 1) // current time + 1 day ahead
-          }, SECRET);
+        static async getUserById(userId) {
+            return db.query(
+                "SELECT * FROM User WHERE id = ?", [userId]
+            );
+        }
+
+        static async getUsers() {
+            return db.query(
+                "SELECT * FROM User"
+            );
+        }
     }
-
-    static getUsers() { return users; }
-}

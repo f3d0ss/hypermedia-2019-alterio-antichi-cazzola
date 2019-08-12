@@ -1,9 +1,11 @@
-var mysql = require('mysql2');
+const mysql = require('mysql2');
+
+const config = require('../configuration/configuration');
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: "q1W@e3R$t5"
+    host: config.DB_HOST,
+    user: config.DB_USER,
+    password: config.DB_PASSWORD
 });
 // now get a Promise wrapped instance of that pool
 const promisePool = pool.promise();
@@ -24,10 +26,10 @@ function createDatabase() {
         .then(() => {
             console.log("Database created");
             const pool = mysql.createPool({
-                host: 'localhost',
-                user: 'root',
-                database: 'festivalDB',
-                password: 'q1W@e3R$t5'
+                host: config.DB_HOST,
+                user: config.DB_USER,
+                password: config.DB_PASSWORD,
+                database: config.DB_NAME
             });
             const promisePoolDb = pool.promise();
             createTables(promisePoolDb);
