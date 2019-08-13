@@ -50,6 +50,7 @@ async function createTables(promisePoolDb) {
         await createPerformerPhotoTable(promisePoolDb);
         await createAchivementTable(promisePoolDb);
         await createPerformerEventTable(promisePoolDb);
+        await createSignUpTokenTable(promisePoolDb);
         console.log("Tables created");
     } catch (error) {
         console.log(error);
@@ -58,10 +59,19 @@ async function createTables(promisePoolDb) {
 
 function createUserTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE User (
-            id int PRIMARY KEY AUTO_INCREMENT,
+        id int PRIMARY KEY AUTO_INCREMENT,
         email varchar(255) NOT NULL UNIQUE,
-        password varchar(255) NOT NULL
-    );`);
+        password varchar(255) NOT NULL,
+        isVerified bit DEFAULT 0
+        );`);
+}
+
+function createSignUpTokenTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE SignUpToken (
+        user_id int PRIMARY KEY,
+        signup_token varchar(255),
+        FOREIGN KEY (user_id) REFERENCES User(id)
+        );`);
 }
 
 function createLocationTable(promisePoolDb) {

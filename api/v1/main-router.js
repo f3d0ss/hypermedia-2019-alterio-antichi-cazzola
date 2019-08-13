@@ -10,13 +10,13 @@ const seminarRouter = require('./routes/seminar');
 const authRouter = require('./routes/auth');
 
 
+router.use('/auth', authRouter);
 router.use('/performer', performerRouter);
 router.use('/artistic-field', artisticFieldRouter);
 router.use('/event', eventRouter);
 router.use('/location', locationRouter);
 router.use('/company', companyRouter);
 router.use('/seminar', seminarRouter);
-router.use('/auth', authRouter);
 
 
 module.exports = router;

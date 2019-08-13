@@ -399,7 +399,30 @@ paths:
                 example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0dXJsZWxsIiwic3ViIjoxMSwiaWF0IjoxNTY1NDUwNDgzMDgzLCJleHAiOjE1NjU1MzY4ODMwODN9.ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
         500:
           $ref: '#/components/responses/500ApiError'
-  
+  /auth/verify-email/{userId}:
+    get:
+      tags:
+        - authentication
+      parameters:
+        - in: path
+          name: userId
+          description: The id of the user
+          required: true
+          schema:
+            type: string
+            example: 1
+        - in: query
+          name: token
+          description: The token sended at the email during the signup
+          required: true
+          schema:
+            type: string
+            example: ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
+      responses:
+        200:
+          description: Email verified
+        500:
+          $ref: '#/components/responses/500ApiError'
 components:
   parameters:
     PageNumber:
