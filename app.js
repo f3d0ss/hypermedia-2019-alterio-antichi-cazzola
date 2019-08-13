@@ -5,6 +5,7 @@ const path = require('path');
 const userRoutes = require('./routes/users');
 const pageRoutes = require('./routes/page');
 const APIv1Routes = require('./api/v1/main-router');
+const backendRouter = require('./routes/backend');
 
 const app = express();
 
@@ -29,6 +30,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1', APIv1Routes);
+
+app.use('/backend', backendRouter);
 
 app.use((error, req, res, next) => {
     console.log(error);

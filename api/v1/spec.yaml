@@ -1,0 +1,616 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: Festival API
+  description: Those API are used for the festival
+  contact:
+    name: Kyberfan
+    url: http://kyberfan.ml
+    email: "no-reply@stfu.com"
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+tags:
+  - name: event
+  - name: performer
+  - name: company
+  - name: location
+  - name: seminar
+  - name: authentication
+
+servers:
+  # - url: https://localhost/api/v1
+  - url: http://localhost:3000/api/v1
+
+  
+paths:
+  /event:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the events
+      description: This is a list of the events
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - event
+      description: Add an event to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        201:
+          description: The event has been created
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /event/{eventId}:
+    get:
+      tags:
+        - event
+      parameters: 
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+            description: A list of events
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Event'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /performer:
+    get:
+      tags: 
+        - performer
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        200:
+          description: This is a list of performer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Performer'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags: 
+        - performer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Performer'
+      responses:
+        201:
+          description: The performer has been added
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /performer/{performerId}:
+    get:
+      tags: 
+        - performer
+      parameters: 
+        - in: path
+          name: performerId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+          description: This is the performer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Performer'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /seminar:
+    get:
+      tags:
+        - seminar
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the seminares
+      description: This is a list of the seminares
+      responses:
+        200:
+          description: A list of seminares
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Seminar'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - seminar
+      description: Add an seminar to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Seminar'
+      responses:
+        201:
+          description: The seminar has been created
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /seminar/{seminarId}:
+    get:
+      tags:
+        - seminar
+      parameters: 
+        - in: path
+          name: seminarId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+            description: A list of seminares
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Seminar'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /company:
+    get:
+      tags:
+        - company
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the companies
+      description: This is a list of the companies
+      responses:
+        200:
+          description: A list of companies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Company'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - company
+      description: Add an company to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+      responses:
+        201:
+          description: The company has been created
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /company/{companyId}:
+    get:
+      tags:
+        - company
+      parameters: 
+        - in: path
+          name: companyId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+            description: A list of companies
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Company'
+
+        500:
+          $ref: '#/components/responses/500ApiError'
+    
+  /location:
+    get:
+      tags:
+        - location
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the locations
+      description: This is a list of the locations
+      responses:
+        200:
+          description: A list of locations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - location
+      description: Add an location to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      responses:
+        201:
+          description: The location has been created
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /location/{locationId}:
+    get:
+      tags:
+        - location
+      parameters: 
+        - in: path
+          name: locationId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+            description: A list of locations
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Location'
+        500:
+          $ref: '#/components/responses/500ApiError'
+     
+  /artistic-field:
+    get:
+      tags:
+        - artistic-field
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the artistic-fields
+      description: This is a list of the artistic-fields
+      responses:
+        200:
+          description: A list of artistic-fields
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtisticField'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - artistic-field
+      description: Add an artistic-field to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtisticField'
+      responses:
+        201:
+          description: The artistic-field has been created
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /artistic-field/{artistic-fieldId}:
+    get:
+      tags:
+        - artistic-field
+      parameters: 
+        - in: path
+          name: artistic-fieldId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+            description: A list of artistic-fields
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ArtisticField'
+        500:
+          $ref: '#/components/responses/500ApiError'
+   
+  /auth/signup:
+    post:
+      tags:
+        - authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      summary: This signup a user
+      description: This signup a user
+      responses:
+        201:
+          description: User registered
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /auth/login:
+    post:
+      tags:
+        - authentication
+      description: Get the JWT to access the locked functionality
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: test@mail.com
+                password:
+                  type: string
+                  example: SecurePassword
+      responses:
+        200:
+          description: The event has been created
+          content:
+            application/json:
+              schema:
+                description: jwt
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0dXJsZWxsIiwic3ViIjoxMSwiaWF0IjoxNTY1NDUwNDgzMDgzLCJleHAiOjE1NjU1MzY4ODMwODN9.ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
+        500:
+          $ref: '#/components/responses/500ApiError'
+  
+components:
+  parameters:
+    PageNumber:
+      in: query
+      name: pageNumber
+      description: Page number to return
+      required: false
+      schema:
+        type: integer
+        example: 1
+    PageSize:
+      in: query
+      name: pageSize
+      description: Number of results in the page
+      required: false
+      schema:
+        type: integer
+        example: 10
+        maximum: 100
+    JWT:
+      in: header
+      name: authentication
+      description: The JWT returned in the login
+      required: true
+      schema:
+        type: string
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0dXJsZWxsIiwic3ViIjoxMSwiaWF0IjoxNTY1NDUwNDgzMDgzLCJleHAiOjE1NjU1MzY4ODMwODN9.ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
+  schemas:
+    Event:
+      type: object
+      required: 
+        - id
+        - name
+        - abstract
+        - date
+        - start
+        - end
+        - location
+      properties:
+        id:
+          type: integer
+          example: 4321
+        name:
+          type: string
+          example: Best event evah
+        abstract:
+          type: string
+          example: This is a useless description of the event
+        date:
+          type: string
+          format: date
+          example: 2019-12-12
+        start:
+          type: string
+          format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+          example: 12:00
+        end:
+          type: string
+          format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+          example: 21:00
+        location:
+          type: string
+          example: A12
+        vacancy:
+          type: integer
+          example: 30
+        seminar_id:
+          type: integer
+          example: 3123
+
+    Seminar:
+      type: object
+      required: 
+        - title
+      properties:
+        id:
+          type: integer
+          example: 4321
+        title:
+          type: string
+          example: Amazing seminar
+        location:
+          type: integer
+          example: 2341
+        date:
+          type: string
+          format: date
+          example: 2019-08-15
+        start:
+          type: string
+          format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+          example: 12:00
+        end:
+          type: string
+          format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+          example: 21:00
+        vacancy:
+          type: integer
+          example: 15
+
+    Location:
+      type: object
+      required: 
+        - id
+      properties:
+        id: 
+          type: string
+          example: A12
+        how_to_reach:
+          type: string
+          example: After you pass the enterence you find the place in front of you 
+          
+    Performer:
+      type: object
+      required: 
+        - id
+        - name
+        - achivment
+        - detail
+        - company_id
+        - main_field
+      properties:
+        id:
+          type: integer
+          example: 123
+        name:
+          type: string
+          example: Mario Rossi
+        achivments:
+          type: array
+          items:
+            type: string
+            example: Grade
+        detail:
+          type: string
+          example: Mario is a fucking dancer and I dunno why the fuck I'm writing...
+        company_id:
+          type: integer
+          example: 1234
+        main_field:
+          type: integer
+          example: 1234
+        images:
+          type: array
+          items:
+            type: string
+            example: /images/first-photo.png
+            
+    Company:
+      required: 
+        - id
+        - name
+        - detail
+      properties:
+        id:
+          type: integer
+          example: 8543
+        name:
+          type: string
+          example: The Best Company
+        detail:
+          type: string
+          example: This is a company of dances
+        photos:
+          type: array
+          items:
+            type: string
+            example: /images/1234
+
+    ArtisticField:
+      required: 
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          example: 1234
+        name:
+          type: string
+          example: Dance
+          
+    User:
+      required: 
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: example@mail.com
+        password:
+          type: string
+          example: khIH&*5VGk%RFk)0QedHy
+    
+  responses:
+    500ApiError:
+      description: This is an unexpected error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: string
+                example: 500
+              message:
+                type: string
+                example: This is an error
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      x-bearerInfoFunc: app.decode_token

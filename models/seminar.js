@@ -1,10 +1,10 @@
 const db = require('../util/database');
 
 module.exports = class Seminar {
-    constructor(title, location, date, start, end, vacancy, id) {
+    constructor(title, location_id, date, start, end, vacancy, id) {
         this.id = id ? id : null;
         this.title = title;
-        this.location = location;
+        this.location_id = location_id;
         this.date = date;
         this.start = start;
         this.end = end;
@@ -13,12 +13,12 @@ module.exports = class Seminar {
 
     async save() {
         if (this.id) {
-            return db.query("UPDATE Seminar SET title = ?, location = ?, date = ?, start = ?, end = ?, vacancy = ? WHERE id = ?;",
-                [this.title, this.location, this.date, this.start, this.end, this.vacancy, this.id]);
+            return db.query("UPDATE Seminar SET title = ?, location_id = ?, date = ?, start = ?, end = ?, vacancy = ? WHERE id = ?;",
+                [this.title, this.location_id, this.date, this.start, this.end, this.vacancy, this.id]);
         }
         const ResultSetHeader = await db.query(
-            "INSERT INTO Seminar (title, location, date, start, end, vacancy, id) VALUES (? ,? ,? ,? ,? ,?);",
-            [this.title, this.location, this.date, this.start, this.end, this.vacancy, this.id]
+            "INSERT INTO Seminar (title, location_id, date, start, end, vacancy) VALUES (? ,? ,? ,? ,? ,?);",
+            [this.title, this.location_id, this.date, this.start, this.end, this.vacancy]
         );
         this.id = ResultSetHeader[0].insertId;
     }
@@ -34,7 +34,7 @@ module.exports = class Seminar {
             const seminar = rows[0];
             return new Seminar(
                 seminar.title,
-                seminar.location,
+                seminar.location_id,
                 seminar.date,
                 seminar.start,
                 seminar.end,
@@ -61,7 +61,7 @@ module.exports = class Seminar {
         for (const seminar of rows) {
             seminars.push(new Seminar(
                 seminar.title,
-                seminar.location,
+                seminar.location_id,
                 seminar.date,
                 seminar.start,
                 seminar.end,

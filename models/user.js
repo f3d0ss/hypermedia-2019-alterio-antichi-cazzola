@@ -46,6 +46,20 @@ module.exports =
             );
         }
 
+        static async getUserByEmail(email) {
+            const [rows] = await db.query(
+                "SELECT * FROM User WHERE email = ?", [email]
+            );
+            if (rows.length === 0)
+                return null;
+            const user = rows[0];
+            return new User(
+                user.email,
+                user.password,
+                user.id
+            );
+        }
+
         static async getUsers() {
             return db.query(
                 "SELECT * FROM User"
