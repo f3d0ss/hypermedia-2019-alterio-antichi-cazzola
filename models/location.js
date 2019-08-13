@@ -19,9 +19,14 @@ module.exports = class Location {
         return new Location(locationRow.id, locationRow.how_to_reach);
     }
 
-    static async getLocations() {
+    static async getLocations(pageNumber, pageSize) {
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
         const locations = [];
-        const [rows] = await db.query("SELECT * FROM Location");
+        const [rows] = await db.query("SELECT * FROM Location LIMIT ?,?", [startRow, startRow + +pageSize]);
         for (const locationRow of rows) {
             locations.push(new Location(locationRow.id, locationRow.how_to_reach));
         }

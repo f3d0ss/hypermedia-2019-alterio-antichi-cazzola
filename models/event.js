@@ -55,7 +55,7 @@ module.exports = class Event {
         const startRow = pageNumber * pageSize;
         const [rows] = await db.query(
             "SELECT * FROM Event LIMIT ?,?",
-            [startRow, startRow + pageSize]
+            [startRow, startRow + +pageSize]
         );
         for (const event of rows) {
             events.push(new Event(

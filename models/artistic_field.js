@@ -26,9 +26,14 @@ module.exports = class ArtisticField {
         return new ArtisticField(artisticFieldRow.id, artisticFieldRow.name);
     }
 
-    static async getArtisticFields() {
+    static async getArtisticFields(pageNumber, pageSize) {
         const artisticFields = [];
-        const [rows] = await db.query("SELECT * FROM ArtisticField");
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+        const [rows] = await db.query("SELECT * FROM ArtisticField LIMIT ?,?", [startRow, startRow + +pageSize]);
         for (const artisticFieldRow of rows) {
             artisticFields.push(new ArtisticField(artisticFieldRow.id, artisticFieldRow.name));
         }

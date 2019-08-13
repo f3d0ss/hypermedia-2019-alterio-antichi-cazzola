@@ -91,7 +91,7 @@ module.exports = class Performer {
         const [rows] = await db.query(
             `SELECT *
                 FROM Performer
-                LIMIT ?,?`, [startRow, startRow + pageSize]
+                LIMIT ?,?`, [startRow, startRow + +pageSize]
         );
         for (const performer of rows) {
             const achivementRes = await db.query(

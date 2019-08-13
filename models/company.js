@@ -66,7 +66,7 @@ module.exports = class Company {
         const [rows] = await db.query(
             `SELECT *
             FROM Company
-            LIMIT ?,?`, [startRow, startRow + pageSize]
+            LIMIT ?,?`, [startRow, startRow + +pageSize]
         );
         for (const company of rows) {
             const res = await db.query(

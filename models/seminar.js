@@ -56,7 +56,7 @@ module.exports = class Seminar {
         const [rows] = await db.query(
             `SELECT *
                 FROM Seminar
-                LIMIT ?,?`, [startRow, startRow + pageSize]
+                LIMIT ?,?`, [startRow, startRow + +pageSize]
         );
         for (const seminar of rows) {
             seminars.push(new Seminar(

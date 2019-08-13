@@ -60,9 +60,18 @@ module.exports =
             );
         }
 
-        static async getUsers() {
-            return db.query(
-                "SELECT * FROM User"
+        static async getUsers(pageNumber, pageSize) {
+            const users = [];
+            if (!pageNumber)
+                pageNumber = 0;
+            if (!pageSize)
+                pageSize = 10;
+            const startRow = pageNumber * pageSize;
+            const [rows] = db.query(
+                "SELECT * FROM User LIMIT ?,?", [startRow, startRow + +pageSize]
             );
+            for (const userRow of rows) {
+                users.push(new User(userRow.email, userRow.password, userRow.id));
+            }
         }
     }

@@ -41,7 +41,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Event'
+                  $ref: '#/components/schemas/EventWithId'
         500:
           $ref: '#/components/responses/500ApiError'
     post:
@@ -53,6 +53,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Event'
+              not: id
       responses:
         201:
           description: The event has been created
@@ -76,7 +77,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/Event'
+                  $ref: '#/components/schemas/EventWithId'
         500:
           $ref: '#/components/responses/500ApiError'
   /performer:
@@ -94,7 +95,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Performer'
+                  $ref: '#/components/schemas/PerformerWithId'
         500:
           $ref: '#/components/responses/500ApiError'
     post:
@@ -128,7 +129,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Performer'
+                $ref: '#/components/schemas/PerformerWithId'
         500:
           $ref: '#/components/responses/500ApiError'
   /seminar:
@@ -148,7 +149,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Seminar'
+                  $ref: '#/components/schemas/SeminarWithId'
         500:
           $ref: '#/components/responses/500ApiError'
     post:
@@ -176,14 +177,13 @@ paths:
           schema:
             type: integer
             example: 12345
-
       responses:
         200:
             description: A list of seminares
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/Seminar'
+                  $ref: '#/components/schemas/SeminarWithId'
         500:
           $ref: '#/components/responses/500ApiError'
         
@@ -204,7 +204,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Company'
+                  $ref: '#/components/schemas/CompanyWithId'
         500:
           $ref: '#/components/responses/500ApiError'
     post:
@@ -239,7 +239,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/Company'
+                  $ref: '#/components/schemas/CompanyWithId'
 
         500:
           $ref: '#/components/responses/500ApiError'
@@ -317,7 +317,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ArtisticField'
+                  $ref: '#/components/schemas/ArtisticFieldWithId'
         500:
           $ref: '#/components/responses/500ApiError'
     post:
@@ -345,14 +345,13 @@ paths:
           schema:
             type: integer
             example: 12345
-
       responses:
         200:
             description: A list of artistic-fields
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/ArtisticField'
+                  $ref: '#/components/schemas/ArtisticFieldWithId'
         500:
           $ref: '#/components/responses/500ApiError'
    
@@ -410,7 +409,7 @@ components:
       required: false
       schema:
         type: integer
-        example: 1
+        example: 0
     PageSize:
       in: query
       name: pageSize
@@ -432,17 +431,14 @@ components:
     Event:
       type: object
       required: 
-        - id
         - name
         - abstract
         - date
         - start
         - end
-        - location
+        - location_id
+        - vacancy
       properties:
-        id:
-          type: integer
-          example: 4321
         name:
           type: string
           example: Best event evah
@@ -461,30 +457,43 @@ components:
           type: string
           format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
           example: 21:00
-        location:
+        location_id:
           type: string
-          example: A12
+          example: A01
         vacancy:
           type: integer
           example: 30
         seminar_id:
           type: integer
-          example: 3123
+          example: 1
+
+    EventWithId:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
 
     Seminar:
       type: object
       required: 
         - title
+        - location_id
+        - date
+        - start
+        - end
+        - vacancy
       properties:
-        id:
-          type: integer
-          example: 4321
         title:
           type: string
           example: Amazing seminar
-        location:
-          type: integer
-          example: 2341
+        location_id:
+          type: string
+          example: A01
         date:
           type: string
           format: date
@@ -501,6 +510,17 @@ components:
           type: integer
           example: 15
 
+    SeminarWithId:
+      allOf:
+        - $ref: '#/components/schemas/Seminar'
+        - type: object
+          required: 
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
+
     Location:
       type: object
       required: 
@@ -515,17 +535,12 @@ components:
           
     Performer:
       type: object
-      required: 
-        - id
+      required:
         - name
         - achivment
         - detail
-        - company_id
         - main_field
       properties:
-        id:
-          type: integer
-          example: 123
         name:
           type: string
           example: Mario Rossi
@@ -548,16 +563,23 @@ components:
           items:
             type: string
             example: /images/first-photo.png
-            
+
+    PerformerWithId:
+      allOf:
+        - $ref: '#/components/schemas/Performer'
+        - type: object
+          required: 
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
+         
     Company:
-      required: 
-        - id
+      required:
         - name
         - detail
       properties:
-        id:
-          type: integer
-          example: 8543
         name:
           type: string
           example: The Best Company
@@ -570,17 +592,36 @@ components:
             type: string
             example: /images/1234
 
+    CompanyWithId:
+      allOf:
+        - $ref: '#/components/schemas/Company'
+        - type: object
+          required: 
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
+
+
     ArtisticField:
       required: 
-        - id
         - name
       properties:
-        id:
-          type: integer
-          example: 1234
         name:
           type: string
           example: Dance
+          
+    ArtisticFieldWithId:
+      allOf:
+        - $ref: '#/components/schemas/ArtisticField'
+        - type: object
+          required: 
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
           
     User:
       required: 

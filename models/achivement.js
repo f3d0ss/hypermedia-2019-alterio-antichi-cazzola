@@ -26,9 +26,14 @@ module.exports = class Achivement {
         return new Achivement(achivementRow.name, achivementRow.performer_id, achivementRow.id);
     }
 
-    static async getAchivements() {
+    static async getAchivements(pageNumber, pageSize) {
         const achivements = [];
-        const [rows] = await db.query("SELECT * FROM Achivement");
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+        const [rows] = await db.query("SELECT * FROM Achivement LIMIT ?,?", [startRow, startRow + +pageSize]);
         for (const achivementRow of rows) {
             achivements.push(new Achivement(achivementRow.name, achivementRow.performer_id, achivementRow.id));
         }
