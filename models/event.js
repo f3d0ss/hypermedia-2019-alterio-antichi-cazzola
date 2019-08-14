@@ -1,7 +1,7 @@
 const db = require('../util/database');
 
 module.exports = class Event {
-    constructor(name, abstract, date, start, end, vacancy, location_id, seminar_id, id) {
+    constructor(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, id) {
         this.id = id ? id : null;
         this.name = name;
         this.abstract = abstract;
@@ -11,10 +11,12 @@ module.exports = class Event {
         this.vacancy = vacancy;
         this.location_id = location_id;
         this.seminar_id = seminar_id;
+        this.performer_ids = performer_ids;
     }
 
     async save() {
         if (this.id) {
+            // update performer
             return db.query("UPDATE Event SET name = ?, abstract = ?, date = ?, start = ?, end = ?, location_id = ?, vacancy = ?, seminar_id = ? WHERE id = ?;",
                 [this.name, this.abstract, this.date, this.start, this.end, this.location_id, this.vacancy, this.seminar_id, this.id]);
         }
@@ -23,6 +25,15 @@ module.exports = class Event {
             [this.name, this.abstract, this.date, this.start, this.end, this.location_id, this.vacancy, this.seminar_id]
         );
         this.id = ResultSetHeader[0].insertId;
+        if (this.performer_ids && this.performer_ids.length > 0) {
+            let query = "INSERT INTO PerformerEvent (event_id, performer_id) VALUES ";
+            const params = [];
+            for (const performer_id of this.performer_ids) {
+                query = query + "(?, ?) ";
+                params.push(this.id, performer_id);
+            }
+            await db.query(query, params);
+        }
     }
 
     static async getEventById(eventId) {
@@ -33,6 +44,11 @@ module.exports = class Event {
         if (rows.length === 0)
             return null;
         const event = rows[0];
+        const res = await db.query(
+            "SELECT performer_id FROM PerformerEvent WHERE event_id = ?",
+            [event.id]
+        );
+        const performer_ids = res[0].map(performerId => performerId.performer_id);
         return new Event(
             event.name,
             event.abstract,
@@ -42,6 +58,7 @@ module.exports = class Event {
             event.vacancy,
             event.location_id,
             event.seminar_id,
+            performer_ids,
             event.id
         );
     }
@@ -58,6 +75,11 @@ module.exports = class Event {
             [startRow, startRow + +pageSize]
         );
         for (const event of rows) {
+            const res = await db.query(
+                "SELECT performer_id FROM PerformerEvent WHERE event_id = ?",
+                [event.id]
+            );
+            const performer_ids = res[0].map(performerId => performerId.performer_id);
             events.push(new Event(
                 event.name,
                 event.abstract,
@@ -67,9 +89,60 @@ module.exports = class Event {
                 event.vacancy,
                 event.location_id,
                 event.seminar_id,
+                performer_ids,
                 event.id
             ));
         }
         return events;
     }
+
+    static async getEventsByPerformer(pageNumber, pageSize, performerId) {
+        const events = [];
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+        const res = await db.query("SELECT event_id FROM PerformerEvent WHERE performer_id = ?", [performerId]);
+        const eventIds = res[0].map(row => row.event_id);
+        if (eventIds.length === 0)
+            return [];
+        const params = [];
+        let query = "SELECT * FROM Event WHERE id IN (";
+        params.push(eventIds.pop());
+        query += "?";
+        for (const eventId of eventIds) {
+            params.push(eventId);
+            query += ",?";
+        }
+        query += ") ";
+        query += "LIMIT ?,?";
+        params.push(startRow, startRow + +pageSize);
+        const [rows] = await db.query(
+            query,
+            params
+        );
+        for (const event of rows) {
+            const res = await db.query(
+                "SELECT performer_id FROM PerformerEvent WHERE event_id = ?",
+                [event.id]
+            );
+            const performer_ids = res[0].map(performerId => performerId.performer_id);
+            events.push(new Event(
+                event.name,
+                event.abstract,
+                event.date,
+                event.start,
+                event.end,
+                event.vacancy,
+                event.location_id,
+                event.seminar_id,
+                performer_ids,
+                event.id
+            ));
+        }
+        return events;
+    }
+
+
 }

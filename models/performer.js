@@ -48,41 +48,19 @@ module.exports = class Performer {
 
     static async getPerformerById(performerId) {
         try {
-            const photoRes = await db.query(
-                " SELECT path FROM PerformerPhoto WHERE performer_id = ?",
-                [performerId]
-            );
-            const photos = photoRes[0].map(pathObj => pathObj.path);
-
-            const achivementRes = await db.query(
-                "SELECT id FROM Achivement WHERE performer_id = ?",
-                [performerId]
-            );
-            const achivements = achivementRes[0].map(achivementRow => achivementRow.id);
-
             const [rows] = await db.query(
                 "SELECT * FROM Performer WHERE id = ?",
                 [performerId]
             );
-            if (rows.length === 0)
-                return null;
-            const performer = rows[0];
-            return new Performer(
-                performer.name,
-                achivements,
-                performer.detail,
-                performer.company_id,
-                performer.main_field,
-                photos,
-                performer.id
-            );
+            console.log(rows);
+            const performers = await this.getPerformersFromRows(rows);
+            return (performers);
         } catch (err) {
             console.log(err);
         }
     }
 
     static async getPerformers(pageNumber, pageSize) {
-        const performers = [];
         if (!pageNumber)
             pageNumber = 0;
         if (!pageSize)
@@ -93,6 +71,44 @@ module.exports = class Performer {
                 FROM Performer
                 LIMIT ?,?`, [startRow, startRow + +pageSize]
         );
+        console.log(rows);
+        return this.getPerformersFromRows(rows);
+    }
+
+    static async getPerformersByEvent(pageNumber, pageSize, eventId) {
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+
+        const res = await db.query("SELECT performer_id FROM PerformerEvent WHERE event_id = ?", [eventId]);
+        const performerIds = res[0].map(row => row.performer_id);
+        console.log(performerIds);
+        if (performerIds.length === 0)
+            return [];
+        const params = [];
+        let query = "SELECT * FROM Event WHERE id IN (";
+        params.push(performerIds.pop());
+        query += "?";
+        for (const performerId of performerIds) {
+            params.push(performerId);
+            query += ",?";
+        }
+        query += ") ";
+        query += "LIMIT ?,?";
+        params.push(startRow, startRow + +pageSize);
+        const [rows] = await db.query(
+            query,
+            params
+        );
+
+        return this.getPerformersFromRows(rows);
+
+    }
+
+    static async getPerformersFromRows(rows) {
+        const performers = [];
         for (const performer of rows) {
             const achivementRes = await db.query(
                 "SELECT id FROM Achivement WHERE performer_id = ?",

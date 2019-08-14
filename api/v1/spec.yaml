@@ -46,7 +46,6 @@ paths:
           $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
-        
     post:
       tags:
         - event
@@ -56,13 +55,41 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Event'
-              not: id
       responses:
         201:
           description: The event has been created
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+          
+  /event/performer/{performerId}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: performerId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      summary: This is a list of the events filtered by a performer
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
   /event/{eventId}:
     get:
@@ -122,8 +149,37 @@ paths:
           description: The performer has been added
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
-        
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+  /performer/event/{eventId}:
+    get:
+      tags: 
+        - performer
+      summary: This is a list of the performer filtered by an event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: This is a list of performer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerformerWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
   /performer/{performerId}:
     get:
       tags: 
@@ -145,7 +201,7 @@ paths:
                 $ref: '#/components/schemas/PerformerWithId'
         400:
           $ref: '#/components/responses/400ValidationError'
-        0:
+        500:
           $ref: '#/components/responses/500ApiError'
         
   /seminar:
@@ -185,7 +241,8 @@ paths:
           description: The seminar has been created
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
   /seminar/{seminarId}:
     get:
@@ -248,7 +305,8 @@ paths:
           description: The company has been created
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
   /company/{companyId}:
     get:
@@ -313,7 +371,8 @@ paths:
           description: The location has been created
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
   /location/{locationId}:
     get:
@@ -377,7 +436,8 @@ paths:
           description: The artistic-field has been created
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
   /artistic-field/{artistic-fieldId}:
     get:
@@ -419,7 +479,8 @@ paths:
           description: User registered
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
   /auth/login:
     post:
@@ -453,7 +514,8 @@ paths:
           description: Wrong password
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
   /auth/verify-email/{userId}:
     get:
@@ -483,7 +545,8 @@ paths:
           description: Wrong token
         400:
           $ref: '#/components/responses/400ValidationError'
-               $ref: '#/components/responses/500ApiError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
 components:
   parameters:
@@ -537,11 +600,11 @@ components:
         start:
           type: string
           format: time
-          example: 12:00
+          example: 12:00:00
         end:
           type: string
           format: time
-          example: 21:00
+          example: 21:00:00
         location_id:
           type: string
           example: A01
@@ -551,6 +614,11 @@ components:
         seminar_id:
           type: integer
           example: 1
+        performer_ids:
+          type: array
+          items:
+            type: integer
+            example: 1
 
     EventWithId:
       allOf:
@@ -586,11 +654,11 @@ components:
         start:
           type: string
           format: time
-          example: 12:00
+          example: 12:00:00
         end:
           type: string
           format: time
-          example: 21:00
+          example: 21:00:00
         vacancy:
           type: integer
           example: 15
@@ -622,7 +690,7 @@ components:
       type: object
       required:
         - name
-        - achivment
+        - achivments
         - detail
         - main_field
       properties:
@@ -643,7 +711,7 @@ components:
         main_field:
           type: integer
           example: 1234
-        images:
+        photos:
           type: array
           items:
             type: string

@@ -15,6 +15,7 @@ exports.getPerformerById = async (req, res, next) => {
     const performerId = req.params.performerId;
     try {
         const performer = await Performer.getPerformerById(performerId);
+        console.log(performer);
         res.status(200).json(performer);
     } catch (error) {
         next(error);
@@ -37,6 +38,18 @@ exports.postPerformer = async (req, res, next) => {
         const performer = new Performer(name, achivements, detail, company_id, main_field, photos);
         await performer.save();
         res.status(201).json(performer);
+    } catch (error) {
+        next(error);
+    }
+}
+
+exports.getPerformersByEvent = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const eventId = req.params.eventId;
+    try {
+        const performers = await Performer.getPerformersByEvent(pageNumber, pageSize, eventId);
+        res.status(200).json(performers);
     } catch (error) {
         next(error);
     }

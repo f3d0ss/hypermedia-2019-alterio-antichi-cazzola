@@ -30,6 +30,7 @@ exports.postEvent = async (req, res, next) => {
     const vacancy = req.body.vacancy;
     const location_id = req.body.location_id;
     const seminar_id = req.body.seminar_id;
+    const performer_ids = req.body.performer_ids;
 
     // const errors = validationResult(req);
     // if (!errors.isEmpty()) {
@@ -37,9 +38,21 @@ exports.postEvent = async (req, res, next) => {
     //   error.statusCode = 422;
     //   throw error;
     try {
-        const event = new Event(name, abstract, date, start, end, vacancy, location_id, seminar_id);
+        const event = new Event(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids);
         await event.save();
         res.status(201).json(event);
+    } catch (error) {
+        next(error);
+    }
+}
+
+exports.getEventsByPerformer = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const performerId = req.params.performerId;
+    try {
+        const events = await Event.getEventsByPerformer(pageNumber, pageSize, performerId);
+        res.status(200).json(events);
     } catch (error) {
         next(error);
     }
