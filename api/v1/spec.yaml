@@ -42,8 +42,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
     post:
       tags:
         - event
@@ -57,8 +60,10 @@ paths:
       responses:
         201:
           description: The event has been created
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
   /event/{eventId}:
     get:
       tags:
@@ -78,8 +83,11 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
   /performer:
     get:
       tags: 
@@ -96,8 +104,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PerformerWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
     post:
       tags: 
         - performer
@@ -109,8 +120,10 @@ paths:
       responses:
         201:
           description: The performer has been added
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
   /performer/{performerId}:
     get:
       tags: 
@@ -130,8 +143,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PerformerWithId'
-        500:
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        0:
           $ref: '#/components/responses/500ApiError'
+        
   /seminar:
     get:
       tags:
@@ -150,8 +166,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SeminarWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
     post:
       tags:
         - seminar
@@ -164,8 +183,10 @@ paths:
       responses:
         201:
           description: The seminar has been created
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
   /seminar/{seminarId}:
     get:
       tags:
@@ -184,8 +205,11 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/SeminarWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
         
   /company:
     get:
@@ -205,8 +229,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CompanyWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
     post:
       tags:
         - company
@@ -219,8 +246,10 @@ paths:
       responses:
         201:
           description: The company has been created
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
   /company/{companyId}:
     get:
       tags:
@@ -241,8 +270,11 @@ paths:
                 schema:
                   $ref: '#/components/schemas/CompanyWithId'
 
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
     
   /location:
     get:
@@ -262,8 +294,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Location'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
     post:
       tags:
         - location
@@ -276,8 +311,10 @@ paths:
       responses:
         201:
           description: The location has been created
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
   /location/{locationId}:
     get:
       tags:
@@ -297,8 +334,11 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/Location'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
      
   /artistic-field:
     get:
@@ -318,8 +358,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ArtisticFieldWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
     post:
       tags:
         - artistic-field
@@ -332,8 +375,10 @@ paths:
       responses:
         201:
           description: The artistic-field has been created
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
   /artistic-field/{artistic-fieldId}:
     get:
       tags:
@@ -352,8 +397,11 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/ArtisticFieldWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+        
    
   /auth/signup:
     post:
@@ -369,8 +417,10 @@ paths:
       responses:
         201:
           description: User registered
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
   /auth/login:
     post:
       tags:
@@ -401,8 +451,10 @@ paths:
           description: Verify your email
         401:
           description: Wrong password
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
   /auth/verify-email/{userId}:
     get:
       tags:
@@ -429,8 +481,10 @@ paths:
           description: Already verified
         401:
           description: Wrong token
-        500:
-          $ref: '#/components/responses/500ApiError'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+               $ref: '#/components/responses/500ApiError'
+        
 components:
   parameters:
     PageNumber:
@@ -661,12 +715,22 @@ components:
       properties:
         email:
           type: string
+          format: email
           example: example@mail.com
         password:
           type: string
-          example: khIH&*5VGk%RFk)0QedHy
-    
+          example: khIH&*5VGk%RFk)0QedHy  
   responses:
+    400ValidationError:
+      description: Some input are invalid
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: request.body.date should match format \"date\", request.body.start should match format \"time\", request.body.end should match format \"time\
     500ApiError:
       description: This is an unexpected error
       content:
@@ -674,9 +738,6 @@ components:
           schema:
             type: object
             properties:
-              statusCode:
-                type: string
-                example: 500
               message:
                 type: string
                 example: This is an error
