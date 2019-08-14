@@ -6,13 +6,14 @@ const sendgridTransport = require('nodemailer-sendgrid-transport');
 
 const User = require('../../../models/user');
 const {
-    SALT_ROUND
+    SALT_ROUND,
+    SENGRID_API_KEY
 } = require('../../../configuration/configuration');
 
 const transporter = nodemailer.createTransport(
     sendgridTransport({
         auth: {
-            api_key: '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'
+            api_key: SENGRID_API_KEY
         }
     })
 );
@@ -27,11 +28,11 @@ exports.postSignup = async (req, res, next) => {
         await user.save();
         user.setSignUpToken(token);
         transporter.sendMail({
-            to: req.body.email,
+            to: email,
             from: 'verify@festival-art.com',
             subject: 'Registration to FestivalArt',
             html: `
-              <p>You requested a password reset</p>
+              <p>You're about to verify your email</p>
               <p>Click this <a href="http://localhost:3000/api/v1/auth/verify-email/${user.id}?token=${token}">link</a> to verify your email.</p>
             `
         });
@@ -83,6 +84,12 @@ exports.getVerifyEmail = async (req, res, next) => {
     try {
         const user = await User.getUserById(userId);
         user.signUpToken = await user.getSignUpToken();
+        if (user.isVerified) {
+            const error = new Error();
+            error.status = 409;
+            error.message = "Already verified";
+            return next(error);
+        }
         if (user.signUpToken !== signUpToken) {
             const error = new Error();
             error.status = 401;
@@ -94,13 +101,10 @@ exports.getVerifyEmail = async (req, res, next) => {
         res.status(200).json({
             message: "Email Verified!"
         })
+        user.deleteSignUpToken();
     } catch (error) {
         next(error);
     }
 
-
-}
-
-exports.postForgotPassword = (req, res, next) => {
 
 }

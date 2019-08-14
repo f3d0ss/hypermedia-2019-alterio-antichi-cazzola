@@ -397,6 +397,10 @@ paths:
                 description: jwt
                 type: string
                 example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0dXJsZWxsIiwic3ViIjoxMSwiaWF0IjoxNTY1NDUwNDgzMDgzLCJleHAiOjE1NjU1MzY4ODMwODN9.ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
+        403:
+          description: Verify your email
+        401:
+          description: Wrong password
         500:
           $ref: '#/components/responses/500ApiError'
   /auth/verify-email/{userId}:
@@ -421,6 +425,10 @@ paths:
       responses:
         200:
           description: Email verified
+        409:
+          description: Already verified
+        401:
+          description: Wrong token
         500:
           $ref: '#/components/responses/500ApiError'
 components:

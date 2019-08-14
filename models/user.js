@@ -43,6 +43,12 @@ module.exports =
             return rows[0].signup_token;
         }
 
+        async deleteSignUpToken() {
+            return db.query(
+                "DELETE FROM SignUpToken WHERE user_id = ?", [this.id]
+            );
+        }
+
         async save() {
             if (this.id) {
                 return db.query(
