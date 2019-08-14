@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+var OpenApiValidator = require('express-openapi-validator').OpenApiValidator;
 
 const userRoutes = require('./routes/users');
 const pageRoutes = require('./routes/page');
@@ -15,6 +16,11 @@ app.set('views', 'public/pages');
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public/assets')));
+
+new OpenApiValidator({
+    apiSpecPath: './api/v1/spec.yaml',
+}).install(app);
+
 app.use('/user', userRoutes);
 app.use('/', pageRoutes);
 
@@ -35,7 +41,7 @@ app.use('/backend', backendRouter);
 
 app.use((error, req, res, next) => {
     console.log(error);
-    const status = error.statusCode || 500;
+    const status = error.status || 500;
     const message = error.message;
     const data = error.data;
     res.status(status).json({

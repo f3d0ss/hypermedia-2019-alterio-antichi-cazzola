@@ -482,11 +482,11 @@ components:
           example: 2019-12-12
         start:
           type: string
-          format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+          format: time
           example: 12:00
         end:
           type: string
-          format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+          format: time
           example: 21:00
         location_id:
           type: string
@@ -531,11 +531,11 @@ components:
           example: 2019-08-15
         start:
           type: string
-          format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+          format: time
           example: 12:00
         end:
           type: string
-          format: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+          format: time
           example: 21:00
         vacancy:
           type: integer
