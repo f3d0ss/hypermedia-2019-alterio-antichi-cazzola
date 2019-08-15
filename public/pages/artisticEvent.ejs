@@ -1,0 +1,132 @@
+<%- include('includes/head.ejs') %>
+     <link rel="stylesheet" href="/css/artisticEvent.css">
+    <title>Event Name</title>
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+
+    <nav class="crumb" aria-label="breadcrumb">
+        <ol class="breadcrumb crumb">
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Events</a></li>
+            <li class="breadcrumb-item bc-active" aria-current="page">Magic Exhibition</li>
+        </ol>
+    </nav>
+
+    <div id="slider-container">
+        <div id="slider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#slider" data-slide-to="0" class="active"></li>
+                <li data-target="#slider" data-slide-to="1"></li>
+                <li data-target="#slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active" style="background-image: url(/images/chicago.jpg);"></div>
+                <div class="carousel-item" style="background-image: url(/images/chicago.jpg);"></div>
+                <div class="carousel-item" style="background-image: url(/images/chicago.jpg);"></div>
+            </div>
+            <a class="carousel-control-prev" href="#slider" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#slider" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-12">
+                <div id="artist-wrapper" class="centralized">
+                    <h2 class="wheat-item">Featuring:</h2>
+                    <div class="row d-flex justify-content-center">
+                        <div class="artist-box">
+                            <a href="#">
+                                <img class="artist-img" src="/images/HarryPotter.jpg">
+                            </a>
+                            <p class="wheat-item a-name">NameName</p>
+                        </div>
+                        <div class="artist-box">
+                            <a href="#">
+                                <img class="artist-img" src="/images/HarryPotter.jpg">
+                            </a>
+                            <p class="wheat-item a-name">NameName</p>
+                        </div>
+                        <div class="artist-box">
+                            <a href="#">
+                                <img class="artist-img" src="/images/HarryPotter.jpg">
+                            </a>
+                            <p class="wheat-item a-name">NameName</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <div class="abstract centralized">
+                    <h3>Abstract</h3>
+                    <p>
+                        content content content content content content content content content content content content
+                        content content content content content content content content content content content content
+                        content content content content content content content content content content content content
+                        content content content content content content content content content content content content
+                        content content content content content content content content content content content content
+                        content content content content content content content content content content content content
+                    </p>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8 align-items-center">
+                <div class="card">
+                    <div class="card-header" panel-id="question-0">Panel Heading</div>
+                    <div id="question-0" class="card-body collapse">
+                        Content
+                    </div>
+                    <div class="card-header" panel-id="question-1">Panel Heading</div>
+                    <div id="question-1" class="card-body collapse">
+                        Content
+                    </div>
+                    <div class="card-header" panel-id="question-2">Panel Heading</div>
+                    <div id="question-2" class="card-body collapse">
+                        Content
+                    </div>
+                    <div class="card-header" panel-id="question-3">Panel Heading</div>
+                    <div id="question-3" class="card-body collapse">
+                        Content
+                    </div>
+                    <div class="card-header" panel-id="question-4">Panel Heading</div>
+                    <div id="question-4" class="card-body collapse">
+                        Content
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <%- include('includes/footer.ejs') %>
+
+    <script>
+        $(function () {
+            $(".card-header").on("click", function () {
+                var pId = $(this).attr("panel-id")
+
+                $("#" + pId).toggle();
+            });
+        });
+    </script>
+</body>
+
+</html>
