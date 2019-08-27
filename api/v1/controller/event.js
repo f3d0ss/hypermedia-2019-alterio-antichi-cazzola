@@ -69,3 +69,27 @@ exports.getEventsByLoction = async (req, res, next) => {
         next(error);
     }
 }
+
+exports.getEventsByDate = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const date = req.params.date;
+    try {
+        const events = await Event.getEventsByDate(pageNumber, pageSize, date);
+        res.status(200).json(events);
+    } catch (error) {
+        next(error);
+    }
+}
+
+exports.getEventsBySeminar = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const seminarId = req.params.seminarId;
+    try {
+        const events = await Event.getEventsBySeminar(pageNumber, pageSize, seminarId);
+        res.status(200).json(events);
+    } catch (error) {
+        next(error);
+    }
+}

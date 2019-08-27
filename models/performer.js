@@ -104,8 +104,25 @@ module.exports = class Performer {
         );
 
         return this.getPerformersFromRows(rows);
-
     }
+
+
+    static async getPerformersByCompany(pageNumber, pageSize, companyId) {
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+        const [rows] = await db.query(
+            `SELECT *
+                FROM Performer
+                WHERE company_id = ?
+                LIMIT ?,?`, [companyId, startRow, startRow + +pageSize]
+        );
+        console.log(rows);
+        return this.getPerformersFromRows(rows);
+    }
+
 
     static async getPerformersFromRows(rows) {
         const performers = [];

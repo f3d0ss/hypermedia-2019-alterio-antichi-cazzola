@@ -119,6 +119,63 @@ paths:
         500:
           $ref: '#/components/responses/500ApiError'
           
+  /event/date/{date}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: date
+          required: true
+          schema:
+            type: string
+            format: date
+            example: 2019-12-12
+      summary: This is a list of the events filtered by date
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+          
+  /event/seminar/{seminarId}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: seminarId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      summary: This is a list of the events filtered by seminar
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+          
   /event/{eventId}:
     get:
       tags:
@@ -190,6 +247,34 @@ paths:
         - $ref: '#/components/parameters/PageSize'
         - in: path
           name: eventId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: This is a list of performer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerformerWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+  /performer/company/{companyId}:
+    get:
+      tags: 
+        - performer
+      summary: This is a list of the performer filtered by an company
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: companyId
           required: true
           schema:
             type: integer

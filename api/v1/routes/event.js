@@ -11,6 +11,10 @@ router.get('/performer/:performerId', eventController.getEventsByPerformer);
 
 router.get('/location/:locationId', eventController.getEventsByLoction);
 
+router.get('/date/:date', eventController.getEventsByDate);
+
+router.get('/seminar/:seminarId', eventController.getEventsBySeminar);
+
 router.get('/:eventId', eventController.getEventById);
 
 module.exports = router;

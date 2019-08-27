@@ -177,5 +177,70 @@ module.exports = class Event {
         return events;
     }
 
+    static async getEventsByDate(pageNumber, pageSize, date) {
+        const events = [];
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+        const [rows] = await db.query(
+            "SELECT * FROM Event WHERE date = ? LIMIT ?,?",
+            [date, startRow, startRow + +pageSize]
+        );
+        for (const event of rows) {
+            const res = await db.query(
+                "SELECT performer_id FROM PerformerEvent WHERE event_id = ?",
+                [event.id]
+            );
+            const performer_ids = res[0].map(performerId => performerId.performer_id);
+            events.push(new Event(
+                event.name,
+                event.abstract,
+                event.date,
+                event.start,
+                event.end,
+                event.vacancy,
+                event.location_id,
+                event.seminar_id,
+                performer_ids,
+                event.id
+            ));
+        }
+        return events;
+    }
+
+    static async getEventsBySeminar(pageNumber, pageSize, seminarId) {
+        const events = [];
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+        const [rows] = await db.query(
+            "SELECT * FROM Event WHERE seminar_id = ? LIMIT ?,?",
+            [seminarId, startRow, startRow + +pageSize]
+        );
+        for (const event of rows) {
+            const res = await db.query(
+                "SELECT performer_id FROM PerformerEvent WHERE event_id = ?",
+                [event.id]
+            );
+            const performer_ids = res[0].map(performerId => performerId.performer_id);
+            events.push(new Event(
+                event.name,
+                event.abstract,
+                event.date,
+                event.start,
+                event.end,
+                event.vacancy,
+                event.location_id,
+                event.seminar_id,
+                performer_ids,
+                event.id
+            ));
+        }
+        return events;
+    }
 
 }

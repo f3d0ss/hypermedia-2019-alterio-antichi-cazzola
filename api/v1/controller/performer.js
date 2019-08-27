@@ -54,3 +54,15 @@ exports.getPerformersByEvent = async (req, res, next) => {
         next(error);
     }
 }
+
+exports.getPerformersByCompany = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const companyId = req.params.companyId;
+    try {
+        const performers = await Performer.getPerformersByCompany(pageNumber, pageSize, companyId);
+        res.status(200).json(performers);
+    } catch (error) {
+        next(error);
+    }
+}
