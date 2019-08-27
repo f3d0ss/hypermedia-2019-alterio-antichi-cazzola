@@ -14,6 +14,13 @@ exports.getReservations = async (req, res, next) => {
 exports.postReservation = async (req, res, next) => {
     const user_id = req.body.userId;
     const event_id = req.body.eventId;
+    if (req.user.id !== user_id) {
+        const err = new Error();
+        err.status = 401;
+        err.message = 'Unauthorized';
+        next(err);
+    }
+
     try {
         const reservation = new Reservation(user_id, event_id);
         await reservation.save();
@@ -38,6 +45,19 @@ exports.getReservationsByUser = async (req, res, next) => {
 exports.deleteReservation = async (req, res, next) => {
     const reservationId = req.params.reservationId;
     try {
+        const reservation = await Reservation.getReservationById(reservationId);
+        if (!reservation) {
+            const err = new Error();
+            err.status = 404;
+            err.message = 'Reservetion does not exist';
+            next(err);
+        }
+        if (req.user.id !== reservation.user_id) {
+            const err = new Error();
+            err.status = 401;
+            err.message = 'Unauthorized';
+            next(err);
+        }
         await Reservation.deleteReservation(reservationId);
         res.status(200).json({
             messagge: 'The reservation has been deleted'

@@ -7,6 +7,7 @@ const userRoutes = require('./routes/users');
 const pageRoutes = require('./routes/page');
 const APIv1Routes = require('./api/v1/main-router');
 const backendRouter = require('./routes/backend');
+const passportConf = require('./passport');
 
 const app = express();
 
