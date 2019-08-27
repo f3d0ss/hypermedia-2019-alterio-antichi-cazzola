@@ -91,6 +91,34 @@ paths:
         500:
           $ref: '#/components/responses/500ApiError'
         
+  /event/location/{locationId}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: locationId
+          required: true
+          schema:
+            type: string
+            example: A01
+      summary: This is a list of the events filtered by location
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+          
   /event/{eventId}:
     get:
       tags:

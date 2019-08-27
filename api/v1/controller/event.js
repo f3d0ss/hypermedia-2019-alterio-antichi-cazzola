@@ -57,3 +57,15 @@ exports.getEventsByPerformer = async (req, res, next) => {
         next(error);
     }
 }
+
+exports.getEventsByLoction = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const locationId = req.params.locationId;
+    try {
+        const events = await Event.getEventsByLoction(pageNumber, pageSize, locationId);
+        res.status(200).json(events);
+    } catch (error) {
+        next(error);
+    }
+}

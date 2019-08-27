@@ -9,6 +9,8 @@ router.post('/', eventController.postEvent);
 
 router.get('/performer/:performerId', eventController.getEventsByPerformer);
 
+router.get('/location/:locationId', eventController.getEventsByLoction);
+
 router.get('/:eventId', eventController.getEventById);
 
 module.exports = router;
