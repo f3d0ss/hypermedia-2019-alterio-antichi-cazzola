@@ -29,11 +29,6 @@ exports.postPerformer = async (req, res, next) => {
     const company_id = req.body.company_id;
     const main_field = req.body.main_field;
     const photos = req.body.photos;
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   const error = new Error('Validation failed, entered data is incorrect.');
-    //   error.statusCode = 422;
-    //   throw error;
     try {
         const performer = new Performer(name, achivements, detail, company_id, main_field, photos);
         await performer.save();

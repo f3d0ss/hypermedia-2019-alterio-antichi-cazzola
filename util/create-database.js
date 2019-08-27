@@ -51,6 +51,7 @@ async function createTables(promisePoolDb) {
         await createAchivementTable(promisePoolDb);
         await createPerformerEventTable(promisePoolDb);
         await createSignUpTokenTable(promisePoolDb);
+        await createReservationTable(promisePoolDb);
         console.log("Tables created");
     } catch (error) {
         console.log(error);
@@ -169,5 +170,16 @@ function createPerformerEventTable(promisePoolDb) {
         PRIMARY KEY (event_id, performer_id),
         FOREIGN KEY (event_id) REFERENCES Event(id),
         FOREIGN KEY (performer_id) REFERENCES Performer(id)
+    );`);
+}
+
+function createReservationTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE Reservation (
+        id int PRIMARY KEY AUTO_INCREMENT,
+        event_id int NOT NULL,
+        user_id int NOT NULL,
+        FOREIGN KEY (event_id) REFERENCES Event(id),
+        FOREIGN KEY (user_id) REFERENCES User(id),
+        UNIQUE (event_id, user_id)
     );`);
 }

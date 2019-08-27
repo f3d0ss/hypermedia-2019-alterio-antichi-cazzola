@@ -8,6 +8,7 @@ const locationRouter = require('./routes/location');
 const companyRouter = require('./routes/company');
 const seminarRouter = require('./routes/seminar');
 const authRouter = require('./routes/auth');
+const reservationRouter = require('./routes/reservation');
 
 
 router.use('/auth', authRouter);
@@ -17,6 +18,7 @@ router.use('/event', eventRouter);
 router.use('/location', locationRouter);
 router.use('/company', companyRouter);
 router.use('/seminar', seminarRouter);
+router.use('/reservation', reservationRouter);
 
 
 module.exports = router;

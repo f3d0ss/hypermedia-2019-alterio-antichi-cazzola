@@ -17,6 +17,7 @@ tags:
   - name: location
   - name: seminar
   - name: authentication
+  - name: reservation
 
 servers:
   # - url: https://localhost/api/v1
@@ -661,6 +662,104 @@ paths:
         500:
           $ref: '#/components/responses/500ApiError'
         
+  /reservation:
+    get:
+      tags:
+        - reservation
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the reservations
+      description: This is a list of the reservations
+      responses:
+        200:
+          description: A list of reservations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservationWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      security: 
+        - jwt: []
+      tags:
+        - reservation
+      description: Insert a reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+      responses:
+        201:
+          description: The reservation has been created
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        401:
+          $ref: '#/components/responses/401UnauthorizedError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+  /reservation/user/{userId}:
+    get:
+      tags:
+        - reservation
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: userId
+          description: The ID of the user
+          required: true
+          schema:
+            type: integer
+            example: 1
+      summary: This is a list of the user's reservations
+      description: This is a list of the user's reservations
+      responses:
+        200:
+          description: A list of user's reservations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservationWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /reservation/{reservationId}:
+    delete:
+      security: 
+        - jwt: []
+      tags:
+        - reservation
+      parameters:
+        - in: path  
+          name: reservationId
+          description: The id of the reservation
+          required: true
+          schema:
+            type: string
+            example: 1
+      summary: Delete the reservation with reservationId
+      description: Delete the reservation with reservationId
+      responses:
+        200:
+          description: The reservation has been deleted
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        401:
+          $ref: '#/components/responses/401UnauthorizedError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    
 components:
   parameters:
     PageNumber:
@@ -888,6 +987,29 @@ components:
             id:
               type: integer
               example: 4321
+              
+    Reservation:
+      required:
+        - userId
+        - eventId
+      properties:
+        userId:
+          type: integer
+          example: 1
+        eventId:
+          type: integer
+          example: 1
+          
+    ReservationWithId:
+      allOf:
+        - $ref: '#/components/schemas/Reservation'
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: integer
+              example: 1
           
     User:
       required: 
@@ -922,6 +1044,16 @@ components:
               message:
                 type: string
                 example: This is an error
+    401UnauthorizedError:
+      description: You are not authorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: You're JWT is not valid
   securitySchemes:
     jwt:
       type: http
