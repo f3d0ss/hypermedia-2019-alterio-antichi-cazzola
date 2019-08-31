@@ -63,13 +63,6 @@
     height: 200px;
 }
 
-.performer-img {
-    border-radius: 50%;
-    border: solid 4px wheat;
-    height: 130px;
-    width: 130px;
-}
-
 /* event link */
 
 .title {
@@ -82,4 +75,17 @@
 
 .title a:hover {
     color: rgb(240, 178, 64);
+}
+
+/* performer */
+
+.performer-row {
+    margin-bottom: 20px;
+}
+
+.performer-img {
+    border-radius: 50%;
+    border: solid 4px wheat;
+    height: 130px;
+    width: 130px;
 }
