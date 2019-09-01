@@ -19,7 +19,7 @@ var get = (url, pageSize) => new Promise( (resolve, reject) =>
     xhr.open('GET', url, true);
     xhr.responseType = 'json';
     var status = xhr.status;
-    xhr.onload = () => status == 200 ? result(xhr) : reject(xhr);
+    xhr.onload = () => xhr.status == 200 ? resolve(xhr) : reject(xhr);
     xhr.send();
 });
 

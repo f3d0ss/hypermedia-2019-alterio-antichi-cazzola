@@ -70,7 +70,7 @@ var eventPost = async () =>
             {
                 "name": "Best event evah" + i,
                 "abstract": "This is a useless description of the event",
-                "date": "2019-12-12",
+                "date": "2019-12-0" + i%10,
                 "start": "12:00:00",
                 "end": "21:00:00",
                 "location_id": "A" + i,
