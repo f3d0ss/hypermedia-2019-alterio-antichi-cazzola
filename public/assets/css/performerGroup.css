@@ -1,0 +1,38 @@
+.performer-img {
+    border-radius: 50%;
+    border: solid 4px wheat;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.performer-name {
+    margin-top: 70px;
+    color: rgb(190, 166, 120);
+}
+
+.title {
+    color: rgb(190, 166, 120);
+}
+
+.performer-link {
+    color: wheat;
+}
+
+.performer-link:hover {
+    color: rgb(236, 178, 69);
+}
+
+.wrapper {
+    background-color: black;
+    border-radius: 5px;
+    border: solid 4px wheat;
+    width: 500px;
+    padding-left: 30px;
+    margin-top: 30px;
+}
