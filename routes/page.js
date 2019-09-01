@@ -8,5 +8,6 @@ router.get('/login', (req, res, next) => res.render('login'));
 router.get('/registration', (req, res, next) => res.render('registration'));
 router.get('/events/type/:type', (req, res, next) => res.render('eventsByType'));
 router.get('/contactUs', (req, res, next) => res.render('contactUs'));
+router.get('/seminar', (req, res, next) => res.render('seminar'));
 
 module.exports = router;
