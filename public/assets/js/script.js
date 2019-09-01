@@ -38,4 +38,24 @@ var URLS =
     LOGIN: BASE + '/auth/login'
 }
 
+const onLoad = () => 
+{
+    if(localStorage.getItem("token"))
+    {
+        const loginBtn = document.getElementById("login-btn");
+        loginBtn.innerHTML = "logout";
+        loginBtn.setAttribute("href", "/#")
+        loginBtn.onclick = () => 
+        {
+            localStorage.removeItem("token");
+            location.reload();
+        }
+    }
+}
+
+onLoad();
+
+
+
+
 
