@@ -1,7 +1,7 @@
 const db = require('../util/database');
 
 module.exports = class Event {
-    constructor(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, id) {
+    constructor(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, event_type, id) {
         this.id = id ? id : null;
         this.name = name;
         this.abstract = abstract;
@@ -12,17 +12,18 @@ module.exports = class Event {
         this.location_id = location_id;
         this.seminar_id = seminar_id;
         this.performer_ids = performer_ids;
+        this.event_type = event_type;
     }
 
     async save() {
         if (this.id) {
             // update performer
-            return db.query("UPDATE Event SET name = ?, abstract = ?, date = ?, start = ?, end = ?, location_id = ?, vacancy = ?, seminar_id = ? WHERE id = ?;",
-                [this.name, this.abstract, this.date, this.start, this.end, this.location_id, this.vacancy, this.seminar_id, this.id]);
+            return db.query("UPDATE Event SET name = ?, abstract = ?, date = ?, start = ?, end = ?, location_id = ?, vacancy = ?, seminar_id = ?, event_type = ? WHERE id = ?;",
+                [this.name, this.abstract, this.date, this.start, this.end, this.location_id, this.vacancy, this.seminar_id, this.event_type, this.id]);
         }
         const ResultSetHeader = await db.query(
-            "INSERT INTO Event (name, abstract, date, start, end, location_id, vacancy, seminar_id) VALUES (? ,? ,? ,? ,? ,? ,?, ?);",
-            [this.name, this.abstract, this.date, this.start, this.end, this.location_id, this.vacancy, this.seminar_id]
+            "INSERT INTO Event (name, abstract, date, start, end, location_id, vacancy, seminar_id, event_type) VALUES (? ,? ,? ,? ,? ,? ,?, ?, ?);",
+            [this.name, this.abstract, this.date, this.start, this.end, this.location_id, this.vacancy, this.seminar_id, this.event_type]
         );
         this.id = ResultSetHeader[0].insertId;
         if (this.performer_ids && this.performer_ids.length > 0) {
@@ -59,6 +60,7 @@ module.exports = class Event {
             event.location_id,
             event.seminar_id,
             performer_ids,
+            event.event_type,
             event.id
         );
     }
@@ -90,6 +92,7 @@ module.exports = class Event {
                 event.location_id,
                 event.seminar_id,
                 performer_ids,
+                event.event_type,
                 event.id
             ));
         }
@@ -138,6 +141,7 @@ module.exports = class Event {
                 event.location_id,
                 event.seminar_id,
                 performer_ids,
+                event.event_type,
                 event.id
             ));
         }
@@ -171,6 +175,7 @@ module.exports = class Event {
                 event.location_id,
                 event.seminar_id,
                 performer_ids,
+                event.event_type,
                 event.id
             ));
         }
@@ -204,6 +209,7 @@ module.exports = class Event {
                 event.location_id,
                 event.seminar_id,
                 performer_ids,
+                event.event_type,
                 event.id
             ));
         }
@@ -237,10 +243,44 @@ module.exports = class Event {
                 event.location_id,
                 event.seminar_id,
                 performer_ids,
+                event.event_type,
                 event.id
             ));
         }
         return events;
     }
 
+    static async getEventsByType(pageNumber, pageSize, event_type) {
+        const events = [];
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+        const [rows] = await db.query(
+            "SELECT * FROM Event WHERE event_type = ? LIMIT ?,?",
+            [event_type, startRow, startRow + +pageSize]
+        );
+        for (const event of rows) {
+            const res = await db.query(
+                "SELECT performer_id FROM PerformerEvent WHERE event_id = ?",
+                [event.id]
+            );
+            const performer_ids = res[0].map(performerId => performerId.performer_id);
+            events.push(new Event(
+                event.name,
+                event.abstract,
+                event.date,
+                event.start,
+                event.end,
+                event.vacancy,
+                event.location_id,
+                event.seminar_id,
+                performer_ids,
+                event.event_type,
+                event.id
+            ));
+        }
+        return events;
+    }
 }

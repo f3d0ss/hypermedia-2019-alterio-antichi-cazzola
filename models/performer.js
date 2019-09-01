@@ -1,13 +1,12 @@
 const db = require('../util/database');
 
 module.exports = class Performer {
-    constructor(name, achivements, detail, company_id, main_field, photos, id) {
+    constructor(name, achivements, detail, company_id, photos, id) {
         this.id = id ? id : null;
         this.name = name;
         this.achivements = achivements;
         this.detail = detail;
         this.company_id = company_id;
-        this.main_field = main_field;
         this.photos = photos;
     }
 
@@ -30,12 +29,12 @@ module.exports = class Performer {
                 "DELETE FROM Achivement WHERE performer_id = ? AND id NOT IN (" + queryQuestionMarks + ")",
                 this.achivements
             );
-            return db.query("UPDATE Performer SET name = ?, detail = ?, company_id = ?, main_field = ? WHERE id = ?;",
-                [this.name, this.detail, this.company_id, this.main_field, this.id]);
+            return db.query("UPDATE Performer SET name = ?, detail = ?, company_id = ? WHERE id = ?;",
+                [this.name, this.detail, this.company_id, this.id]);
         }
         const ResultSetHeader = await db.query(
-            "INSERT INTO Performer (name, detail, company_id, main_field, id) VALUES (? ,? ,? ,? ,?);",
-            [this.name, this.detail, this.company_id, this.main_field, this.id]
+            "INSERT INTO Performer (name, detail, company_id, id) VALUES (? ,? ,? ,?);",
+            [this.name, this.detail, this.company_id, this.id]
         );
         this.id = ResultSetHeader[0].insertId;
         for (const photo of this.photos) {
@@ -143,7 +142,6 @@ module.exports = class Performer {
                 achivements,
                 performer.detail,
                 performer.company_id,
-                performer.main_field,
                 photos,
                 performer.id
             ));

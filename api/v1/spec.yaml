@@ -4,9 +4,9 @@ info:
   title: Festival API
   description: Those API are used for the festival
   contact:
-    name: Kyberfan
-    url: http://kyberfan.ml
-    email: "no-reply@stfu.com"
+    name: Github repo
+    url: https://github.com/f-cazzola/hypermedia-2019-alterio-antichi-cazzola
+    email: "no-reply@dunno.com"
   license:
     name: MIT
     url: http://opensource.org/licenses/MIT
@@ -163,6 +163,35 @@ paths:
             type: integer
             example: 1
       summary: This is a list of the events filtered by seminar
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+    
+  /event/type/{event_type}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: event_type
+          required: true
+          schema:
+            type: string
+            example: dance
+      summary: This is a list of the events filtered by type
       responses:
         200:
           description: A list of events
@@ -513,24 +542,24 @@ paths:
           $ref: '#/components/responses/500ApiError'
         
      
-  /artistic-field:
+  /event-type:
     get:
       tags:
-        - artistic-field
+        - event-type
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
-      summary: This is a list of the artistic-fields
-      description: This is a list of the artistic-fields
+      summary: This is a list of the event-types
+      description: This is a list of the event-types
       responses:
         200:
-          description: A list of artistic-fields
+          description: A list of event-types
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ArtisticFieldWithId'
+                  $ref: '#/components/schemas/EventType'
         400:
           $ref: '#/components/responses/400ValidationError'
         500:
@@ -538,43 +567,21 @@ paths:
         
     post:
       tags:
-        - artistic-field
-      description: Add an artistic-field to the database
+        - event-type
+      description: Add an event-type to the database
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ArtisticField'
+              $ref: '#/components/schemas/EventType'
       responses:
         201:
-          description: The artistic-field has been created
+          description: The event-type has been created
         400:
           $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
         
-  /artistic-field/{artistic-fieldId}:
-    get:
-      tags:
-        - artistic-field
-      parameters: 
-        - in: path
-          name: artistic-fieldId
-          required: true
-          schema:
-            type: integer
-            example: 12345
-      responses:
-        200:
-            description: A list of artistic-fields
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ArtisticFieldWithId'
-        400:
-          $ref: '#/components/responses/400ValidationError'
-        500:
-          $ref: '#/components/responses/500ApiError'
         
    
   /auth/signup:
@@ -798,6 +805,7 @@ components:
         - end
         - location_id
         - vacancy
+        - event_type
       properties:
         name:
           type: string
@@ -831,6 +839,9 @@ components:
           items:
             type: integer
             example: 1
+        event_type:
+          type: string
+          example: dance
 
     EventWithId:
       allOf:
@@ -904,7 +915,6 @@ components:
         - name
         - achivments
         - detail
-        - main_field
       properties:
         name:
           type: string
@@ -918,9 +928,6 @@ components:
           type: string
           example: Mario is a fucking dancer and I dunno why the fuck I'm writing...
         company_id:
-          type: integer
-          example: 1234
-        main_field:
           type: integer
           example: 1234
         photos:
@@ -969,24 +976,13 @@ components:
               example: 4321
 
 
-    ArtisticField:
+    EventType:
       required: 
-        - name
+        - event_type
       properties:
-        name:
+        event_type:
           type: string
           example: Dance
-          
-    ArtisticFieldWithId:
-      allOf:
-        - $ref: '#/components/schemas/ArtisticField'
-        - type: object
-          required: 
-            - id
-          properties:
-            id:
-              type: integer
-              example: 4321
               
     Reservation:
       required:

@@ -24,11 +24,7 @@ exports.getLocationById = async (req, res, next) => {
 exports.postLocation = async (req, res, next) => {
     const id = req.body.id;
     const how_to_reach = req.body.how_to_reach;
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   const error = new Error('Validation failed, entered data is incorrect.');
-    //   error.statusCode = 422;
-    //   throw error;
+
     try {
         const location = new Location(id, how_to_reach);
         await location.save();

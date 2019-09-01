@@ -15,6 +15,8 @@ router.get('/date/:date', eventController.getEventsByDate);
 
 router.get('/seminar/:seminarId', eventController.getEventsBySeminar);
 
+router.get('/type/:eventType', eventController.getEventsByType);
+
 router.get('/:eventId', eventController.getEventById);
 
 module.exports = router;

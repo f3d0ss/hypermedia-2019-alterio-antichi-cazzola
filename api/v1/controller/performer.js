@@ -27,10 +27,9 @@ exports.postPerformer = async (req, res, next) => {
     const achivements = req.body.achivements;
     const detail = req.body.detail;
     const company_id = req.body.company_id;
-    const main_field = req.body.main_field;
     const photos = req.body.photos;
     try {
-        const performer = new Performer(name, achivements, detail, company_id, main_field, photos);
+        const performer = new Performer(name, achivements, detail, company_id, photos);
         await performer.save();
         res.status(201).json(performer);
     } catch (error) {

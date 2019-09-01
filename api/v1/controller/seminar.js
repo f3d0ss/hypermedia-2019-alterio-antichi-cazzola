@@ -29,11 +29,6 @@ exports.postSeminar = async (req, res, next) => {
     const location_id = req.body.location_id;
     const vacancy = req.body.vacancy;
 
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   const error = new Error('Validation failed, entered data is incorrect.');
-    //   error.statusCode = 422;
-    //   throw error;
     try {
         const seminar = new Seminar(title, location_id, date, start, end, vacancy);
         await seminar.save();

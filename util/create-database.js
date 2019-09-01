@@ -42,10 +42,10 @@ async function createTables(promisePoolDb) {
         createUserTable(promisePoolDb);
         await createLocationTable(promisePoolDb);
         await createSeminarTable(promisePoolDb);
+        await createEventTypeTable(promisePoolDb);
         await createEventTable(promisePoolDb);
         await createCompanyTable(promisePoolDb);
         await createCompanyPhotoTable(promisePoolDb);
-        await createArtisticFieldTable(promisePoolDb);
         await createPerformerTable(promisePoolDb);
         await createPerformerPhotoTable(promisePoolDb);
         await createAchivementTable(promisePoolDb);
@@ -90,11 +90,13 @@ function createEventTable(promisePoolDb) {
         date date NOT NULL,
         start time NOT NULL,
         end time NOT NULL,
+        event_type varchar(255) NOT NULL,
         location_id varchar(3) NOT NULL,
         vacancy int NOT NULL,
         seminar_id int,
         FOREIGN KEY (location_id) REFERENCES Location(id),
-        FOREIGN KEY (seminar_id) REFERENCES Seminar(id)
+        FOREIGN KEY (seminar_id) REFERENCES Seminar(id),
+        FOREIGN KEY (event_type) REFERENCES EventType(event_type)
     );`);
 }
 
@@ -119,10 +121,9 @@ function createCompanyTable(promisePoolDb) {
         );`);
 }
 
-function createArtisticFieldTable(promisePoolDb) {
-    return promisePoolDb.query(`CREATE TABLE ArtisticField (
-            id int PRIMARY KEY AUTO_INCREMENT,
-            name varchar(255) NOT NULL UNIQUE
+function createEventTypeTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE EventType (
+            event_type varchar(255) PRIMARY KEY
         );`);
 }
 
@@ -131,10 +132,8 @@ function createPerformerTable(promisePoolDb) {
             id int PRIMARY KEY AUTO_INCREMENT,
             name varchar(255) NOT NULL,
             company_id int,
-            main_field int NOT NULL,
             detail text NOT NULL,
-            FOREIGN KEY (company_id) REFERENCES Company(id),
-            FOREIGN KEY (main_field) REFERENCES ArtisticField(id)
+            FOREIGN KEY (company_id) REFERENCES Company(id)
         );`);
 }
 

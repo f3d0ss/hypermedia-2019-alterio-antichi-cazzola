@@ -31,14 +31,10 @@ exports.postEvent = async (req, res, next) => {
     const location_id = req.body.location_id;
     const seminar_id = req.body.seminar_id;
     const performer_ids = req.body.performer_ids;
+    const event_type = req.body.event_type
 
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   const error = new Error('Validation failed, entered data is incorrect.');
-    //   error.statusCode = 422;
-    //   throw error;
     try {
-        const event = new Event(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids);
+        const event = new Event(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, event_type);
         await event.save();
         res.status(201).json(event);
     } catch (error) {
@@ -64,6 +60,18 @@ exports.getEventsByLoction = async (req, res, next) => {
     const locationId = req.params.locationId;
     try {
         const events = await Event.getEventsByLoction(pageNumber, pageSize, locationId);
+        res.status(200).json(events);
+    } catch (error) {
+        next(error);
+    }
+}
+
+exports.getEventsByType = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const eventType = req.params.eventType;
+    try {
+        const events = await Event.getEventsByType(pageNumber, pageSize, eventType);
         res.status(200).json(events);
     } catch (error) {
         next(error);
