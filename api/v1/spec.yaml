@@ -1,0 +1,1058 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: Festival API
+  description: Those API are used for the festival
+  contact:
+    name: Github repo
+    url: https://github.com/f-cazzola/hypermedia-2019-alterio-antichi-cazzola
+    email: "no-reply@dunno.com"
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+tags:
+  - name: event
+  - name: performer
+  - name: company
+  - name: location
+  - name: seminar
+  - name: authentication
+  - name: reservation
+
+servers:
+  # - url: https://localhost/api/v1
+  - url: http://localhost:3000/api/v1
+
+  
+paths:
+  /event:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the events
+      description: This is a list of the events
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - event
+      description: Add an event to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        201:
+          description: The event has been created
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+          
+  /event/performer/{performerId}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: performerId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      summary: This is a list of the events filtered by a performer
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /event/location/{locationId}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: locationId
+          required: true
+          schema:
+            type: string
+            example: A01
+      summary: This is a list of the events filtered by location
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+          
+  /event/date/{date}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: date
+          required: true
+          schema:
+            type: string
+            format: date
+            example: 2019-12-12
+      summary: This is a list of the events filtered by date
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+          
+  /event/seminar/{seminarId}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: seminarId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      summary: This is a list of the events filtered by seminar
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+    
+  /event/type/{event_type}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: event_type
+          required: true
+          schema:
+            type: string
+            example: dance
+      summary: This is a list of the events filtered by type
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+          
+  /event/{eventId}:
+    get:
+      tags:
+        - event
+      parameters: 
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+            description: A list of events
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /performer:
+    get:
+      tags: 
+        - performer
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        200:
+          description: This is a list of performer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerformerWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+    post:
+      tags: 
+        - performer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Performer'
+      responses:
+        201:
+          description: The performer has been added
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+  /performer/event/{eventId}:
+    get:
+      tags: 
+        - performer
+      summary: This is a list of the performer filtered by an event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: This is a list of performer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerformerWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+  /performer/company/{companyId}:
+    get:
+      tags: 
+        - performer
+      summary: This is a list of the performer filtered by an company
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: companyId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: This is a list of performer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerformerWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+  /performer/{performerId}:
+    get:
+      tags: 
+        - performer
+      parameters: 
+        - in: path
+          name: performerId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+          description: This is the performer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformerWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /seminar:
+    get:
+      tags:
+        - seminar
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the seminares
+      description: This is a list of the seminares
+      responses:
+        200:
+          description: A list of seminares
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SeminarWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+    post:
+      tags:
+        - seminar
+      description: Add an seminar to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Seminar'
+      responses:
+        201:
+          description: The seminar has been created
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /seminar/{seminarId}:
+    get:
+      tags:
+        - seminar
+      parameters: 
+        - in: path
+          name: seminarId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+      responses:
+        200:
+            description: A list of seminares
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SeminarWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+        
+  /company:
+    get:
+      tags:
+        - company
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the companies
+      description: This is a list of the companies
+      responses:
+        200:
+          description: A list of companies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CompanyWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+    post:
+      tags:
+        - company
+      description: Add an company to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+      responses:
+        201:
+          description: The company has been created
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /company/{companyId}:
+    get:
+      tags:
+        - company
+      parameters: 
+        - in: path
+          name: companyId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+            description: A list of companies
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/CompanyWithId'
+
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+    
+  /location:
+    get:
+      tags:
+        - location
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the locations
+      description: This is a list of the locations
+      responses:
+        200:
+          description: A list of locations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+    post:
+      tags:
+        - location
+      description: Add an location to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      responses:
+        201:
+          description: The location has been created
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /location/{locationId}:
+    get:
+      tags:
+        - location
+      parameters: 
+        - in: path
+          name: locationId
+          required: true
+          schema:
+            type: integer
+            example: 12345
+
+      responses:
+        200:
+            description: A list of locations
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Location'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+     
+  /event-type:
+    get:
+      tags:
+        - event-type
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the event-types
+      description: This is a list of the event-types
+      responses:
+        200:
+          description: A list of event-types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventType'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+    post:
+      tags:
+        - event-type
+      description: Add an event-type to the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventType'
+      responses:
+        201:
+          description: The event-type has been created
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+        
+   
+  /auth/signup:
+    post:
+      tags:
+        - authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      summary: This signup a user
+      description: This signup a user
+      responses:
+        201:
+          description: User registered
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /auth/login:
+    post:
+      tags:
+        - authentication
+      description: Get the JWT to access the locked functionality
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: test@mail.com
+                password:
+                  type: string
+                  example: SecurePassword
+      responses:
+        200:
+          description: The event has been created
+          content:
+            application/json:
+              schema:
+                description: jwt
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0dXJsZWxsIiwic3ViIjoxMSwiaWF0IjoxNTY1NDUwNDgzMDgzLCJleHAiOjE1NjU1MzY4ODMwODN9.ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
+        403:
+          description: Verify your email
+        401:
+          description: Wrong password
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /auth/verify-email/{userId}:
+    get:
+      tags:
+        - authentication
+      parameters:
+        - in: path
+          name: userId
+          description: The id of the user
+          required: true
+          schema:
+            type: string
+            example: 1
+        - in: query
+          name: token
+          description: The token sended at the email during the signup
+          required: true
+          schema:
+            type: string
+            example: ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
+      responses:
+        200:
+          description: Email verified
+        409:
+          description: Already verified
+        401:
+          description: Wrong token
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
+  /reservation:
+    get:
+      tags:
+        - reservation
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      summary: This is a list of the reservations
+      description: This is a list of the reservations
+      responses:
+        200:
+          description: A list of reservations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservationWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      security: 
+        - jwt: []
+      tags:
+        - reservation
+      description: Insert a reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+      responses:
+        201:
+          description: The reservation has been created
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        401:
+          $ref: '#/components/responses/401UnauthorizedError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+
+  /reservation/user/{userId}:
+    get:
+      tags:
+        - reservation
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: userId
+          description: The ID of the user
+          required: true
+          schema:
+            type: integer
+            example: 1
+      summary: This is a list of the user's reservations
+      description: This is a list of the user's reservations
+      responses:
+        200:
+          description: A list of user's reservations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservationWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /reservation/{reservationId}:
+    delete:
+      security: 
+        - jwt: []
+      tags:
+        - reservation
+      parameters:
+        - in: path  
+          name: reservationId
+          description: The id of the reservation
+          required: true
+          schema:
+            type: string
+            example: 1
+      summary: Delete the reservation with reservationId
+      description: Delete the reservation with reservationId
+      responses:
+        200:
+          description: The reservation has been deleted
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        401:
+          $ref: '#/components/responses/401UnauthorizedError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    
+components:
+  parameters:
+    PageNumber:
+      in: query
+      name: pageNumber
+      description: Page number to return
+      required: false
+      schema:
+        type: integer
+        example: 0
+    PageSize:
+      in: query
+      name: pageSize
+      description: Number of results in the page
+      required: false
+      schema:
+        type: integer
+        example: 10
+        maximum: 100
+    JWT:
+      in: header
+      name: authentication
+      description: The JWT returned in the login
+      required: true
+      schema:
+        type: string
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0dXJsZWxsIiwic3ViIjoxMSwiaWF0IjoxNTY1NDUwNDgzMDgzLCJleHAiOjE1NjU1MzY4ODMwODN9.ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
+  schemas:
+    Event:
+      type: object
+      required: 
+        - name
+        - abstract
+        - date
+        - start
+        - end
+        - location_id
+        - vacancy
+        - event_type
+      properties:
+        name:
+          type: string
+          example: Best event evah
+        abstract:
+          type: string
+          example: This is a useless description of the event
+        date:
+          type: string
+          format: date
+          example: 2019-12-12
+        start:
+          type: string
+          format: time
+          example: 12:00:00
+        end:
+          type: string
+          format: time
+          example: 21:00:00
+        location_id:
+          type: string
+          example: A01
+        vacancy:
+          type: integer
+          example: 30
+        seminar_id:
+          type: integer
+          example: 1
+        performer_ids:
+          type: array
+          items:
+            type: integer
+            example: 1
+        event_type:
+          type: string
+          example: dance
+
+    EventWithId:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
+
+    Seminar:
+      type: object
+      required: 
+        - title
+        - location_id
+        - date
+        - start
+        - end
+        - vacancy
+      properties:
+        title:
+          type: string
+          example: Amazing seminar
+        location_id:
+          type: string
+          example: A01
+        date:
+          type: string
+          format: date
+          example: 2019-08-15
+        start:
+          type: string
+          format: time
+          example: 12:00:00
+        end:
+          type: string
+          format: time
+          example: 21:00:00
+        vacancy:
+          type: integer
+          example: 15
+
+    SeminarWithId:
+      allOf:
+        - $ref: '#/components/schemas/Seminar'
+        - type: object
+          required: 
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
+
+    Location:
+      type: object
+      required: 
+        - id
+      properties:
+        id: 
+          type: string
+          example: A12
+        how_to_reach:
+          type: string
+          example: After you pass the enterence you find the place in front of you 
+          
+    Performer:
+      type: object
+      required:
+        - name
+        - achivments
+        - detail
+      properties:
+        name:
+          type: string
+          example: Mario Rossi
+        achivments:
+          type: array
+          items:
+            type: string
+            example: Grade
+        detail:
+          type: string
+          example: Mario is a fucking dancer and I dunno why the fuck I'm writing...
+        company_id:
+          type: integer
+          example: 1234
+        photos:
+          type: array
+          items:
+            type: string
+            example: /images/first-photo.png
+
+    PerformerWithId:
+      allOf:
+        - $ref: '#/components/schemas/Performer'
+        - type: object
+          required: 
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
+         
+    Company:
+      required:
+        - name
+        - detail
+      properties:
+        name:
+          type: string
+          example: The Best Company
+        detail:
+          type: string
+          example: This is a company of dances
+        photos:
+          type: array
+          items:
+            type: string
+            example: /images/1234
+
+    CompanyWithId:
+      allOf:
+        - $ref: '#/components/schemas/Company'
+        - type: object
+          required: 
+            - id
+          properties:
+            id:
+              type: integer
+              example: 4321
+
+
+    EventType:
+      required: 
+        - event_type
+      properties:
+        event_type:
+          type: string
+          example: Dance
+              
+    Reservation:
+      required:
+        - userId
+        - eventId
+      properties:
+        userId:
+          type: integer
+          example: 1
+        eventId:
+          type: integer
+          example: 1
+          
+    ReservationWithId:
+      allOf:
+        - $ref: '#/components/schemas/Reservation'
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: integer
+              example: 1
+          
+    User:
+      required: 
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: example@mail.com
+        password:
+          type: string
+          example: khIH&*5VGk%RFk)0QedHy  
+  responses:
+    400ValidationError:
+      description: Some input are invalid
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: request.body.date should match format \"date\", request.body.start should match format \"time\", request.body.end should match format \"time\
+    500ApiError:
+      description: This is an unexpected error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: This is an error
+    401UnauthorizedError:
+      description: You are not authorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: You're JWT is not valid
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      x-bearerInfoFunc: app.decode_token
