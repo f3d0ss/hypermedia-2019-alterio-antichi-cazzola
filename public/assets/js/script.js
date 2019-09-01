@@ -1,0 +1,41 @@
+var post = (url, body) => new Promise( (resolve, reject) => 
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    var json = JSON.stringify(body);
+    xhr.onreadystatechange = () => 
+    {
+        if(xhr.readyState === XMLHttpRequest.DONE)
+            xhr.status === 201 || xhr.status === 200 ? resolve(xhr) : reject(xhr);
+    }
+    xhr.send(json);
+});
+
+var get = (url, pageSize) => new Promise( (resolve, reject) => 
+{
+    url = url + '?pageSize=' + pageSize;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    var status = xhr.status;
+    xhr.onload = () => status == 200 ? result(xhr) : reject(xhr);
+    xhr.send();
+});
+
+var BASEold = 'http://localhost:3000/api/v1';
+var BASE = 'api/v1';
+var URLS = 
+{
+    COMPANY: BASE + '/company',
+    PERFORMER: BASE + '/performer',
+    LOCATION: BASE + '/location',
+    SEMINAR: BASE + '/seminar',
+    EVENT_TYPE: BASE + '/event-type',
+    EVENT: BASE + '/event',
+    RESERVATION: BASE + '/reservation',
+    SIGNUP: BASE + '/auth/signup',
+    LOGIN: BASE + '/auth/login'
+}
+
+
