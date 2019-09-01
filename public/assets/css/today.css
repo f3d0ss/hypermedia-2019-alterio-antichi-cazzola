@@ -1,0 +1,40 @@
+/* generics */
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.flex-row {
+    margin-top: 20px;
+}
+
+/* card */
+
+.title {
+    color: rgb(241, 192, 99);
+}
+
+.title:hover {
+    color: rgb(235, 170, 50);
+}
+
+.subtitle {
+    color: rgb(161, 148, 123);
+}
+
+/* card header */
+
+.card-header {
+    background-color: black;
+}
+
+/* card body */
+
+.card-body {
+    background-color: black;
+}
+
+p {
+    margin-top: 30px;
+}
