@@ -73,7 +73,7 @@ module.exports = class Event {
             pageSize = 10;
         const startRow = pageNumber * pageSize;
         const [rows] = await db.query(
-            "SELECT * FROM Event LIMIT ?,?",
+            "SELECT * FROM Event ORDER BY date, start LIMIT ?,?",
             [startRow, startRow + +pageSize]
         );
         for (const event of rows) {
@@ -119,7 +119,7 @@ module.exports = class Event {
             query += ",?";
         }
         query += ") ";
-        query += "LIMIT ?,?";
+        query += "ORDER BY date, start LIMIT ?,?";
         params.push(startRow, startRow + +pageSize);
         const [rows] = await db.query(
             query,
@@ -156,7 +156,7 @@ module.exports = class Event {
             pageSize = 10;
         const startRow = pageNumber * pageSize;
         const [rows] = await db.query(
-            "SELECT * FROM Event WHERE location_id = ? LIMIT ?,?",
+            "SELECT * FROM Event WHERE location_id = ? ORDER BY date, start LIMIT ?,?",
             [locationId, startRow, startRow + +pageSize]
         );
         for (const event of rows) {
@@ -190,7 +190,7 @@ module.exports = class Event {
             pageSize = 10;
         const startRow = pageNumber * pageSize;
         const [rows] = await db.query(
-            "SELECT * FROM Event WHERE date = ? LIMIT ?,?",
+            "SELECT * FROM Event WHERE date = ? ORDER BY date, start LIMIT ?,?",
             [date, startRow, startRow + +pageSize]
         );
         for (const event of rows) {
@@ -224,7 +224,7 @@ module.exports = class Event {
             pageSize = 10;
         const startRow = pageNumber * pageSize;
         const [rows] = await db.query(
-            "SELECT * FROM Event WHERE seminar_id = ? LIMIT ?,?",
+            "SELECT * FROM Event WHERE seminar_id = ? ORDER BY date, start LIMIT ?,?",
             [seminarId, startRow, startRow + +pageSize]
         );
         for (const event of rows) {
@@ -258,7 +258,7 @@ module.exports = class Event {
             pageSize = 10;
         const startRow = pageNumber * pageSize;
         const [rows] = await db.query(
-            "SELECT * FROM Event WHERE event_type = ? LIMIT ?,?",
+            "SELECT * FROM Event WHERE event_type = ? ORDER BY date, start LIMIT ?,?",
             [event_type, startRow, startRow + +pageSize]
         );
         for (const event of rows) {

@@ -55,7 +55,7 @@ module.exports = class Seminar {
         const startRow = pageNumber * pageSize;
         const [rows] = await db.query(
             `SELECT *
-                FROM Seminar
+                FROM Seminar ORDER BY date, start
                 LIMIT ?,?`, [startRow, startRow + +pageSize]
         );
         for (const seminar of rows) {
