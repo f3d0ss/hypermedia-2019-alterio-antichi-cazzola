@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Documentation of the Backend part</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <h1 id="documentation-of-the-backend-part">Documentation of the Backend part</h1>
+<blockquote>
+<p>Deliverable D1</p>
+</blockquote>
+<h2 id="general-group-information">General group information</h2>
+<table>
+<thead>
+<tr>
+<th>Member n.</th>
+<th>Role</th>
+<th>First name</th>
+<th>Last Name</th>
+<th>Matricola</th>
+<th>Email address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Batman</td>
+<td>Federico</td>
+<td>Cazzola</td>
+<td>869738</td>
+<td><a href="mailto:federico.cazzola@mail.polimi.it">federico.cazzola@mail.polimi.it</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>ColourKid</td>
+<td>Clarance</td>
+<td>Antichi</td>
+<td>872878</td>
+<td><a href="mailto:clarence.antichi@mail.polimi.it">clarence.antichi@mail.polimi.it</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>WonderWoman</td>
+<td>Federico</td>
+<td>Alterio</td>
+<td>871432</td>
+<td><a href="mailto:federico.alterio@mail.polimi.it">federico.alterio@mail.polimi.it</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="links-to-other-deliverables">Links to other deliverables</h2>
+<ul>
+<li>Deliverable D0: the web application is accessible at <a href="http://localhost:3000">this
+address</a>.</li>
+<li>Deliverable D2: the JSON file containing the specification
+of the app API can be found at <a href="http://localhost:3000/backend/spec.yaml">this
+address</a>.</li>
+<li>Deliverable D3: the SwaggerUI page of the same API is available at
+<a href="http://localhost:3000/backend/swaggerui">this address</a>.</li>
+<li>Deliverable D4: the source code of D0 is available as a zip file at
+<a href="http://localhost:3000/backend/app.zip">this address</a>.</li>
+<li>Deliverable D5: the address of the online source control repository
+is available <a href="https://github.com/f-cazzola/hypermedia-2019-alterio-antichi-cazzola">this address</a>. We hereby
+declare that this is a private repository and, upon request, we will
+give access to the instructors.</li>
+</ul>
+<h2 id="specification">Specification</h2>
+<h3 id="web-architecture">Web Architecture</h3>
+<p>Describe here, with a diagram, the components of your web application
+and how they interact. Highlight which parts belong to the application
+layer, data layer or presentation layer. How did you ensure that HTML is
+not rendered server side?</p>
+<h3 id="api">API</h3>
+<h4 id="rest-compliance">REST compliance</h4>
+<p><em>Describe here to what extent did you follow REST principles and what are
+the reasons for which you might have decided to diverge. Note, you must
+not describe the whole API here, just the design decisions.</em>
+We have create complete REST API, we didn't implemented all CRUD operations for each model if not necessary for the web application with exeption for the POST API used by our team to populate the database</p>
+<h4 id="openapi-resource-models">OpenAPI Resource models</h4>
+<p><em>Describe here synthetically, which models you have introduced for
+resources.</em></p>
+<ul>
+<li>Seminar</li>
+<li>Location</li>
+<li>Performer</li>
+<li>Company</li>
+<li>ArtisticField</li>
+<li>Reservation</li>
+<li>User</li>
+</ul>
+<h3 id="data-model">Data model</h3>
+<p><em>Describe with an ER diagram the model used in the data layer of your web
+application. How these map to the OpenAPI data model?</em></p>
+<h2 id="implementation">Implementation</h2>
+<h3 id="tools-used">Tools used</h3>
+<p>Describe here which tools, languages and frameworks did you use for the
+backend of the application.</p>
+<ul>
+<li>express: to simplyfy the creation of a web server and devide routing</li>
+<li>passposrt (with passwport-jwt): to simplify the login and authentication verification process through a JWT</li>
+<li>mysql2: to interact with the MySql server</li>
+<li>bcrypt: to hash the password before save them into the DB</li>
+</ul>
+<h3 id="discussion">Discussion</h3>
+<p>Describe here:</p>
+<ul>
+<li><em>How did you make sure your web application adheres to the provided
+OpenAPI specification? Which method did you use to test all APIs
+endpoints against the expected response?</em></li>
+<li>We extensevly tested all the API with the help of swaggerui</li>
+<li>Why do you think your web application adheres to common practices to
+partition a REST-based web application (static assets vs.
+application data)</li>
+<li>Describe synthetically why and how did you manage session state,
+what are the state change triggering actions (e.g., POST to login
+etc..).</li>
+<li>Which technology did you use (relational or a no-SQL database) for
+managing the data model?</li>
+</ul>
+<h2 id="other-information">Other information</h2>
+<h3 id="task-assignment">Task assignment</h3>
+<p>Describe here how development tasks have been subdivided among members
+of the group, e.g.:</p>
+<blockquote>
+<ul>
+<li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
+<li>Bar worked on ....</li>
+</ul>
+</blockquote>
+<h3 id="analysis-of-existing-api">Analysis of existing API</h3>
+<p>For almost all API we watch <a href="https://www.udemy.com/course/nodejs-the-complete-guide/">this course</a>
+because it is one of the most complete course on NodeJs and has two section dedicated to REST APIs</p>
+<h3 id="learning-outcome">Learning outcome</h3>
+<p>What was the most important thing all the members have learned while
+developing this part of the project, what questions remained unanswered,
+how you will use what you've learned in your everyday life?
+6Examples:</p>
+<ul>
+<li>Foo learned to write SQL queries and Javascript but wanted to know
+more about caching, he's probably going to create his own startup
+with what she has learned</li>
+<li>Bar learned how to deploy on a cloud platform, he would have liked
+to know more about promises for asynchronous code..</li>
+</ul>
+
+    </body>
+    </html>
