@@ -25,10 +25,11 @@
 .s-wrapper {
     padding-top: 30px;
     padding-bottom: 30px;
-    margin-left: 0px;
-    margin-right: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-top: 50px;
     background-color: black;
+    border-radius: 5px;
 }
 
 #last-wrapper {
@@ -75,4 +76,25 @@
 
 .footcard a:hover {
     color: rgb(240, 178, 64);
+}
+
+@media (max-width: 1300px) {
+    .carousel-item img {
+        width: 630px;
+        height: 240px;
+    }
+}
+
+@media (max-width: 770px) {
+    .carousel-item img {
+        width: 450px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 550px) {
+    .carousel-item img {
+        width: 320px;
+        height: 140px;
+    }
 }
