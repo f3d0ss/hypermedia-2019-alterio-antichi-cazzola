@@ -20,28 +20,56 @@ const createCard = (container, events) =>
 
 const onCalendarLoad = async () => 
 {
-    const container = document.getElementById("container");
     try
     {
-        var res = await get(URLS.EVENT, 100);
-        var events = res.response;
-        console.log(events);
-        for(var i=0; i < events.length; i++)
-            events[i].date = events[i].date.substring(0,10);
-        var tmpEvents = [];
-        tmpEvents[0] = events[0];
-        for(var i = 1; i < events.length; i++)
-            if(tmpEvents.length > 0 && events[i].date === tmpEvents[0].date)
-                tmpEvents.push(events[i]);
-            else
-            {
-                createCard(container, tmpEvents);
-                tmpEvents = []
-                tmpEvents.push(events[i]);
-            }
-        createCard(container, tmpEvents);
+        await createCards();
     }
     catch(e) { console.log(e); }
+}
+
+const eventsByDate = (date, events) => 
+{
+    const ret = [];
+    for(var i=0; i < events.length; i++)
+        if(events[i].date === date)
+        {
+            ret.push(events[i])
+            events.splice(i, 1);
+        }
+    return ret;
+}
+
+const newEvent = (name, date, start, end) =>
+{
+    return {
+        name: name,
+        date: date,
+        start: start,    
+        end: end
+    }
+}
+
+const joinLists = (events, seminars) =>
+{
+    const ret = [];
+    for(var i=0; i < events.length; i++)
+        ret.push(newEvent(events[i].name, events[i].date.substring(0,10), events[i].start, events[i].end));
+    for(var i=0; i < seminars.length; i++)
+        ret.push(newEvent(seminars[i].title, seminars[i].date.substring(0,10), seminars[i].start, seminars[i].end));
+    return ret;
+}
+
+const createCards = async () =>
+{
+    const container = document.getElementById("container");
+
+    var events = (await get(URLS.EVENT, 100)).response;
+    var seminars = (await get(URLS.SEMINAR, 100)).response;
+
+    var tot = joinLists(events, seminars);
+    
+    while(tot.length > 0)
+        createCard(container, eventsByDate(tot[0].date, tot));
 }
 
 onCalendarLoad();

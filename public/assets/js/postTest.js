@@ -59,7 +59,8 @@ var eventTypePost = async () =>
     for(var i=1; i < N; i++)
         await post(URLS.EVENT_TYPE,  // post can be found in script.js
             {
-                "event_type": "" + i
+                "event_type": "orgia" + i,
+                "description": "have you ever dreamed to join a professional orgia?" + i
             });
 }
 
@@ -79,7 +80,7 @@ var eventPost = async () =>
                 "performer_ids": [
                   i
                 ],
-                "event_type": "" + i
+                "event_type": "orgia" + (i%(N/2) + 1)
             });
 }
 

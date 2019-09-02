@@ -24,7 +24,7 @@ var get = (url, pageSize) => new Promise( (resolve, reject) =>
 });
 
 var BASEold = 'http://localhost:3000/api/v1';
-var BASE = 'api/v1';
+var BASE = '/api/v1';
 var URLS = 
 {
     COMPANY: BASE + '/company',
