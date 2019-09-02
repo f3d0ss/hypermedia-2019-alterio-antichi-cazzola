@@ -123,7 +123,8 @@ function createCompanyTable(promisePoolDb) {
 
 function createEventTypeTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE EventType (
-            event_type varchar(255) PRIMARY KEY
+            event_type varchar(255) PRIMARY KEY,
+            description text NOT NULL
         );`);
 }
 

@@ -979,10 +979,14 @@ components:
     EventType:
       required: 
         - event_type
+        - description
       properties:
         event_type:
           type: string
           example: Dance
+        description:
+          type: string
+          example: Dance is a performing art form consisting of purposefully selected sequences of human movement. This movement has aesthetic and symbolic value, and is acknowledged as dance by performers and observers within a particular culture
               
     Reservation:
       required:
