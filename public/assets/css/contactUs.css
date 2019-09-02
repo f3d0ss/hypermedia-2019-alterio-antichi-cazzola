@@ -1,3 +1,5 @@
+/* contact form */
+
 .black-back {
     background-color: black;
 }
@@ -44,4 +46,8 @@
 
 .wheat-line {
     color: wheat;
+}
+
+input {
+    min-width: 150px;
 }
