@@ -1,6 +1,6 @@
 <%- include('includes/head.ejs') %>
-     <link rel="stylesheet" href="/css/artisticEvent.css">
-    <title>Event Name</title>
+<link rel="stylesheet" href="/css/artisticEvent.css">
+<title>Event Name</title>
 </head>
 
 <body>
@@ -9,8 +9,8 @@
     <nav class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb crumb">
             <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Events</a></li>
-            <li class="breadcrumb-item bc-active" aria-current="page">Magic Exhibition</li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Calendar</a></li>
+            <li class="breadcrumb-item bc-active" aria-current="page">Event's Name</li>
         </ol>
     </nav>
 
@@ -41,11 +41,52 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-12">
-                <div id="artist-wrapper" class="centralized">
+                <div class="centralized artist-wrapper">
                     <h2 class="wheat-item">Featuring:</h2>
                     <div id="featuringBox" class="row d-flex justify-content-center">
                     
                     </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-12">
+                <div class="centralized artist-wrapper">
+                    <h2 class="wheat-item">Other Events The Same Day:</h2>
+                    <div class="row d-flex justify-content-center">
+                        <div class="artist-box">
+                            <a href="#">
+                                <img class="artist-img" src="/images/HarryPotter.jpg">
+                            </a>
+                            <p class="wheat-item a-name">Event1</p>
+                        </div>
+                        <div class="artist-box">
+                            <a href="#">
+                                <img class="artist-img" src="/images/HarryPotter.jpg">
+                            </a>
+                            <p class="wheat-item a-name">Event2</p>
+                        </div>
+                        <div class="artist-box">
+                            <a href="#">
+                                <img class="artist-img" src="/images/HarryPotter.jpg">
+                            </a>
+                            <p class="wheat-item a-name">Event3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-12">
+                <div class="centralized  artist-wrapper">
+                    <h3 class="wheat-item">Want to know more about this event? Check the <a id="s-link"
+                            href="#">Seminar's Name</a></h3>
                 </div>
             </div>
             <div class="col"></div>

@@ -1,0 +1,16 @@
+.question-wrapper {
+    border: solid 6px wheat;
+    background-color: black;
+    border-radius: 5px;
+    padding: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.title {
+    color: rgb(192, 162, 107);
+}
+
+.answer {
+    color: rgb(197, 189, 176);
+}
