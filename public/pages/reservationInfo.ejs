@@ -1,0 +1,53 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/reservationInfo.css">
+<title>Reservation Info</title>
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+    <nav class="crumb" aria-label="breadcrumb">
+        <ol class="breadcrumb crumb">
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
+            <li class="breadcrumb-item bc-active" aria-current="page">Reservation Info</li>
+        </ol>
+    </nav>
+
+    <div class="container">
+        <div class="question-wrapper">
+            <div class="d-flex flex-row justify-content-center">
+                <h2 class="title">Who are we?</h2>
+            </div>
+            <div class="d-flex flex-row justify-content-center">
+                <h5 class="answer">We are a no-profit association with the aim of organizing charity events of many
+                    kinds around the
+                    globe to help finance good causes.
+                </h5>
+            </div>
+            <div class="row centralizedd-flex flex-row justify-content-center">
+                <h2 class="title">Were can you find us?</h2>
+            </div>
+            <div class="d-flex flex-row justify-content-center">
+                <h5 class="answer">The event is going to take place in Ocean Drive, Miami, Florida. The event is going
+                    to take place in
+                    Ocean Drive, Miami, Florida.</h5>
+            </div>
+            <div class="d-flex flex-row justify-content-center">
+                <h2 class="title">How can you get the tickets for the event?</h2>
+            </div>
+            <div class="d-flex flex-row justify-content-center">
+                <h5 class="answer">To book the tickets you need to register on the site <a
+                        href="/registration">here</a>. Then you can select the event you want from the <a
+                        href="/registration">Calendar page</a> and click on the button GET YOUR TICKET. <br>
+                    You can than see your tickets in the <a href="/reservation">Reservation page</a><br>
+                    The event is
+                    going to take
+                    place in Ocean Drive, Miami, Florida.</h5>
+            </div>
+        </div>
+    </div>
+
+    <%- include('includes/footer.ejs') %>
+
+</body>
+
+</html>
