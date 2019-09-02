@@ -60,7 +60,6 @@ const createCards = async () =>
     var types = (await get(URLS.EVENT_TYPE, 100)).response;
     for(var i=0; i < types.length; i++)
         createCard(container, types[i]);
-    console.log(types);
 }
 
 onEventsTypesLoad();
