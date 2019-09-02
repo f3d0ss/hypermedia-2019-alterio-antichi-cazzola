@@ -91,6 +91,35 @@ paths:
           $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+
+  /event/company/{companyId}:
+    get:
+      tags:
+        - event
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: companyId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      summary: This is a list of the events filtered by a company
+      responses:
+        200:
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
+        
         
   /event/location/{locationId}:
     get:
@@ -839,6 +868,11 @@ components:
           items:
             type: integer
             example: 1
+        company_ids:
+          type: array
+          items:
+            type: integer
+            example: 1
         event_type:
           type: string
           example: dance
@@ -904,7 +938,7 @@ components:
       properties:
         id: 
           type: string
-          example: A12
+          example: A01
         how_to_reach:
           type: string
           example: After you pass the enterence you find the place in front of you 
@@ -918,7 +952,7 @@ components:
       properties:
         name:
           type: string
-          example: Mario Rossi
+          example: Anna Pavlova
         achivments:
           type: array
           items:
@@ -926,7 +960,7 @@ components:
             example: Grade
         detail:
           type: string
-          example: Mario is a fucking dancer and I dunno why the fuck I'm writing...
+          example: 'Anna Pavlovna (Matveyevna) Pavlova (Russian: Анна Павловна (Матвеевна) Павлова; February 12 [O.S. January 31] 1881 — January 23, 1931) was a Russian prima ballerina of the late 19th and the early 20th centuries. She was a principal artist of the Imperial Russian Ballet and the Ballets Russes of Sergei Diaghilev. Pavlova is most recognized for her creation of the role of The Dying Swan and, with her own company, became the first ballerina to tour around the world. She toured South America, India and Australia'
         company_id:
           type: integer
           example: 1234
@@ -983,7 +1017,7 @@ components:
       properties:
         event_type:
           type: string
-          example: Dance
+          example: dance
         description:
           type: string
           example: Dance is a performing art form consisting of purposefully selected sequences of human movement. This movement has aesthetic and symbolic value, and is acknowledged as dance by performers and observers within a particular culture

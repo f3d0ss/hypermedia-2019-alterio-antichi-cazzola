@@ -31,10 +31,11 @@ exports.postEvent = async (req, res, next) => {
     const location_id = req.body.location_id;
     const seminar_id = req.body.seminar_id;
     const performer_ids = req.body.performer_ids;
+    const company_ids = req.body.company_ids;
     const event_type = req.body.event_type
 
     try {
-        const event = new Event(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, event_type);
+        const event = new Event(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, company_ids, event_type);
         await event.save();
         res.status(201).json(event);
     } catch (error) {
@@ -48,6 +49,18 @@ exports.getEventsByPerformer = async (req, res, next) => {
     const performerId = req.params.performerId;
     try {
         const events = await Event.getEventsByPerformer(pageNumber, pageSize, performerId);
+        res.status(200).json(events);
+    } catch (error) {
+        next(error);
+    }
+}
+
+exports.getEventsByCompany = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const companyId = req.params.companyId;
+    try {
+        const events = await Event.getEventsByCompany(pageNumber, pageSize, companyId);
         res.status(200).json(events);
     } catch (error) {
         next(error);

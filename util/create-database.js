@@ -50,6 +50,7 @@ async function createTables(promisePoolDb) {
         await createPerformerPhotoTable(promisePoolDb);
         await createAchivementTable(promisePoolDb);
         await createPerformerEventTable(promisePoolDb);
+        await createCompanyEventTable(promisePoolDb);
         await createSignUpTokenTable(promisePoolDb);
         await createReservationTable(promisePoolDb);
         console.log("Tables created");
@@ -170,6 +171,16 @@ function createPerformerEventTable(promisePoolDb) {
         PRIMARY KEY (event_id, performer_id),
         FOREIGN KEY (event_id) REFERENCES Event(id),
         FOREIGN KEY (performer_id) REFERENCES Performer(id)
+    );`);
+}
+
+function createCompanyEventTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE CompanyEvent (
+        event_id int NOT NULL,
+        company_id int NOT NULL,
+        PRIMARY KEY (event_id, company_id),
+        FOREIGN KEY (event_id) REFERENCES Event(id),
+        FOREIGN KEY (company_id) REFERENCES Company(id)
     );`);
 }
 
