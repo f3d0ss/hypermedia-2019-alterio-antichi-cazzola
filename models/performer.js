@@ -87,7 +87,7 @@ module.exports = class Performer {
         if (performerIds.length === 0)
             return [];
         const params = [];
-        let query = "SELECT * FROM Event WHERE id IN (";
+        let query = "SELECT * FROM Performer WHERE id IN (";
         params.push(performerIds.pop());
         query += "?";
         for (const performerId of performerIds) {
