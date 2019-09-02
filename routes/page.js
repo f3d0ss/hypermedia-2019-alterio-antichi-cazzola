@@ -11,5 +11,6 @@ router.get('/calendar', (req, res, next) => res.render('calendar'));
 router.get('/eventsTypes', (req, res, next) => res.render('eventsTypes'));
 router.get('/events/type/:type', (req, res, next) => res.render('eventsByType'));
 router.get('/contactUs', (req, res, next) => res.render('contactUs'));
+router.get('/seminar', (req, res, next) => res.render('seminar'));
 
 module.exports = router;
