@@ -9,7 +9,7 @@ const createCard = (container, events) =>
                 <div class="card-body">
                     <hr class="line"> ` ;
     for(var i=0; i < events.length; i++)
-        card += `<h3><a class="card-link" href="#">${events[i].name} </a><span class="date">- starts: ${events[i].start}   ends: ${events[i].end} </span></h3>`;
+        card += `<h3><a class="card-link" href="${events[i].link}">${events[i].name} </a><span class="date">- starts: ${events[i].start}   ends: ${events[i].end} </span></h3>`;
     card += `
                         </div>
                     </div>
@@ -39,9 +39,10 @@ const eventsByDate = (date, events) =>
     return ret;
 }
 
-const newEvent = (name, date, start, end) =>
+const newEvent = (name, date, start, end, link) =>
 {
     return {
+        link: link,
         name: name,
         date: date,
         start: start,    
@@ -53,9 +54,9 @@ const joinLists = (events, seminars) =>
 {
     const ret = [];
     for(var i=0; i < events.length; i++)
-        ret.push(newEvent(events[i].name, events[i].date.substring(0,10), events[i].start, events[i].end));
+        ret.push(newEvent(events[i].name, events[i].date.substring(0,10), events[i].start, events[i].end, "/events/" + events[i].id));
     for(var i=0; i < seminars.length; i++)
-        ret.push(newEvent(seminars[i].title, seminars[i].date.substring(0,10), seminars[i].start, seminars[i].end));
+        ret.push(newEvent(seminars[i].title, seminars[i].date.substring(0,10), seminars[i].start, seminars[i].end, "/seminars/" + seminars[i].id));
     return ret;
 }
 

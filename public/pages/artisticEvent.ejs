@@ -1,6 +1,6 @@
 <%- include('includes/head.ejs') %>
 <link rel="stylesheet" href="/css/artisticEvent.css">
-<title>Event Name</title>
+<title id="title">Event Name</title>
 </head>
 
 <body>
@@ -10,7 +10,7 @@
         <ol class="breadcrumb crumb">
             <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
             <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Calendar</a></li>
-            <li class="breadcrumb-item bc-active" aria-current="page">Event's Name</li>
+            <li id="breadCrumbName" class="breadcrumb-item bc-active" aria-current="page">Event's Name</li>
         </ol>
     </nav>
 
@@ -115,6 +115,11 @@
                 </div>
             </div>
             <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <button id="bookBtn" type="button" class="btn btn-dark">Book to the Event!</button>
+            </div>
         </div>
     </div>
 
