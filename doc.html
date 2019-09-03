@@ -96,17 +96,18 @@ We have create complete REST API, we didn't implemented all CRUD operations for 
 <p><em>Describe here synthetically, which models you have introduced for
 resources.</em></p>
 <ul>
+<li>Event</li>
 <li>Seminar</li>
 <li>Location</li>
 <li>Performer</li>
 <li>Company</li>
-<li>ArtisticField</li>
+<li>EventType</li>
 <li>Reservation</li>
 <li>User</li>
 </ul>
 <h3 id="data-model">Data model</h3>
-<p><em>Describe with an ER diagram the model used in the data layer of your web
-application. How these map to the OpenAPI data model?</em></p>
+<p><img src="http://localhost:3000/images/doc/ER-diagram.png" alt="ER diagram">
+All OpenAPI models have also an Entity in the ER diagram except for Reservation, which is represented in the diagram as a reletionship from User to Event</p>
 <h2 id="implementation">Implementation</h2>
 <h3 id="tools-used">Tools used</h3>
 <p>Describe here which tools, languages and frameworks did you use for the
@@ -114,8 +115,13 @@ backend of the application.</p>
 <ul>
 <li>express: to simplyfy the creation of a web server and devide routing</li>
 <li>passposrt (with passwport-jwt): to simplify the login and authentication verification process through a JWT</li>
+<li>ejs: just to use the <code>include</code> function to avoid for example the need of change every paga for a mistake in the navigation bar (we never render data from the model)</li>
 <li>mysql2: to interact with the MySql server</li>
 <li>bcrypt: to hash the password before save them into the DB</li>
+<li>nodemon: to avoid restarting the server after any change</li>
+<li>nodemailer: to send the email for the email verification (removed the need of verify the email after usability evaluation)</li>
+<li>express-openapi-validator: to validate the input of the API in line with the OpenAPI specification</li>
+<li>swagger-ui-express: to provide the a UI to the OpenAPI specification</li>
 </ul>
 <h3 id="discussion">Discussion</h3>
 <p>Describe here:</p>
@@ -127,11 +133,14 @@ endpoints against the expected response?</em></li>
 <li>Why do you think your web application adheres to common practices to
 partition a REST-based web application (static assets vs.
 application data)</li>
+<li>We crated API that are easy to understand and documented with OpenAPI specification, they accept and return only JSON object with the data, so that anyone can create either a web application, Android application or any other sort of application using the same API.</li>
 <li>Describe synthetically why and how did you manage session state,
 what are the state change triggering actions (e.g., POST to login
 etc..).</li>
+<li>We managed the authentication with JSON Web Token, returning the JWT when the POST API for login is called. Then this JWT need to be added in the header of the calls to the API that need authentication</li>
 <li>Which technology did you use (relational or a no-SQL database) for
 managing the data model?</li>
+<li>We used MySQL database mainly because we found more documentation about it then other type of relational database</li>
 </ul>
 <h2 id="other-information">Other information</h2>
 <h3 id="task-assignment">Task assignment</h3>

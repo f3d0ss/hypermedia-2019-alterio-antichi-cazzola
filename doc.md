@@ -35,24 +35,30 @@ We have create complete REST API, we didn't implemented all CRUD operations for 
 #### OpenAPI Resource models
 _Describe here synthetically, which models you have introduced for
 resources._
+- Event
 - Seminar
 - Location
 - Performer
 - Company
-- ArtisticField
+- EventType
 - Reservation
 - User
 ### Data model
-_Describe with an ER diagram the model used in the data layer of your web
-application. How these map to the OpenAPI data model?_
+![ER diagram](http://localhost:3000/images/doc/ER-diagram.png)
+All OpenAPI models have also an Entity in the ER diagram except for Reservation, which is represented in the diagram as a reletionship from User to Event
 ## Implementation
 ### Tools used
 Describe here which tools, languages and frameworks did you use for the
 backend of the application.
 - express: to simplyfy the creation of a web server and devide routing
 - passposrt (with passwport-jwt): to simplify the login and authentication verification process through a JWT
+- ejs: just to use the `include` function to avoid for example the need of change every paga for a mistake in the navigation bar (we never render data from the model)
 - mysql2: to interact with the MySql server
 - bcrypt: to hash the password before save them into the DB
+- nodemon: to avoid restarting the server after any change
+- nodemailer: to send the email for the email verification (removed the need of verify the email after usability evaluation)
+- express-openapi-validator: to validate the input of the API in line with the OpenAPI specification
+- swagger-ui-express: to provide the a UI to the OpenAPI specification
 ### Discussion
 Describe here:
 - _How did you make sure your web application adheres to the provided
@@ -62,11 +68,14 @@ endpoints against the expected response?_
 - Why do you think your web application adheres to common practices to
 partition a REST-based web application (static assets vs.
 application data)
+- We crated API that are easy to understand and documented with OpenAPI specification, they accept and return only JSON object with the data, so that anyone can create either a web application, Android application or any other sort of application using the same API.
 - Describe synthetically why and how did you manage session state,
 what are the state change triggering actions (e.g., POST to login
 etc..).
+- We managed the authentication with JSON Web Token, returning the JWT when the POST API for login is called. Then this JWT need to be added in the header of the calls to the API that need authentication
 - Which technology did you use (relational or a no-SQL database) for
 managing the data model?
+- We used MySQL database mainly because we found more documentation about it then other type of relational database
 ## Other information
 ### Task assignment
 Describe here how development tasks have been subdivided among members
