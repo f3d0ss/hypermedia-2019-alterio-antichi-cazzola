@@ -42,15 +42,30 @@ const onArtisticEventLoad = async () =>
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
         const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
         createIcons(event);
+        setupQuestions(event);
         setupBottomPage(id);
         abstract.innerHTML = event.abstract;
         byId("title").innerHTML = event.name;
-        byId("breadCrumbName").innerHTML = event.name;
+        byId("breadCrumbName").innerHTML = event.name;  
         var seminariLink = byId("s-link");
         seminariLink.innerHTML = seminar.title;
         seminariLink.setAttribute("href", "/seminars/" + seminar.id);
     }
     catch(e) { console.log(e); }
+}
+
+const setupQuestions = async event => 
+{
+    console.log(event.location_id);
+    var locationText = (await get(URLS.LOCATION + "/" + event.location_id, 100)).response.how_to_reach;
+    var questions =  ["What day does it take place?", `What time does it starts?`, "What time does it ends?", "How many available tickes are there?", "How can i reach the event?"];
+    var answers =  [ `${event.date}`, `${event.start}`, `${event.end}`, `${event.vacancy}`, `${locationText}` ];
+
+    for(var i=0; i < questions.length; i++)
+    {
+        byId("q" + i).innerHTML = questions[i];
+        byId("question-" + i).innerHTML = answers[i];
+    }
 }
 
 const createIcons = async event =>

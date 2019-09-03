@@ -37,7 +37,7 @@ var locationPost = async () =>
     for(var i=1; i < N; i++)
         await post(URLS.LOCATION,  // post can be found in script.js
             {
-                "id": "A" + i,
+                "id": "" + i,
                 "how_to_reach": "After you pass the enterence you find the place in front of you"
             });
 }
@@ -48,7 +48,7 @@ var seminarPost = async () =>
         await post(URLS.SEMINAR,  // post can be found in script.js
             {
                 "title": "Amazing seminar" + i,
-                "location_id": "A" + i,
+                "location_id": "" + i,
                 "date": "2019-08-15",
                 "start": "12:00:00",
                 "abstract": "this is an abstract",
@@ -75,7 +75,7 @@ var eventPost = async () =>
                 "date": "2019-12-1" + i%10,
                 "start": "12:00:00",
                 "end": "21:00:00",
-                "location_id": "A" + i,
+                "location_id": "" + i,
                 "vacancy": 30,
                 "seminar_id": i,
                 "performer_ids": [
