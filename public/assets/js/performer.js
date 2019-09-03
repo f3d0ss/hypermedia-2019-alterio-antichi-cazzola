@@ -22,6 +22,10 @@ const onPerformerLoad = async () =>
         byId("moreAbout").innerHTML = `More about ${performer.name}`;
         byId("findAuthor").innerHTML = `Find ${performer.name} Performing in: `;
         byId("description").innerHTML = performer.detail;
+        byId("age").innerHTML = "  " + performer.age;
+        byId("birth").innerHTML = "   " + performer.birth;
+        byId("cit1").innerHTML = performer.cit1;
+        byId("cit2").innerHTML = performer.cit2;
         setupEvents(performerID);
     }
     catch(e) { console.log(e); }
