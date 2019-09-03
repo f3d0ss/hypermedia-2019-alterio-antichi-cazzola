@@ -21,7 +21,7 @@
 
 /* featuring section */
 
-#artist-wrapper {
+.artist-wrapper {
     padding-top: 20px;
     border: solid 2px wheat;
     background-color: black;
@@ -43,6 +43,16 @@
 
 .a-name {
     cursor: pointer;
+}
+
+/* seminar link */
+
+#s-link {
+    color: rgb(245, 184, 71);
+}
+
+#s-link:hover {
+    color: rgb(168, 113, 11);
 }
 
 /* factsheet */

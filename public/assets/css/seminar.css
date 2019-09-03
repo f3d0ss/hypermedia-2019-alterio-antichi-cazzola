@@ -1,0 +1,53 @@
+/* generics */
+.container {
+    padding-bottom: 30px;
+}
+
+.row {
+    margin-bottom: 30px;
+}
+
+/* card */
+
+.card {
+    background-color: black;
+}
+
+.title {
+    color: rgb(240, 192, 105);
+}
+
+.field {
+    color: rgb(131, 99, 40);
+}
+
+.parameter {
+    color: rgb(121, 107, 81);
+}
+
+/* card body */
+
+.line {
+    margin-top: -20px;
+    background-color: wheat;
+}
+
+/* events section */
+
+.wrapper {
+    padding: 30px;
+}
+
+img {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.event-link {
+    color: rgb(226, 178, 89);
+}
+
+.event-link:hover {
+    color: rgb(233, 163, 34);
+}

@@ -24,31 +24,36 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="username">
+                            <input id="emailText" type="text" class="form-control" placeholder="username">
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password">
+                            <input id="passText" type="password" class="form-control" placeholder="password">
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login" class="btn float-right card-item">
+                            <input id="loginBtn" type="button" value="Login" class="btn float-right card-item">
                         </div>
                     </form>
+                    <div class="form-group">
+                        <p id="statusText" type="" value="dsadsa" class="text-warning"></p>
+                    </div>
                 </div>
                 <div class="card-footer black-card">
                     <div class="d-flex justify-content-center links">
                         <span class="wheat-item">Don't have an account yet?</span>&nbsp;&nbsp;<a class="card-link"
-                            href="#">Sign
+                            href="/registration">Sign
                             Up</a>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     </div>
 
     <%- include('includes/footer.ejs') %>
+    <script src="/js/script.js"></script>
+    <script src="/js/login.js"></script>
 </body>
 
 </html>

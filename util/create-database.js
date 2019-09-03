@@ -42,14 +42,17 @@ async function createTables(promisePoolDb) {
         createUserTable(promisePoolDb);
         await createLocationTable(promisePoolDb);
         await createSeminarTable(promisePoolDb);
+        await createEventTypeTable(promisePoolDb);
         await createEventTable(promisePoolDb);
         await createCompanyTable(promisePoolDb);
         await createCompanyPhotoTable(promisePoolDb);
-        await createArtisticFieldTable(promisePoolDb);
         await createPerformerTable(promisePoolDb);
         await createPerformerPhotoTable(promisePoolDb);
         await createAchivementTable(promisePoolDb);
         await createPerformerEventTable(promisePoolDb);
+        await createCompanyEventTable(promisePoolDb);
+        await createSignUpTokenTable(promisePoolDb);
+        await createReservationTable(promisePoolDb);
         console.log("Tables created");
     } catch (error) {
         console.log(error);
@@ -58,10 +61,19 @@ async function createTables(promisePoolDb) {
 
 function createUserTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE User (
-            id int PRIMARY KEY AUTO_INCREMENT,
+        id int PRIMARY KEY AUTO_INCREMENT,
         email varchar(255) NOT NULL UNIQUE,
-        password varchar(255) NOT NULL
-    );`);
+        password varchar(255) NOT NULL,
+        isVerified bit DEFAULT 0
+        );`);
+}
+
+function createSignUpTokenTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE SignUpToken (
+        user_id int PRIMARY KEY,
+        signup_token varchar(255),
+        FOREIGN KEY (user_id) REFERENCES User(id)
+        );`);
 }
 
 function createLocationTable(promisePoolDb) {
@@ -79,11 +91,13 @@ function createEventTable(promisePoolDb) {
         date date NOT NULL,
         start time NOT NULL,
         end time NOT NULL,
+        event_type varchar(255) NOT NULL,
         location_id varchar(3) NOT NULL,
         vacancy int NOT NULL,
         seminar_id int,
         FOREIGN KEY (location_id) REFERENCES Location(id),
-        FOREIGN KEY (seminar_id) REFERENCES Seminar(id)
+        FOREIGN KEY (seminar_id) REFERENCES Seminar(id),
+        FOREIGN KEY (event_type) REFERENCES EventType(event_type)
     );`);
 }
 
@@ -91,6 +105,7 @@ function createSeminarTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE Seminar (
             id int PRIMARY KEY AUTO_INCREMENT,
             title varchar(255) NOT NULL UNIQUE,
+            abstract varchar(255) NOT NULL,
             date date NOT NULL,
             start time NOT NULL,
             end time NOT NULL,
@@ -108,10 +123,10 @@ function createCompanyTable(promisePoolDb) {
         );`);
 }
 
-function createArtisticFieldTable(promisePoolDb) {
-    return promisePoolDb.query(`CREATE TABLE ArtisticField (
-            id int PRIMARY KEY AUTO_INCREMENT,
-            name varchar(255) NOT NULL UNIQUE
+function createEventTypeTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE EventType (
+            event_type varchar(255) PRIMARY KEY,
+            description text NOT NULL
         );`);
 }
 
@@ -120,16 +135,14 @@ function createPerformerTable(promisePoolDb) {
             id int PRIMARY KEY AUTO_INCREMENT,
             name varchar(255) NOT NULL,
             company_id int,
-            main_field int NOT NULL,
             detail text NOT NULL,
-            FOREIGN KEY (company_id) REFERENCES Company(id),
-            FOREIGN KEY (main_field) REFERENCES ArtisticField(id)
+            FOREIGN KEY (company_id) REFERENCES Company(id)
         );`);
 }
 
 function createCompanyPhotoTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE CompanyPhoto (
-            name varchar(255) PRIMARY KEY,
+            path varchar(255) PRIMARY KEY,
             company_id int NOT NULL,
             FOREIGN KEY (company_id) REFERENCES Company(id)
         );`);
@@ -137,7 +150,7 @@ function createCompanyPhotoTable(promisePoolDb) {
 
 function createPerformerPhotoTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE PerformerPhoto (
-            name varchar(255) PRIMARY KEY,
+            path varchar(255) PRIMARY KEY,
             performer_id int NOT NULL,
             FOREIGN KEY (performer_id) REFERENCES Performer(id)
         );`);
@@ -159,5 +172,26 @@ function createPerformerEventTable(promisePoolDb) {
         PRIMARY KEY (event_id, performer_id),
         FOREIGN KEY (event_id) REFERENCES Event(id),
         FOREIGN KEY (performer_id) REFERENCES Performer(id)
+    );`);
+}
+
+function createCompanyEventTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE CompanyEvent (
+        event_id int NOT NULL,
+        company_id int NOT NULL,
+        PRIMARY KEY (event_id, company_id),
+        FOREIGN KEY (event_id) REFERENCES Event(id),
+        FOREIGN KEY (company_id) REFERENCES Company(id)
+    );`);
+}
+
+function createReservationTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE Reservation (
+        id int PRIMARY KEY AUTO_INCREMENT,
+        event_id int NOT NULL,
+        user_id int NOT NULL,
+        FOREIGN KEY (event_id) REFERENCES Event(id),
+        FOREIGN KEY (user_id) REFERENCES User(id),
+        UNIQUE (event_id, user_id)
     );`);
 }

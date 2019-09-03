@@ -1,6 +1,5 @@
 /* generics */
 
-
 body {
     background-color: rgb(229, 226, 226);
     overflow-x: hidden;
@@ -12,6 +11,10 @@ body {
 
 .centralized {
     text-align: center;
+}
+
+.content-left {
+    text-align: left;
 }
 
 .description-wrapper {
@@ -191,6 +194,7 @@ input:focus {
 
 .footer {
     background-color: rgb(56, 54, 54);
+    margin-top: 20px;
 }
 
 .footer-line {
