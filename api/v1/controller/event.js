@@ -1,4 +1,5 @@
 const Event = require('../../../models/event');
+const Performer = require('../../../models/performer');
 
 exports.getEvents = async (req, res, next) => {
     const pageNumber = req.query.pageNumber;
@@ -48,7 +49,17 @@ exports.getEventsByPerformer = async (req, res, next) => {
     const pageSize = req.query.pageSize;
     const performerId = req.params.performerId;
     try {
+        const performers = await Performer.getPerformerById(performerId);
         const events = await Event.getEventsByPerformer(pageNumber, pageSize, performerId);
+        const performer = performers[0];
+        if (performer.company_id) {
+            console.log(performer.company_id);
+            const eventByCompany = await Event.getEventsByCompany(pageNumber, pageSize, performer.company_id);
+            console.log(eventByCompany);
+            for (const event of eventByCompany) {
+                events.push(event);
+            }
+        }
         res.status(200).json(events);
     } catch (error) {
         next(error);

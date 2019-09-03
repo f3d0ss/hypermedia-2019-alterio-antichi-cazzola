@@ -189,6 +189,8 @@ module.exports = class Event {
             pageSize = 10;
         const startRow = pageNumber * pageSize;
         const res = await db.query("SELECT event_id FROM CompanyEvent WHERE company_id = ?", [companyId]);
+        console.log(companyId);
+        console.log(res);
         const eventIds = res[0].map(row => row.event_id);
         if (eventIds.length === 0)
             return [];

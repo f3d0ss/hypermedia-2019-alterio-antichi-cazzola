@@ -51,7 +51,6 @@ module.exports = class Performer {
                 "SELECT * FROM Performer WHERE id = ?",
                 [performerId]
             );
-            console.log(rows);
             const performers = await this.getPerformersFromRows(rows);
             return (performers);
         } catch (err) {

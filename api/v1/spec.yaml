@@ -1039,7 +1039,6 @@ components:
               
     Reservation:
       required:
-        - userId
         - eventId
       properties:
         userId:
