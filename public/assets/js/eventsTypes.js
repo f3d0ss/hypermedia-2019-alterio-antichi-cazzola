@@ -1,5 +1,4 @@
-const createCard = (container, event) => 
-{
+const createCard = (container, event) => {
     const card = `
                         <div class="s-wrapper centralized">
                             <div class="quote-wrapper">
@@ -16,13 +15,13 @@ const createCard = (container, event) =>
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="/images/chicago.jpg" alt="First slide">
+                                            <img src="/images/event-type/${event.event_type}01.jpg" alt="First slide">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="/images/la.jpg" alt="Second slide">
+                                            <img src="/images/event-type/${event.event_type}02.jpg" alt="Second slide">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="/images/ny.jpg" alt="Third slide">
+                                            <img src="/images/event-type/${event.event_type}03.jpg" alt="Third slide">
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#slider" role="button" data-slide="prev">
@@ -45,20 +44,18 @@ const createCard = (container, event) =>
     container.innerHTML += card;
 }
 
-const onEventsTypesLoad = async () => 
-{
-    try
-    {
+const onEventsTypesLoad = async () => {
+    try {
         await createCards();
+    } catch (e) {
+        console.log(e);
     }
-    catch (e) { console.log(e); }
 }
 
-const createCards = async () => 
-{
+const createCards = async () => {
     const container = document.getElementById("container");
     var types = (await get(URLS.EVENT_TYPE, 100)).response;
-    for(var i=0; i < types.length; i++)
+    for (var i = 0; i < types.length; i++)
         createCard(container, types[i]);
 }
 
