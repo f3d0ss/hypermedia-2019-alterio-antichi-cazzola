@@ -2,7 +2,7 @@ const createCard = (container, event) => {
     const card = `
                         <div class="s-wrapper centralized">
                             <div class="quote-wrapper">
-                                <h1 class="title">${event.event_type}</h1>
+                            <a href="/events/type/${event.event_type}"><h1 class="title">${event.event_type}</h1></a>
                                 <p class="subtitle"> ${event.description} </p>
                             </div>
 
