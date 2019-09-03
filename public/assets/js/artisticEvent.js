@@ -90,7 +90,7 @@ const createIcons = async event =>
     var eventsSameDate = (await get(URLS.EVENT + "/date/" + date, 100)).response;
 
     for(var i=0; i < performers.length; i++)
-        addIcon(featuringContainer, performers[i].name, "#");
+        addIcon(featuringContainer, performers[i].name, "/performers/" + performers[i].id);
     for(var i=0; i < eventsSameDate.length; i++)
         addIcon(eventsContainer, eventsSameDate[i].name, "/events/" + eventsSameDate[i].id);
  }
