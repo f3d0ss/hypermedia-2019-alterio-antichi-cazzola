@@ -1,0 +1,51 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/today.css">
+<title>What Happens Today</title>
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+    <nav class="crumb" aria-label="breadcrumb">
+        <ol class="breadcrumb crumb">
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
+            <li class="breadcrumb-item bc-active" aria-current="page">What Happens Today</li>
+        </ol>
+    </nav>
+
+    <div class="container">
+        <div class="d-flex flex-row justify-content-center">
+            <h1>20 August 2019, All Events</h1>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            <div class="card">
+                <div class="card-header centralized">
+                    <h2><a class="title" href="#">Event 1</a></h2>
+                    <h4 class="subtitle">Event Type - 3 pm</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-row justify-content-center">
+                        <img src="images/HarryPotter.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            <div class="card">
+                <div class="card-header centralized">
+                    <h2><a class="title" href="#">Event 2</a></h2>
+                    <h4 class="subtitle">Event Type - 4 pm</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-row justify-content-center">
+                        <img src="images/HarryPotter.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('includes/footer.ejs') %>
+
+</body>
+
+</html>

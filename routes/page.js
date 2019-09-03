@@ -13,6 +13,7 @@ router.get('/eventsTypes', (req, res, next) => res.render('eventsTypes'));
 router.get('/events/type/:type', (req, res, next) => res.render('eventsByType'));
 router.get('/events/:id', (req, res, next) => res.render('artisticEvent'));
 router.get('/contactUs', (req, res, next) => res.render('contactUs'));
+router.get('/today', (req, res, next) => res.render('today'));
 router.get('/seminars/:id', (req, res, next) => res.render('seminar'));
 router.get('/seminars', (req, res, next) => res.render('seminars'));
 router.get('/reservations', (req, res, next) => res.render('reservations'));
