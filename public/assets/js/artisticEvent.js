@@ -60,7 +60,7 @@ const onArtisticEventLoad = async () =>
         byId("breadCrumbName").innerHTML = event.name;  
         const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
         if(seminar)
-          addSeminarBox(seminar);
+           addSeminarBox(seminar);
     }
     catch(e) { console.log(e); }
 }
