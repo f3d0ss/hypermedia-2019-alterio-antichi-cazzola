@@ -74,8 +74,7 @@ const setupBottomPage = async id =>
 {
     if(token)
     {
-        const reservations = (await get(URLS.RESERVATION + "/user/" + userID, 1)).response;
-        console.log(reservations, id);
+        const reservations = (await get(URLS.RESERVATION + "/user/" + userID, 1000)).response;
     
         for(var i=0; i < reservations.length; i++)
             if(reservations[i].event_id == id)
