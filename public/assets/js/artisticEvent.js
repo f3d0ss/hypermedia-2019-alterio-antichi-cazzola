@@ -18,12 +18,15 @@ const onArtisticEventLoad = async () =>
     {
         const id = UrlLastPart;
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
-
+        const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
         createIcons(event);
         setupBookButton();
         abstract.innerHTML = event.abstract;
         byId("title").innerHTML = event.name;
         byId("breadCrumbName").innerHTML = event.name;
+        var seminariLink = byId("s-link");
+        seminariLink.innerHTML = seminar.title;
+        seminariLink.setAttribute("href", "/seminars/" + seminar.id);
     }
     catch(e) { console.log(e); }
 }
