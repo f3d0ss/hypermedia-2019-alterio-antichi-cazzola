@@ -1,5 +1,7 @@
 const N = 20;
 
+var EventTypeNames = [ "dance", "opera", "theater", "music"];
+
 var companyPost = async () => 
 {
     for(var i=1; i < N; i++)
@@ -55,14 +57,12 @@ var seminarPost = async () =>
             });
 }
 
+var newEventType = (name, description) => { return {event_type: name, description: description} };
+
 var eventTypePost = async () => 
 {
-    for(var i=1; i < N; i++)
-        await post(URLS.EVENT_TYPE,  // post can be found in script.js
-            {
-                "event_type": "orgia" + i,
-                "description": "have you ever dreamed to join a professional orgia?" + i
-            });
+    for(var i=0; i < EventTypeNames.length; i++)
+        await post(URLS.EVENT_TYPE, newEventType(EventTypeNames[i], EventTypeNames[i] + " description"));
 }
 
 var eventPost = async () => 
@@ -72,7 +72,7 @@ var eventPost = async () =>
             {
                 "name": "Best event evah" + i,
                 "abstract": "This is a useless description of the event",
-                "date": "2019-12-0" + i%10,
+                "date": "2019-12-1" + i%10,
                 "start": "12:00:00",
                 "end": "21:00:00",
                 "location_id": "A" + i,
@@ -81,7 +81,7 @@ var eventPost = async () =>
                 "performer_ids": [
                   i
                 ],
-                "event_type": "orgia" + (i%(N/2) + 1)
+                "event_type": EventTypeNames[i%4]
             });
 }
 

@@ -1,7 +1,9 @@
-var post = (url, body) => new Promise((resolve, reject) => {
+var post = (url, body, auth) => new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
+    if(auth)
+        xhr.setRequestHeader('Authorization', 'Bearer ' + token);
     var json = JSON.stringify(body);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE)

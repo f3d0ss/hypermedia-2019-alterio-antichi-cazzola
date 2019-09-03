@@ -20,7 +20,7 @@ const onArtisticEventLoad = async () =>
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
         const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
         createIcons(event);
-        setupBookButton();
+        setupBookButton(id);
         abstract.innerHTML = event.abstract;
         byId("title").innerHTML = event.name;
         byId("breadCrumbName").innerHTML = event.name;
@@ -48,15 +48,18 @@ const createIcons = async event =>
         addIcon(eventsContainer, eventsSameDate[i].name, "/events/" + eventsSameDate[i].id);
  }
 
-const bookTheEvent = () =>
+const bookTheEvent = id =>
 {
-
+    post(URLS.RESERVATION, 
+        {
+            "eventId": id
+        }, true)
 }
 
-const setupBookButton = async () =>
+const setupBookButton = async id =>
 {
     const bookBtn = document.getElementById("bookBtn");
-    bookBtn.onclick = () => token ? bookTheEvent() : goTo("/login");
+    bookBtn.onclick = () => token ? bookTheEvent(id) : goTo("/login");
 }
 
 onArtisticEventLoad();
