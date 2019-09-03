@@ -66,6 +66,13 @@ const onLoad = () => {
     }
 }
 
+const getMonth = monthNum => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][monthNum];
+const curMonth = getMonth(new Date().getMonth()); 
+const curDay = new Date().getDay();
+const curYear = new Date().getFullYear();
+const curDate = new Date().toJSON().slice(0,10);
+
+
 onLoad();
 
 $(".burger-menu").on("click", function () {

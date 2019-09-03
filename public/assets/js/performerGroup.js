@@ -2,9 +2,9 @@ const createCard = (container, name, url) => {
     var card =
         `
                 <div class="d-flex flex-row justify-content-center">
-                    <div class="wrapper">
+                    <div class="wrapper justify-content-center">
                         <div class="row">
-                            <img class="performer-img" src="/images/HarryPotter.jpg" alt="First Artist">
+                        <img class="performer-img" src="/images/HarryPotter.jpg" alt="First Artist">
                             <h2 class="performer-name"><a class="performer-link" href="${url}">${name}</a></h2>
                         </div>
                     </div>
