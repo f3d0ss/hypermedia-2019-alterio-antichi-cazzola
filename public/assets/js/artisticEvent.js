@@ -48,15 +48,15 @@ const createIcons = async event =>
         addIcon(eventsContainer, eventsSameDate[i].name, "/events/" + eventsSameDate[i].id);
  }
 
+const bookTheEvent = () =>
+{
+
+}
+
 const setupBookButton = async () =>
 {
     const bookBtn = document.getElementById("bookBtn");
-    if(token)
-    {
-    }
-    else
-    {
-    }
+    bookBtn.onclick = () => token ? bookTheEvent() : goTo("/login");
 }
 
 onArtisticEventLoad();

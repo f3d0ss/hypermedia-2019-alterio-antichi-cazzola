@@ -49,6 +49,7 @@ var seminarPost = async () =>
                 "location_id": "A" + i,
                 "date": "2019-08-15",
                 "start": "12:00:00",
+                "abstract": "this is an abstract",
                 "end": "21:00:00",
                 "vacancy": 15
             });

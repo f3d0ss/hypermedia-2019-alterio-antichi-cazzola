@@ -22,7 +22,9 @@ var get = (url, pageSize) => new Promise((resolve, reject) => {
 
 const token = localStorage.getItem("token");
 const UrlLastPart = location.href.substring(location.href.lastIndexOf('/') + 1);
+const goTo = url=>  window.location.href = url;
 const byId = id => document.getElementById(id);
+
 var BASEold = 'http://localhost:3000/api/v1';
 var BASE = '/api/v1';
 var URLS = {
