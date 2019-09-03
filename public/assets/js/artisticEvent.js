@@ -8,7 +8,7 @@ const addIcon = (container, name, link) =>
                     </a>
                     <p class="wheat-item a-name">${name}</p>
                 </div>
-                `;
+            `;
     container.innerHTML += performerHtml;
 }
 
@@ -45,7 +45,7 @@ const createIcons = async event =>
     for(var i=0; i < performers.length; i++)
         addIcon(featuringContainer, performers[i].name, "#");
     for(var i=0; i < eventsSameDate.length; i++)
-        addIcon(eventsContainer, eventsSameDate[i].name, "#");
+        addIcon(eventsContainer, eventsSameDate[i].name, "/events/" + eventsSameDate[i].id);
  }
 
 const setupBookButton = async () =>
