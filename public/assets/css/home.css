@@ -1,0 +1,15 @@
+/* front */
+
+#main-img {
+    margin-top: -16px;
+    height: 900px;
+    width: 1520px;
+}
+
+#main-txt {
+    margin-top: -400px;
+}
+
+.white {
+    color: white;
+}
