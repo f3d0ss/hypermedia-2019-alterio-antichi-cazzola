@@ -15,5 +15,6 @@ router.get('/events/:id', (req, res, next) => res.render('artisticEvent'));
 router.get('/contactUs', (req, res, next) => res.render('contactUs'));
 router.get('/seminars/:id', (req, res, next) => res.render('seminar'));
 router.get('/seminars', (req, res, next) => res.render('seminars'));
+router.get('/reservations', (req, res, next) => res.render('reservations'));
 
 module.exports = router;
