@@ -12,15 +12,14 @@ exports.getReservations = async (req, res, next) => {
 }
 
 exports.postReservation = async (req, res, next) => {
-    const user_id = req.body.userId;
     const event_id = req.body.eventId;
-    if (req.user.id !== user_id) {
+    if (!req.user) {
         const err = new Error();
         err.status = 401;
         err.message = 'Unauthorized';
         next(err);
     }
-
+    const user_id = req.user.id;
     try {
         const reservation = new Reservation(user_id, event_id);
         await reservation.save();

@@ -9,6 +9,8 @@ router.post('/', eventController.postEvent);
 
 router.get('/performer/:performerId', eventController.getEventsByPerformer);
 
+router.get('/company/:companyId', eventController.getEventsByCompany);
+
 router.get('/location/:locationId', eventController.getEventsByLoction);
 
 router.get('/date/:date', eventController.getEventsByDate);

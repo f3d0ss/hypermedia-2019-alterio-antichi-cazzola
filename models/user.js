@@ -11,7 +11,7 @@ module.exports =
         constructor(email, password, isVerified, id) {
             if (!id) {
                 this.id = null;
-                this.isVerified = false;
+                this.isVerified = 0;
             } else {
                 this.id = id;
                 this.isVerified = isVerified;
