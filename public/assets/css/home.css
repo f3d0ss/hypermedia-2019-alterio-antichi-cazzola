@@ -13,3 +13,31 @@
 .white {
     color: white;
 }
+
+
+
+@media (min-width: 400px) {
+    #main-img {
+        height: 400px;
+        width: 400px;
+    }
+
+    #main-txt {
+        margin-top: -200px;
+    }
+}
+
+@media (min-width: 768px) {
+    #main-img {
+        height: 800px;
+        width: 768px;
+    }
+}
+
+@media (min-width: 1400px) {
+    #main-img {
+        margin-top: -16px;
+        height: 900px;
+        width: 1520px;
+    }
+}
