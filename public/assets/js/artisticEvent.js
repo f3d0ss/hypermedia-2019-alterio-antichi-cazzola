@@ -34,29 +34,39 @@ const addReservedLabel = () =>
     byId("bottomContainer").innerHTML = reservedHTML;
 }
 
+const addSeminarBox = seminar =>
+{
+    var html =
+        `
+            <div id="seminarContainer" class="centralized  artist-wrapper">                                    
+                <h3 class="wheat-item">Want to know more about this event? Check the <a id="s-link"
+                href="${"/seminars/" + seminar.id}">${seminar.title}</a></h3>
+            </div>
+        `;
+    byId("seminarContainer").innerHTML = html;
+}
+
 const onArtisticEventLoad = async () =>
 {
     try
     {
         const id = UrlLastPart;
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
-        const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
         createIcons(event);
         setupQuestions(event);
         setupBottomPage(id);
         abstract.innerHTML = event.abstract;
         byId("title").innerHTML = event.name;
         byId("breadCrumbName").innerHTML = event.name;  
-        var seminariLink = byId("s-link");
-        seminariLink.innerHTML = seminar.title;
-        seminariLink.setAttribute("href", "/seminars/" + seminar.id);
+        const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
+        if(seminar)
+          addSeminarBox(seminar);
     }
     catch(e) { console.log(e); }
 }
 
 const setupQuestions = async event => 
 {
-    console.log(event.location_id);
     var locationText = (await get(URLS.LOCATION + "/" + event.location_id, 100)).response.how_to_reach;
     var questions =  ["What day does it take place?", `What time does it starts?`, "What time does it ends?", "How many available tickes are there?", "How can i reach the event?"];
     var answers =  [ `${event.date}`, `${event.start}`, `${event.end}`, `${event.vacancy}`, `${locationText}` ];
