@@ -104,6 +104,7 @@ function createSeminarTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE Seminar (
             id int PRIMARY KEY AUTO_INCREMENT,
             title varchar(255) NOT NULL UNIQUE,
+            abstract varchar(255) NOT NULL,
             date date NOT NULL,
             start time NOT NULL,
             end time NOT NULL,
