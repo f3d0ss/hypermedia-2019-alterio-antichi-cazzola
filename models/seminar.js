@@ -18,7 +18,7 @@ module.exports = class Seminar {
                 [this.title, this.abstract, this.location_id, this.date, this.start, this.end, this.vacancy, this.id]);
         }
         const ResultSetHeader = await db.query(
-            "INSERT INTO Seminar (title, abstract, location_id, date, start, end, vacancy) VALUES (? ,? ,? ,? ,? ,?);",
+            "INSERT INTO Seminar (title, abstract, location_id, date, start, end, vacancy) VALUES (?, ? ,? ,? ,? ,? ,?);",
             [this.title, this.abstract, this.location_id, this.date, this.start, this.end, this.vacancy]
         );
         this.id = ResultSetHeader[0].insertId;
