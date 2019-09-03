@@ -1,14 +1,16 @@
 const createCard = (container, name, url) => {
     var card =
         `
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="wrapper justify-content-center">
-                        <div class="row">
+            <div class="wrapper">
+                <div class="row justify-content-center">
+                    <div class = "col">
                         <img class="performer-img" src="/images/HarryPotter.jpg" alt="First Artist">
-                            <h2 class="performer-name"><a class="performer-link" href="${url}">${name}</a></h2>
-                        </div>
+                    </div>
+                    <div class = "col">
+                        <h2 class="performer-name"><a class="performer-link" href="${url}">${name}</a></h2>
                     </div>
                 </div>
+            </div>
             `;
     container.innerHTML += card;
 }
@@ -36,7 +38,7 @@ const createCards = async (title, performers) => {
     byId("title").innerHTML = byId("h1Title").innerHTML = byId("breadCrumbName").innerHTML = title;
     let url;
     for (var i = 0; i < performers.length; i++) {
-        if (performers[i].age) {
+        if (performers[i].company_id) {
             url = "performers/";
         } else {
             url = "companies/";

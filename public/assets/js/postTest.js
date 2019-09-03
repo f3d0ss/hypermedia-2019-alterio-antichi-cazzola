@@ -21,9 +21,11 @@ var performerPost = async () =>
         await post(URLS.PERFORMER,  // post can be found in script.js
             {
                 "name": "Mario Rossi" + i,
-                "achivments": [
+                "achievements": [
                   "Grade"
                 ],
+                "age": "" + i,
+                "birth": "place" + i,
                 "detail": "Mario is a fucking dancer and I dunno why the fuck I'm writing...",
                 "company_id": i,
                 "photos": [
@@ -81,7 +83,10 @@ var eventPost = async () =>
                 "performer_ids": [
                   i
                 ],
-                "event_type": EventTypeNames[i%4]
+                "event_type": EventTypeNames[i%4],
+                "photos": [
+                    "/images/first-photo.png" + i
+                  ]
             });
 }
 

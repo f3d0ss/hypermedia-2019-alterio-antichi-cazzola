@@ -3,13 +3,13 @@ const createCard = (container, events) =>
     var card = `
     <div class="d-flex flex-row justify-content-center">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header text-center">
                     <h2 class="title">${events[0].date}</h2>
                 </div>
                 <div class="card-body">
                     <hr class="line"> ` ;
     for(var i=0; i < events.length; i++)
-        card += `<h3><a class="card-link" href="${events[i].link}">${events[i].name} </a><span class="date">- starts: ${events[i].start}   ends: ${events[i].end} </span></h3>`;
+        card += `<h3><a class="card-link" href="${events[i].link}">${events[i].name} </a><span class="date"> -   ${events[i].start} - ${events[i].end} </span></h3>`;
     card += `
                         </div>
                     </div>

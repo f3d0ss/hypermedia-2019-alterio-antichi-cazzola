@@ -28,8 +28,14 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 50px;
+    margin-left: 30px;
     background-color: black;
-    border-radius: 5px;
+    border-radius: 25px;
+    width: 700px;
+}
+.eventCard
+{
+    margin: 10px;
 }
 
 #last-wrapper {

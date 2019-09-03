@@ -28,7 +28,9 @@
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 50px;
+    margin-left: 30px;
     background-color: black;
+    border-radius: 25px;
 }
 
 #last-wrapper {

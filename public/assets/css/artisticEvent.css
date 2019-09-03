@@ -24,7 +24,9 @@
 .artist-wrapper {
     padding-top: 20px;
     border: solid 2px wheat;
-    background-color: black;
+    background-color: rgb(12, 11, 11);
+    border-radius: 25px;
+    width: 800px;
 }
 
 .artist-box {
