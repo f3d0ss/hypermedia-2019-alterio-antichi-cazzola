@@ -35,6 +35,7 @@
     background-color: black;
 }
 
-p {
-    margin-top: 30px;
+.card-body img {
+    height: 300px;
+    width: 800px;
 }
