@@ -1,7 +1,7 @@
 const db = require('../util/database');
 
 module.exports = class Event {
-    constructor(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, company_ids, event_type, id) {
+    constructor(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, company_ids, photos, event_type, id) {
         this.id = id ? id : null;
         this.name = name;
         this.abstract = abstract;
@@ -13,6 +13,7 @@ module.exports = class Event {
         this.seminar_id = seminar_id;
         this.performer_ids = performer_ids;
         this.company_ids = company_ids;
+        this.photos = photos;
         this.event_type = event_type;
     }
 
@@ -45,6 +46,15 @@ module.exports = class Event {
             }
             await db.query(query, params);
         }
+        if (this.photos && this.photos.length > 0) {
+            let query = "INSERT INTO EventPhoto (event_id, path) VALUES ";
+            const params = [];
+            for (const photo of this.photos) {
+                query = query + "(?, ?) ";
+                params.push(this.id, photo);
+            }
+            await db.query(query, params);
+        }
     }
 
     static async getEventById(eventId) {
@@ -61,11 +71,15 @@ module.exports = class Event {
         );
         const performer_ids = performer_res[0].map(performerId => performerId.performer_id);
 
-        const res = await db.query(
+        const company_res = await db.query(
             "SELECT company_id FROM CompanyEvent WHERE event_id = ?",
             [event.id]
         );
-        const company_ids = res[0].map(companyId => companyId.company_id);
+        const company_ids = company_res[0].map(companyId => companyId.company_id);
+        const photos_res = await db.query("SELECT path FROM EventPhoto WHERE event_id = ?", [event.id]);
+        const photos = photos_res[0].map(path_res => path_res.path);
+
+
         return new Event(
             event.name,
             event.abstract,
@@ -77,6 +91,7 @@ module.exports = class Event {
             event.seminar_id,
             performer_ids,
             company_ids,
+            photos,
             event.event_type,
             event.id
         );
@@ -100,11 +115,13 @@ module.exports = class Event {
             );
             const performer_ids = performer_res[0].map(performerId => performerId.performer_id);
 
-            const res = await db.query(
+            const company_res = await db.query(
                 "SELECT company_id FROM CompanyEvent WHERE event_id = ?",
                 [event.id]
             );
-            const company_ids = res[0].map(companyId => companyId.company_id);
+            const company_ids = company_res[0].map(companyId => companyId.company_id);
+            const photos_res = await db.query("SELECT path FROM EventPhoto WHERE event_id = ?", [event.id]);
+            const photos = photos_res[0].map(path_res => path_res.path);
 
             events.push(new Event(
                 event.name,
@@ -117,6 +134,7 @@ module.exports = class Event {
                 event.seminar_id,
                 performer_ids,
                 company_ids,
+                photos,
                 event.event_type,
                 event.id
             ));
@@ -157,11 +175,13 @@ module.exports = class Event {
             );
             const performer_ids = performer_res[0].map(performerId => performerId.performer_id);
 
-            const res = await db.query(
+            const company_res = await db.query(
                 "SELECT company_id FROM CompanyEvent WHERE event_id = ?",
                 [event.id]
             );
-            const company_ids = res[0].map(companyId => companyId.company_id);
+            const company_ids = company_res[0].map(companyId => companyId.company_id);
+            const photos_res = await db.query("SELECT path FROM EventPhoto WHERE event_id = ?", [event.id]);
+            const photos = photos_res[0].map(path_res => path_res.path);
 
             events.push(new Event(
                 event.name,
@@ -174,6 +194,7 @@ module.exports = class Event {
                 event.seminar_id,
                 performer_ids,
                 company_ids,
+                photos,
                 event.event_type,
                 event.id
             ));
@@ -215,11 +236,13 @@ module.exports = class Event {
                 [event.id]
             );
             const performer_ids = performer_res[0].map(performerId => performerId.performer_id);
-            const res = await db.query(
+            const company_res = await db.query(
                 "SELECT company_id FROM CompanyEvent WHERE event_id = ?",
                 [event.id]
             );
-            const company_ids = res[0].map(companyId => companyId.company_id);
+            const company_ids = company_res[0].map(companyId => companyId.company_id);
+            const photos_res = await db.query("SELECT path FROM EventPhoto WHERE event_id = ?", [event.id]);
+            const photos = photos_res[0].map(path_res => path_res.path);
 
             events.push(new Event(
                 event.name,
@@ -232,6 +255,7 @@ module.exports = class Event {
                 event.seminar_id,
                 performer_ids,
                 company_ids,
+                photos,
                 event.event_type,
                 event.id
             ));
@@ -257,11 +281,13 @@ module.exports = class Event {
             );
             const performer_ids = performer_res[0].map(performerId => performerId.performer_id);
 
-            const res = await db.query(
+            const company_res = await db.query(
                 "SELECT company_id FROM CompanyEvent WHERE event_id = ?",
                 [event.id]
             );
-            const company_ids = res[0].map(companyId => companyId.company_id);
+            const company_ids = company_res[0].map(companyId => companyId.company_id);
+            const photos_res = await db.query("SELECT path FROM EventPhoto WHERE event_id = ?", [event.id]);
+            const photos = photos_res[0].map(path_res => path_res.path);
 
             events.push(new Event(
                 event.name,
@@ -274,6 +300,7 @@ module.exports = class Event {
                 event.seminar_id,
                 performer_ids,
                 company_ids,
+                photos,
                 event.event_type,
                 event.id
             ));
@@ -299,11 +326,13 @@ module.exports = class Event {
             );
             const performer_ids = performer_res[0].map(performerId => performerId.performer_id);
 
-            const res = await db.query(
+            const company_res = await db.query(
                 "SELECT company_id FROM CompanyEvent WHERE event_id = ?",
                 [event.id]
             );
-            const company_ids = res[0].map(companyId => companyId.company_id);
+            const company_ids = company_res[0].map(companyId => companyId.company_id);
+            const photos_res = await db.query("SELECT path FROM EventPhoto WHERE event_id = ?", [event.id]);
+            const photos = photos_res[0].map(path_res => path_res.path);
 
             events.push(new Event(
                 event.name,
@@ -316,6 +345,7 @@ module.exports = class Event {
                 event.seminar_id,
                 performer_ids,
                 company_ids,
+                photos,
                 event.event_type,
                 event.id
             ));
@@ -341,11 +371,13 @@ module.exports = class Event {
             );
             const performer_ids = performer_res[0].map(performerId => performerId.performer_id);
 
-            const res = await db.query(
+            const company_res = await db.query(
                 "SELECT company_id FROM CompanyEvent WHERE event_id = ?",
                 [event.id]
             );
-            const company_ids = res[0].map(companyId => companyId.company_id);
+            const company_ids = company_res[0].map(companyId => companyId.company_id);
+            const photos_res = await db.query("SELECT path FROM EventPhoto WHERE event_id = ?", [event.id]);
+            const photos = photos_res[0].map(path_res => path_res.path);
 
             events.push(new Event(
                 event.name,
@@ -358,6 +390,7 @@ module.exports = class Event {
                 event.seminar_id,
                 performer_ids,
                 company_ids,
+                photos,
                 event.event_type,
                 event.id
             ));
@@ -383,11 +416,13 @@ module.exports = class Event {
             );
             const performer_ids = performer_res[0].map(performerId => performerId.performer_id);
 
-            const res = await db.query(
+            const company_res = await db.query(
                 "SELECT company_id FROM CompanyEvent WHERE event_id = ?",
                 [event.id]
             );
-            const company_ids = res[0].map(companyId => companyId.company_id);
+            const company_ids = company_res[0].map(companyId => companyId.company_id);
+            const photos_res = await db.query("SELECT path FROM EventPhoto WHERE event_id = ?", [event.id]);
+            const photos = photos_res[0].map(path_res => path_res.path);
 
             events.push(new Event(
                 event.name,
@@ -400,6 +435,7 @@ module.exports = class Event {
                 event.seminar_id,
                 performer_ids,
                 company_ids,
+                photos,
                 event.event_type,
                 event.id
             ));

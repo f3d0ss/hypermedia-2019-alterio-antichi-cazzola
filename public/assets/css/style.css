@@ -17,6 +17,10 @@ body {
     text-align: left;
 }
 
+.title-dark {
+    color: rgb(53, 46, 38);
+}
+
 .description-wrapper {
     padding: 20px;
     margin-top: 50px;
