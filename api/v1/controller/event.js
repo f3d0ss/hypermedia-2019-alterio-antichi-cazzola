@@ -33,10 +33,11 @@ exports.postEvent = async (req, res, next) => {
     const seminar_id = req.body.seminar_id;
     const performer_ids = req.body.performer_ids;
     const company_ids = req.body.company_ids;
+    const photos = req.body.photos;
     const event_type = req.body.event_type
 
     try {
-        const event = new Event(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, company_ids, event_type);
+        const event = new Event(name, abstract, date, start, end, vacancy, location_id, seminar_id, performer_ids, company_ids, photos, event_type);
         await event.save();
         res.status(201).json(event);
     } catch (error) {

@@ -850,6 +850,7 @@ components:
         - location_id
         - vacancy
         - event_type
+        - photos
       properties:
         name:
           type: string
@@ -888,6 +889,11 @@ components:
           items:
             type: integer
             example: 1
+        photos:
+          type: array
+          items:
+            type: string
+            example: /images/e1-1.png
         event_type:
           type: string
           example: dance
@@ -962,20 +968,28 @@ components:
       type: object
       required:
         - name
-        - achivments
+        - achievements
         - detail
+        - age
+        - birth
       properties:
         name:
           type: string
           example: Anna Pavlova
-        achivments:
+        achievements:
           type: array
           items:
             type: string
             example: Grade
         detail:
           type: string
-          example: 'Anna Pavlovna (Matveyevna) Pavlova (Russian: Анна Павловна (Матвеевна) Павлова; February 12 [O.S. January 31] 1881 — January 23, 1931) was a Russian prima ballerina of the late 19th and the early 20th centuries. She was a principal artist of the Imperial Russian Ballet and the Ballets Russes of Sergei Diaghilev. Pavlova is most recognized for her creation of the role of The Dying Swan and, with her own company, became the first ballerina to tour around the world. She toured South America, India and Australia'
+          example: 'Anna Pavlovna (Matveyevna) Pavlova (Russian; February 12 [O.S. January 31] 1881 — January 23, 1931) was a Russian prima ballerina of the late 19th and the early 20th centuries. She was a principal artist of the Imperial Russian Ballet and the Ballets Russes of Sergei Diaghilev. Pavlova is most recognized for her creation of the role of The Dying Swan and, with her own company, became the first ballerina to tour around the world. She toured South America, India and Australia'
+        age:
+          type: integer
+          example: 45
+        birth:
+          type: string
+          example: London
         company_id:
           type: integer
           example: 1234
