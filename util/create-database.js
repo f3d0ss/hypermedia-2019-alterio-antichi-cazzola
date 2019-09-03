@@ -135,6 +135,8 @@ function createPerformerTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE Performer (
             id int PRIMARY KEY AUTO_INCREMENT,
             name varchar(255) NOT NULL,
+            age int NOT NULL,
+            birth varchar(255) NOT NULL,
             company_id int,
             detail text NOT NULL,
             FOREIGN KEY (company_id) REFERENCES Company(id)
