@@ -1,7 +1,9 @@
-var post = (url, body) => new Promise((resolve, reject) => {
+var post = (url, body, auth) => new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
+    if(auth)
+        xhr.setRequestHeader('Authorization', 'Bearer ' + token);
     var json = JSON.stringify(body);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE)
@@ -22,7 +24,21 @@ var get = (url, pageSize) => new Promise((resolve, reject) => {
 
 const token = localStorage.getItem("token");
 const UrlLastPart = location.href.substring(location.href.lastIndexOf('/') + 1);
+const goTo = url=>  window.location.href = url;
 const byId = id => document.getElementById(id);
+
+const getTokenPayload = () => {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
+
+var userID = null;
+
 var BASEold = 'http://localhost:3000/api/v1';
 var BASE = '/api/v1';
 var URLS = {
@@ -38,7 +54,7 @@ var URLS = {
 }
 
 const onLoad = () => {
-    if (localStorage.getItem("token")) {
+    if (token) {
         const loginBtn = document.getElementById("login-btn");
         loginBtn.innerHTML = "logout";
         loginBtn.setAttribute("href", "/#")
@@ -46,6 +62,7 @@ const onLoad = () => {
             localStorage.removeItem("token");
             location.reload();
         }
+        userID = getTokenPayload().sub;
     }
 }
 

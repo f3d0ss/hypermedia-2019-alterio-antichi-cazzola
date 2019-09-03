@@ -1,4 +1,5 @@
 <%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/home.css">
 <title>Home Page</title>
 </head>
 
@@ -11,14 +12,23 @@
         </ol>
     </nav>
 
+    <img id="main-img" src="images/home.jpg">
+
+    <div class="d-flex flex-row justify-content-center">
+        <div id="main-txt">
+            <h1 class="white">Most Popular Festival In Miami!</h1>
+            <h2 class="white">Don't Miss It!</h2>
+        </div>
+    </div>
+
     <div class="container mt-5">
-        <h1 class="display-3 text-center">Sometimes happens!</h1>
-        <h1 class="display-4 text-center mt-5">Sometimes happens!</h1>
+        <h1 class="display-4 text-center mt-5">Don't miss the 10th iteration of the most popular festival in Miami!</h1>
     </div>
 
     <%- include('includes/footer.ejs') %>
     <script src="/js/script.js"></script>
-    <script src="/js/postTest.js"></script>
+
+    <!--    <script src="/js/postTest.js"></script> -->
 </body>
 
 </html>

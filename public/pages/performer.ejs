@@ -1,6 +1,6 @@
 <%- include('includes/head.ejs') %>
 <link rel="stylesheet" href="/css/performer.css">
-<title>*Performer's Name*</title>
+<title id="title"></title>
 </head>
 
 <body>
@@ -9,7 +9,7 @@
         <ol class="breadcrumb crumb">
             <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
             <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Performers</a></li>
-            <li class="breadcrumb-item bc-active" aria-current="page">Derren Brown</li>
+            <li id="name" class="breadcrumb-item bc-active" aria-current="page"></li>
         </ol>
     </nav>
 
@@ -25,26 +25,23 @@
                             </div>
                             <div class="header-container">
                                 <div class="d-flex justify-content-center">
-                                    <h2 class="title">Derren Brown</h2>
+                                    <h2 id="name2" class="title"></h2>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <h4 class="subtitle">-Magician-</h4>
+                                    <h4 class="subtitle">-Performer-</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p><span class="font-weight-bold">Age:</span><span class="font-weight-light">
-                                53</span></p>
-                        <p><span class="font-weight-bold">Born in:</span><span class="font-weight-light">
-                                Yate, England</span></p>
-                        <p><span class="font-weight-bold">Genres:</span><span class="font-weight-light">
-                                Fantasy, Horror</span></p>
-                        <p><span class="font-weight-bold">Main Series:</span><span class="font-weight-light">
-                                Harry Potter</span></p>
+                        <p><span  class="font-weight-bold">Age:</span><span id="age" class="font-weight-light">
+                                </span></p>
+                        <p><span class="font-weight-bold">Born in:</span><span id="birth" class="font-weight-light">
+                                </span></p>
+ 
                     </div>
                     <hr>
-                    <p class="centralized subtitle">Follow J.K.Rowling on social media!</p>
+                    <p id="followName" class="centralized subtitle">Follow J.K.Rowling on social media!</p>
                     <ul class="social-network centralized">
                         <li><a href="#" class="icoFacebook"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href="#" class="icoTwitter"><i class="fab fa-twitter"></i></a></li>
@@ -59,8 +56,8 @@
             <div id="quote-wrapper">
                 <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
                 <blockquote>
-                    <p class="subtitle">La mia ragazza mi piace come il caffè:</p>
-                    <p class="subtitle">Senza il cazzo di qualcun altro dentro</p>
+                    <p id="cit1" class="subtitle">La mia ragazza mi piace come il caffè:</p>
+                    <p id="cit2" class="subtitle">Senza il cazzo di qualcun altro dentro</p>
                 </blockquote>
             </div>
 
@@ -98,30 +95,8 @@
             <div class="col"></div>
             <div class="col-8">
                 <div class="description-wrapper centralized">
-                    <h2 class="title">More About Derren Brown</h2>
-                    <p>
-                        Derren Brown was born in Croydon, London, on 27 February 1971, the son of Chris and Bob
-                        Brown. He has a brother nine years his junior. He was privately educated at Whitgift School in
-                        Croydon, where his father was a swimming coach, and studied Law and German at the University of
-                        Bristol. While there, he attended a hypnotist show by Martin S Taylor, which inspired him to
-                        turn to illusion and hypnosis as a career. As an undergraduate, he started working as a
-                        conjuror,
-                        performing the traditional skills of close-up magic in bars and restaurants. In 1992, he started
-                        performing stage shows at the University of Bristol under the stage name Darren V. Brown; the
-                        "V"
-                        stood for "Victor".
-                        Brown cites magician and comedian Jerry Sadowitz, whom he met at the International Magic shop in
-                        Clerkenwell, London, as being instrumental in his rise to stardom. Sadowitz put him in touch
-                        with
-                        H&R publishers and Objective Productions, a production company founded by television magician
-                        Andrew
-                        O'Connor. This gave him his breakthrough show, Mind Control (2000), and his work went on
-                        to become their first award-winning product. After several further shows with Objective, Brown
-                        set up his own company Vaudeville Productions with former Objective executives Michael Vine,
-                        Andrew
-                        O’Connor, and Paul Sandler, in order to produce his own shows as well as other projects with
-                        other
-                        performers. Its first show was Brown's TV special, Pushed to the Edge.
+                    <h2 id="moreAbout" class="title"></h2>
+                    <p id="description">                    
                     </p>
                 </div>
             </div>
@@ -132,26 +107,10 @@
             <div class="col"></div>
             <div class="col-12">
                 <div class="centralized event-wrapper">
-                    <h2 class="title">Find Derren Brown Performing In:</h2>
-                    <div class="row d-flex justify-content-center">
-                        <div class="event-box">
-                            <a href="#">
-                                <img class="round-img" src="/images/HarryPotter.jpg">
-                            </a>
-                            <p class="wheat-item">Event1</p>
-                        </div>
-                        <div class="event-box">
-                            <a href="#">
-                                <img class="round-img" src="/images/HarryPotter.jpg">
-                            </a>
-                            <p class="wheat-item">Event2</p>
-                        </div>
-                        <div class="event-box">
-                            <a href="#">
-                                <img class="round-img" src="/images/HarryPotter.jpg">
-                            </a>
-                            <p class="wheat-item">Event3</p>
-                        </div>
+                    <h2 id="findAuthor" class="title"></h2>
+                    <div id="" class="row d-flex justify-content-center">
+                        <div id="eventsContainer" class="event-box">
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -160,7 +119,8 @@
     </div>
 
     <%- include('includes/footer.ejs') %>
-
+    <script src="/js/script.js"></script>
+    <script src="/js/performer.js"></script>
 </body>
 
 </html>

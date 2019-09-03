@@ -47,7 +47,7 @@ const createCard = (container, event, performers) =>
         card += `
                 <div class="performer-row d-flex flex-row justify-content-center">
                     <img class="performer-img" src="/images/HarryPotter.jpg">
-                    <h4 class="title performer-name"><a href="#">${performers[i].name}</a></h2>
+                    <h4 class="title performer-name"><a href="${"/performers/" + performers[i].id}">${performers[i].name}</a></h2>
                 </div>
                 `
     card +=    
