@@ -44,6 +44,7 @@ async function createTables(promisePoolDb) {
         await createSeminarTable(promisePoolDb);
         await createEventTypeTable(promisePoolDb);
         await createEventTable(promisePoolDb);
+        await createEventPhotoTable(promisePoolDb);
         await createCompanyTable(promisePoolDb);
         await createCompanyPhotoTable(promisePoolDb);
         await createPerformerTable(promisePoolDb);
@@ -153,6 +154,14 @@ function createPerformerPhotoTable(promisePoolDb) {
             path varchar(255) PRIMARY KEY,
             performer_id int NOT NULL,
             FOREIGN KEY (performer_id) REFERENCES Performer(id)
+        );`);
+}
+
+function createEventPhotoTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE EventPhoto (
+            path varchar(255) PRIMARY KEY,
+            event_id int NOT NULL,
+            FOREIGN KEY (event_id) REFERENCES Event(id)
         );`);
 }
 

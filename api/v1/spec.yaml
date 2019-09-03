@@ -850,6 +850,7 @@ components:
         - location_id
         - vacancy
         - event_type
+        - photos
       properties:
         name:
           type: string
@@ -888,6 +889,11 @@ components:
           items:
             type: integer
             example: 1
+        photos:
+          type: array
+          items:
+            type: string
+            example: /images/e1-1.png
         event_type:
           type: string
           example: dance
