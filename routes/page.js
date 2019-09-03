@@ -7,6 +7,7 @@ router.get('/login', (req, res, next) => res.render('login'));
 router.get('/registration', (req, res, next) => res.render('registration'));
 router.get('/reservationInfo', (req, res, next) => res.render('reservationInfo'));
 router.get('/performers', (req, res, next) => res.render('performerGroup'));
+router.get('/companies', (req, res, next) => res.render('performerGroup'));
 router.get('/calendar', (req, res, next) => res.render('calendar'));
 router.get('/eventsTypes', (req, res, next) => res.render('eventsTypes'));
 router.get('/events/type/:type', (req, res, next) => res.render('eventsByType'));

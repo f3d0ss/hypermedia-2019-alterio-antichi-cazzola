@@ -1,6 +1,6 @@
 <%- include('includes/head.ejs') %>
 <link rel="stylesheet" href="/css/performerGroup.css">
-<title>All Performers</title>
+<title id="title"></title>
 </head>
 
 <body>
@@ -9,7 +9,7 @@
     <nav class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb crumb">
             <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
-            <li class="breadcrumb-item bc-active" aria-current="page">All Performers</li>
+            <li id="breadCrumbName" class="breadcrumb-item bc-active" aria-current="page"></li>
         </ol>
     </nav>
 
@@ -18,16 +18,10 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <div class="d-flex flex-row justify-content-center">
-                    <h1 class="title">Single Artists</h1>
+                    <h1 id="h1Title" class="title"></h1>
                 </div>
                 <div id="performersContainer">
                     
-                </div>
-                <div id="title-row" class="d-flex flex-row justify-content-center">
-                    <h1 class="title">Companies</h1>
-                </div>
-                <div id="companiesContainer">
-
                 </div>
             </div>
             <div class="col-2"></div>

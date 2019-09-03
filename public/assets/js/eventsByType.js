@@ -4,7 +4,7 @@ const createCard = (container, event, performers) =>
             `
              <div class="s-wrapper centralized">
                 <div class="quote-wrapper">
-                    <h1> <a href="#" class="title">${event.name}</a></h1>
+                    <h1> <a href="${"/events/" + event.id}" class="title">${event.name}</a></h1>
                     <p class="subtitle"> ${event.abstract}</p>
                 </div>
 

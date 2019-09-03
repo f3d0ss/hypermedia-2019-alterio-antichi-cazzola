@@ -18,24 +18,30 @@ const onPerformerGroupLoad = async () =>
 {
     try
     {
-        await createCards();
+        var title;
+        var performers;
+
+        if(UrlLastPart === "performers")
+        {
+            title = "All performers";
+            performers = (await get(URLS.PERFORMER, 100)).response;
+        }
+        else
+        {
+            title = "All companies";
+            performers = (await get(URLS.COMPANY, 100)).response;
+        }
+        await createCards(title, performers);
     }
     catch(e) { console.log(e); }
 }
 
-const createCards = async () =>
+const createCards = async (title, performers) =>
 {
-    const performersContainer = document.getElementById("performersContainer");
-    const companiesContainer = document.getElementById("companiesContainer");
-
-    const performers = (await get(URLS.PERFORMER, 100)).response;
-    const companies = (await get(URLS.COMPANY, 100)).response;
-
+    const performersContainer = byId("performersContainer");
+    byId("title").innerHTML = byId("h1Title").innerHTML = byId("breadCrumbName").innerHTML = title;
     for(var i=0; i < performers.length; i++)
         createCard(performersContainer, performers[i].name)
-    for(var i=0; i < companies.length; i++)
-        createCard(companiesContainer, companies[i].name)
-    console.log(companiesContainer, companies);
 }
 
 onPerformerGroupLoad();
