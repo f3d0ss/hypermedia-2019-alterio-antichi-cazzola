@@ -968,7 +968,7 @@ components:
       type: object
       required:
         - name
-        - achivments
+        - achievements
         - detail
         - age
         - birth
@@ -976,7 +976,7 @@ components:
         name:
           type: string
           example: Anna Pavlova
-        achivments:
+        achievements:
           type: array
           items:
             type: string

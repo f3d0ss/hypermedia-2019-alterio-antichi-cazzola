@@ -49,7 +49,7 @@ async function createTables(promisePoolDb) {
         await createCompanyPhotoTable(promisePoolDb);
         await createPerformerTable(promisePoolDb);
         await createPerformerPhotoTable(promisePoolDb);
-        await createAchivementTable(promisePoolDb);
+        await createAchievementTable(promisePoolDb);
         await createPerformerEventTable(promisePoolDb);
         await createCompanyEventTable(promisePoolDb);
         await createSignUpTokenTable(promisePoolDb);
@@ -167,8 +167,8 @@ function createEventPhotoTable(promisePoolDb) {
         );`);
 }
 
-function createAchivementTable(promisePoolDb) {
-    return promisePoolDb.query(`CREATE TABLE Achivement (
+function createAchievementTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE Achievement (
             id int PRIMARY KEY AUTO_INCREMENT,
             name varchar(255) NOT NULL,
             performer_id int NOT NULL,

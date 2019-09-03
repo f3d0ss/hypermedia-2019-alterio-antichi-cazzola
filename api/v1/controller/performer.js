@@ -24,14 +24,14 @@ exports.getPerformerById = async (req, res, next) => {
 
 exports.postPerformer = async (req, res, next) => {
     const name = req.body.name;
-    const achivements = req.body.achivements;
+    const achievements = req.body.achievements;
     const detail = req.body.detail;
     const age = req.body.age;
     const birth = req.body.birth;
     const company_id = req.body.company_id;
     const photos = req.body.photos;
     try {
-        const performer = new Performer(name, achivements, detail, age, birth, company_id, photos);
+        const performer = new Performer(name, achievements, detail, age, birth, company_id, photos);
         await performer.save();
         res.status(201).json(performer);
     } catch (error) {
