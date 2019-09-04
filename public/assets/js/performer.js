@@ -1,10 +1,16 @@
 const addvent = event => {
     var html =
         `
-            <a href=${"/events/" + event.id}>
-                <img class="round-img" src="/images/HarryPotter.jpg">
-            </a>
-            <p class="wheat-item">${event.name}</p>
+        <div class = "row event-box"> 
+            <div class = "col"> 
+                <a href=${"/events/" + event.id}>
+                    <img class="round-img" src="/images/HarryPotter.jpg">
+                </a>
+            </div>
+            <div class = "col"> 
+                <p class="wheat-item">${event.name}</p>  
+            </div>
+        </div>
         `;
     byId("eventsContainer").innerHTML += html;
 }
