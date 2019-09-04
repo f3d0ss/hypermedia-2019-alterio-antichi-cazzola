@@ -947,10 +947,14 @@ components:
         - start
         - end
         - vacancy
+        - abstract
       properties:
         title:
           type: string
           example: Amazing seminar
+        abstract:
+          type: string
+          example: This seminar discusses what's the correct approach to introduce new people to dancing in our times. Some dance instructors are going to explain their stance on the evergreen topic of the education and how much of a relevance it has in today's art of dancing.
         location_id:
           type: string
           example: A01
