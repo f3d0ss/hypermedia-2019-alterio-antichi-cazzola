@@ -88,7 +88,7 @@ function createEventTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE Event (
         id int PRIMARY KEY AUTO_INCREMENT,
         name varchar(255) NOT NULL UNIQUE,
-        abstract varchar(255) NOT NULL,
+        abstract text NOT NULL,
         date date NOT NULL,
         start time NOT NULL,
         end time NOT NULL,
@@ -106,7 +106,7 @@ function createSeminarTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE Seminar (
             id int PRIMARY KEY AUTO_INCREMENT,
             title varchar(255) NOT NULL UNIQUE,
-            abstract varchar(255) NOT NULL,
+            abstract text NOT NULL,
             date date NOT NULL,
             start time NOT NULL,
             end time NOT NULL,
