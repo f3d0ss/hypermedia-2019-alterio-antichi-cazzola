@@ -22,7 +22,7 @@ const createCard = (container, event, performers) => {
     for (var i = 0; i < performers.length; i++)
         card += `
                 <div class="performer-row d-flex flex-row justify-content-center">
-                    <img class="performer-img" src="/images/HarryPotter.jpg" alt="photo of ${performers[i].name}">
+                    <img class="performer-img" src="${performers[i].photos[0]?performers[i].photos[0]: "/images/HarryPotter.jpg"}" alt="photo of ${performers[i].name}">
                     <h4 class="title performer-name"><a href="${"/performers/" + performers[i].id}">${performers[i].name}</a></h2>
                 </div>
                 `
