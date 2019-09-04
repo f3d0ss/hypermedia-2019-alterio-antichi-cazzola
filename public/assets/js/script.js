@@ -1,3 +1,15 @@
+Element.prototype.remove = function () {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+    for (var i = this.length - 1; i >= 0; i--) {
+        if (this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
+
+
 var post = (url, body, auth) => new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -56,7 +68,12 @@ var URLS = {
 const onLoad = () => {
     if (token) {
         const loginBtn = document.getElementById("login-btn");
-        loginBtn.innerHTML = "logout";
+        document.getElementById("signup-btn").remove();
+        document.getElementById("navbar-ul").innerHTML += `
+            <li class="nav-item">
+                <a class="nav-link wheat-item wheat-link" href="/reservations">My Reservations</a>
+            </li>`;
+        loginBtn.innerHTML = "Logout";
         loginBtn.setAttribute("href", "/#")
         loginBtn.onclick = () => {
             localStorage.removeItem("token");
