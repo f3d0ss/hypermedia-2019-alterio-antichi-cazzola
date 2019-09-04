@@ -79,7 +79,7 @@ var companyPost = async () =>
             "name": "Hall & Oates",
             "detail": "Hall and Oates have sold an estimated 40 million records, making them the best selling music duo in history. They are best known for their six No. 1 hits on the Billboard Hot 100: Rich Girl, Kiss on My List, Private Eyes, I Can't Go for That (No Can Do), Maneater, and Out of Touch, as well as many other songs which charted in the Top 40 including the singles You Make My Dreams, She’s Gone and Sara Smile. In total, they had 34 chart hits on the US Billboard Hot 100, seven RIAA platinum albums, and six RIAA gold albums. Billboard magazine named them the most successful duo of the rock era, surpassing Simon & Garfunkel and The Everly Brothers. They have achieved moderate success in the United Kingdom with two UK top ten albums, spending a total of one-hundred and seventeen weeks in the UK top 75 album charts and eighty-four weeks in the top seventy-five of the UK Singles Chart.",
             "photos": [
-                "/images/c3-1.png, /images/c3-2.png, /images/c3-3.png"
+                "/images/c3-1.jpg", "/images/c3-2.jpg", "/images/c3-3.jpg"
             ]
         });
     await post(URLS.COMPANY,  // post can be found in script.js

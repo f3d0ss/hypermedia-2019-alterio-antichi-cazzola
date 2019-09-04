@@ -32,6 +32,16 @@ const setupButtons = res =>
     }
 }
 
+const addHint = () =>   
+{
+    byId("container").innerHTML = 
+                `
+                    <div class="d-flex flex-row justify-content-center">
+                        <h3><a class ="text-dark" href = "/eventsTypes">Are you looking for an event?<a/></h3>
+                    </div>
+                `
+}
+
 const onReservationsLoad = async () =>
 {
     try
@@ -39,13 +49,18 @@ const onReservationsLoad = async () =>
         if(!token)
             location.href = "/";
         const res = (await get(URLS.RESERVATION + "/user/" + userID, 100)).response;
-        const events = [];
-        for(var i=0; i < res.length; i++)
-            events.push((await get(URLS.EVENT + "/" + res[i].event_id, 100)).response);
+        if(res.length > 0)
+        {
+            const events = [];
+            for(var i=0; i < res.length; i++)
+                events.push((await get(URLS.EVENT + "/" + res[i].event_id, 100)).response);
 
-        for(var i=0; i < events.length; i++)
-            addReservation(events[i]);
-        setupButtons(res);
+            for(var i=0; i < events.length; i++)
+                addReservation(events[i]);
+            setupButtons(res);
+        }
+        else
+            addHint();
     }
     catch(e) { console.log(e); }
 }
