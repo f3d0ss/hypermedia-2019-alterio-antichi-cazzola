@@ -1,5 +1,5 @@
 <%- include('includes/head.ejs') %>
-<link rel="stylesheet" href="/css/performer.css">
+<link rel="stylesheet" href="/css/company.css">
 <title id="title"></title>
 </head>
 
@@ -8,7 +8,7 @@
     <nav class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb crumb">
             <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/">Home</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/performers">Performers</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/companies">Companies</a></li>
             <li id="name" class="breadcrumb-item bc-active" aria-current="page"></li>
         </ol>
     </nav>
@@ -28,18 +28,15 @@
                                     <h2 id="name2" class="title"></h2>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <h4 class="subtitle">-Performer-</h4>
+                                    <h4 class="subtitle">-Company-</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p><span class="font-weight-bold">Age:</span><span id="age" class="font-weight-light">
-                            </span></p>
-                        <p><span class="font-weight-bold">Born in:</span><span id="birth" class="font-weight-light">
-                            </span></p>
-                        <p id="achievements"></p>
+                        <div id="performersContainer" class="row justify-content-center">
 
+                        </div>
                     </div>
                     <hr>
                     <p id="followName" class="centralized subtitle">Follow J.K.Rowling on social media!</p>
@@ -82,7 +79,7 @@
                 <div class="centralized event-wrapper">
                     <h2 id="findAuthor" class="title"></h2>
                     <div id="" class="row d-flex justify-content-center">
-                        <div id="eventsContainer" class= "row justify-content-center">
+                        <div id="eventsContainer" class="row justify-content-center">
                         </div>
                     </div>
                 </div>
@@ -93,7 +90,7 @@
 
     <%- include('includes/footer.ejs') %>
     <script src="/js/script.js"></script>
-    <script src="/js/performer.js"></script>
+    <script src="/js/company.js"></script>
 </body>
 
 </html>

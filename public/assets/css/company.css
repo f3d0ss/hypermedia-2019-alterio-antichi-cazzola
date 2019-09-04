@@ -1,0 +1,168 @@
+/* generics */
+
+.container {
+    padding-bottom: 30px;
+}
+
+/* performer card */
+
+.photo-container {
+    height: 165px;
+    width: 165px;
+    position: absolute;
+    top: -75px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(229, 226, 226);
+}
+
+.company-img {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    border: 4px solid black;
+}
+
+.header-container {
+    margin-top: 80px;
+}
+
+.card-header {
+    background-color: black;
+}
+
+.title {
+    color: rgb(236, 192, 109);
+}
+
+.subtitle {
+    color: rgb(180, 165, 138);
+}
+
+/* social media icons */
+
+ul.social-network {
+    display: inline;
+    padding: 0;
+}
+
+ul.social-network li {
+    display: inline;
+    margin: 0 5px;
+}
+
+ul.social-network li a {
+    display: inline-block;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+ul.social-network li i {
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    transition: all 0.8s;
+}
+
+a.icoFacebook:hover {
+    background-color: #3B5998;
+    transition: all 1s;
+}
+
+a.icoTwitter:hover {
+    background-color: #33ccff;
+    transition: all 1s;
+}
+
+a.icoInstagram:hover {
+    background-color: #ce3f76;
+    transition: all 1s;
+}
+
+a.icoFacebook,
+a.icoTwitter,
+a.icoInstagram {
+    background-color: #D3D3D3;
+}
+
+.social-network li a:hover i {
+    transform: rotate(360deg);
+    transition: all 0.3s;
+}
+
+/* second wrapper */
+
+.s-wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 50px;
+    background-color: black;
+    border-radius: 15px;
+}
+
+/* quote wrapper */
+
+#quote-wrapper p {
+    font-size: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 15px;
+}
+
+#slider-container {
+    padding-top: 50px;
+}
+
+.carousel-item img {
+    height: 350px;
+    width: 100%;
+    border-radius: 5px;
+    border: solid 2px rgb(180, 165, 138);
+}
+
+/* related events */
+
+.event-wrapper {
+    background-color: black;
+    border-radius: 5px;
+    border: solid 4px wheat;
+    padding-top: 20px;
+    border-radius: 15px;
+}
+
+.event-box {
+    height: 200px;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.round-img {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    border: solid 2px wheat;
+}
+
+.round-img:hover {
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+
+.dark-p {
+    color: black;
+}
+
+.round-img.dark {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    border: solid 2px black;
+}
