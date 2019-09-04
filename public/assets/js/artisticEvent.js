@@ -57,10 +57,12 @@ const onArtisticEventLoad = async () =>
         setupBottomPage(id);
         abstract.innerHTML = event.abstract;
         byId("title").innerHTML = event.name;
-        byId("breadCrumbName").innerHTML = event.name;  
-        const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
-        if(seminar)
-           addSeminarBox(seminar);
+        byId("breadCrumbName").innerHTML = event.name; 
+        if(event.seminar_id) 
+        {
+            const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
+            addSeminarBox(seminar);
+        }
     }
     catch(e) { console.log(e); }
 }
