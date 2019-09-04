@@ -93,7 +93,7 @@ body {
     color: black;
 }
 
-/* login button */
+/* login and registratino buttons */
 
 #login-btn {
     background-color: wheat;
@@ -110,7 +110,6 @@ body {
 #signup-btn:hover {
     background-color: rgb(243, 195, 105);
 }
-
 
 /* nav-toggler */
 
