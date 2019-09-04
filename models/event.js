@@ -50,9 +50,12 @@ module.exports = class Event {
             let query = "INSERT INTO EventPhoto (event_id, path) VALUES ";
             const params = [];
             for (const photo of this.photos) {
-                query = query + "(?, ?) ";
+                query = query + "(?, ?) ,";
                 params.push(this.id, photo);
             }
+            query = query.substring(0, query.length - 1);
+            console.log(query);
+            console.log(params);
             await db.query(query, params);
         }
     }

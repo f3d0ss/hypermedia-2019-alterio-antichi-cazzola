@@ -121,7 +121,7 @@ a.icoInstagram {
 
 .carousel-item img {
     height: 350px;
-    width: 960px;
+    width: 100%;
     border-radius: 5px;
     border: solid 2px rgb(180, 165, 138);
 }

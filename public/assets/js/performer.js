@@ -30,7 +30,7 @@ const onPerformerLoad = async () => {
             achievementPane.innerHTML += `</ul>`;
         }
         setupEvents(performerID);
-        byId("slider").innerHTML = createCarousel(performer.photos);
+        byId("slider-container").innerHTML = createCarousel(performer.photos);
     } catch (e) {
         console.log(e);
     }
