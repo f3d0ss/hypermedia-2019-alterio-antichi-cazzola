@@ -36,6 +36,8 @@ const onReservationsLoad = async () =>
 {
     try
     {
+        if(!token)
+            location.href = "/";
         const res = (await get(URLS.RESERVATION + "/user/" + userID, 100)).response;
         const events = [];
         for(var i=0; i < res.length; i++)
