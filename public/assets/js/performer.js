@@ -4,7 +4,7 @@ const addvent = event => {
         <div class = "row event-box"> 
             <div class = "col"> 
                 <a href=${"/events/" + event.id}>
-                    <img class="round-img" src="/images/${event.photos[0]}">
+                    <img class="round-img" src="${event.photos[0]}">
                 </a>
             </div>
             <div class = "col"> 
