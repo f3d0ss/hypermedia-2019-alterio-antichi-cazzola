@@ -18,6 +18,10 @@
     color: rgb(161, 130, 71);
 }
 
+.card-header {
+    padding-bottom: 0;
+}
+
 /* card-body */
 
 .line {

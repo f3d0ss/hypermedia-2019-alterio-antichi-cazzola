@@ -14,7 +14,19 @@
     color: white;
 }
 
+.home-img-text {
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+}
 
+h1.home-img-text {
+    font-size: 4em;
+}
+
+.home-bottom-container {
+    padding-bottom: 3em;
+}
 
 @media (min-width: 400px) {
     #main-img {
