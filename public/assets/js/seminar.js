@@ -17,7 +17,7 @@ const onSeminarLoad = async () =>
         const seminar = (await get(URLS.SEMINAR + "/" + id, 1)).response;
         
         setupEvents(seminar);
-        byId("title").innerHTML = byId("seminarNameH1").innerHTML = seminar.title;
+        byId("title").innerHTML = byId("seminarNameH1").innerHTML = byId("seminarName").innerHTML = seminar.title;
     }
     catch(e) { console.log(e); }
 }

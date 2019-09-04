@@ -15,7 +15,6 @@
 /* carousel */
 
 .carousel-item {
-    background-image: url(../images/chicago.jpg);
     height: 86vh;
 }
 
@@ -24,7 +23,8 @@
 .artist-wrapper {
     padding-top: 20px;
     border: solid 2px wheat;
-    background-color: black;
+    background-color: rgb(12, 11, 11);
+    border-radius: 15px;
 }
 
 .artist-box {
@@ -61,9 +61,27 @@
     cursor: pointer;
 }
 
+@media (min-width: 765px) {
+
+    .artist-wrapper {
+        width: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .artist-wrapper {
+        width: 700px;
+    }
+}
+
 @media (min-width: 1400px) {
     .artist-img:hover {
         height: 230px;
         width: 230px;
+    }
+
+    .artist-wrapper {
+        width: 800px;
     }
 }

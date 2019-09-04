@@ -20,6 +20,14 @@
     background-color: wheat;
 }
 
+.type-description {
+    height: 3em;
+}
+
+a:hover {
+    color: rgb(233, 166, 43);
+}
+
 /* second wrapper */
 
 .s-wrapper {
@@ -29,7 +37,11 @@
     padding-right: 10px;
     margin-top: 50px;
     background-color: black;
-    border-radius: 5px;
+    border-radius: 25px;
+}
+
+.eventCard {
+    margin: 10px;
 }
 
 #last-wrapper {
@@ -51,7 +63,7 @@
 
 .carousel-item img {
     height: 350px;
-    width: 960px;
+    width: 100%;
     border-radius: 5px;
     border: solid 2px rgb(180, 165, 138);
 }
@@ -78,23 +90,31 @@
     color: rgb(240, 178, 64);
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
     .carousel-item img {
         width: 630px;
         height: 240px;
     }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 1200px) {
     .carousel-item img {
         width: 450px;
         height: 150px;
     }
+
+    .s-wrapper {
+        width: 700px;
+    }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 765px) {
     .carousel-item img {
         width: 320px;
         height: 140px;
+    }
+
+    .s-wrapper {
+        width: 380px;
     }
 }

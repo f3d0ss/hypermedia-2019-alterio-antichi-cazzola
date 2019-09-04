@@ -1,10 +1,16 @@
 const addvent = event => {
     var html =
         `
-            <a href=${"/events/" + event.id}>
-                <img class="round-img" src="/images/HarryPotter.jpg">
-            </a>
-            <p class="wheat-item">${event.name}</p>
+        <div class = "row event-box"> 
+            <div class = "col"> 
+                <a href=${"/events/" + event.id}>
+                    <img class="round-img" src="${event.photos[0]}">
+                </a>
+            </div>
+            <div class = "col"> 
+                <p class="wheat-item">${event.name}</p>  
+            </div>
+        </div>
         `;
     byId("eventsContainer").innerHTML += html;
 }
@@ -14,8 +20,9 @@ const onPerformerLoad = async () => {
         const performerID = UrlLastPart;
         const performer = (await get(URLS.PERFORMER + "/" + performerID, 100)).response[0];
 
-        byId("headImage").innerHTML = `<img src="${performer.photos.pop()}" class="performer-img"></img>`
-        byId("followName").innerHTML = `Follow ${ byId("title").innerHTML = byId("name").innerHTML = byId("name2").innerHTML = performer.name } on social media!`;
+        byId("headImage").innerHTML = `<img src="${performer.photos[0]}" class="performer-img"></img>`
+        performer.photos.shift();
+        byId("followName").innerHTML = `Follow ${byId("title").innerHTML = byId("name").innerHTML = byId("name2").innerHTML = performer.name} on social media!`;
         byId("moreAbout").innerHTML = `More about ${performer.name}`;
         byId("findAuthor").innerHTML = `Find ${performer.name} Performing in: `;
         byId("description").innerHTML = performer.detail;
@@ -30,7 +37,7 @@ const onPerformerLoad = async () => {
             achievementPane.innerHTML += `</ul>`;
         }
         setupEvents(performerID);
-        byId("slider").innerHTML = createCarousel(performer.photos);
+        byId("slider-container").innerHTML = createCarousel(performer.photos);
     } catch (e) {
         console.log(e);
     }

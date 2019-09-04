@@ -32,27 +32,32 @@ module.exports = class Event {
             let query = "INSERT INTO PerformerEvent (event_id, performer_id) VALUES ";
             const params = [];
             for (const performer_id of this.performer_ids) {
-                query = query + "(?, ?) ";
+                query = query + "(?, ?) ,";
                 params.push(this.id, performer_id);
             }
+            query = query.substring(0, query.length - 1);
             await db.query(query, params);
         }
         if (this.company_ids && this.company_ids.length > 0) {
             let query = "INSERT INTO CompanyEvent (event_id, company_id) VALUES ";
             const params = [];
             for (const company_id of this.company_ids) {
-                query = query + "(?, ?) ";
+                query = query + "(?, ?) ,";
                 params.push(this.id, company_id);
             }
+            query = query.substring(0, query.length - 1);
             await db.query(query, params);
         }
         if (this.photos && this.photos.length > 0) {
             let query = "INSERT INTO EventPhoto (event_id, path) VALUES ";
             const params = [];
             for (const photo of this.photos) {
-                query = query + "(?, ?) ";
+                query = query + "(?, ?) ,";
                 params.push(this.id, photo);
             }
+            query = query.substring(0, query.length - 1);
+            console.log(query);
+            console.log(params);
             await db.query(query, params);
         }
     }

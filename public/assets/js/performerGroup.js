@@ -1,14 +1,16 @@
-const createCard = (container, name, url) => {
+const createCard = (container, name, url, photo) => {
     var card =
         `
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="wrapper">
-                        <div class="row">
-                            <img class="performer-img" src="/images/HarryPotter.jpg" alt="First Artist">
-                            <h2 class="performer-name"><a class="performer-link" href="${url}">${name}</a></h2>
-                        </div>
+            <div class="wrapper">
+                <div class="row justify-content-center">
+                    <div class = "col">
+                        <img class="performer-img" src="${photo}" alt="First Artist">
+                    </div>
+                    <div class = "col">
+                        <h2 class="performer-name"><a class="performer-link" href="${url}">${name}</a></h2>
                     </div>
                 </div>
+            </div>
             `;
     container.innerHTML += card;
 }
@@ -41,7 +43,7 @@ const createCards = async (title, performers) => {
         } else {
             url = "companies/";
         }
-        createCard(performersContainer, performers[i].name, url + performers[i].id);
+        createCard(performersContainer, performers[i].name, url + performers[i].id, performers[i].photos[0]);
     }
 }
 

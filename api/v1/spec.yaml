@@ -570,8 +570,8 @@ paths:
           name: locationId
           required: true
           schema:
-            type: integer
-            example: 12345
+            type: string
+            example: A01
 
       responses:
         200:

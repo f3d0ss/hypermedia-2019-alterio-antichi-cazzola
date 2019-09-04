@@ -103,6 +103,7 @@ a.icoInstagram {
     margin-right: 0px;
     margin-top: 50px;
     background-color: black;
+    border-radius: 15px;
 }
 
 /* quote wrapper */
@@ -111,6 +112,7 @@ a.icoInstagram {
     font-size: 40px;
     margin-left: 0;
     margin-right: 0;
+    border-radius: 15px;
 }
 
 #slider-container {
@@ -119,7 +121,7 @@ a.icoInstagram {
 
 .carousel-item img {
     height: 350px;
-    width: 960px;
+    width: 100%;
     border-radius: 5px;
     border: solid 2px rgb(180, 165, 138);
 }
@@ -131,12 +133,13 @@ a.icoInstagram {
     border-radius: 5px;
     border: solid 4px wheat;
     padding-top: 20px;
+    border-radius: 15px;
 }
 
 .event-box {
     height: 200px;
     width: 200px;
-    margin-top: 20px;
+    margin: 10px 7px 10px 7px;
 }
 
 .round-img {

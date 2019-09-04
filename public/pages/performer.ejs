@@ -7,15 +7,15 @@
     <%- include('includes/navbar.ejs') %>
     <nav class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb crumb">
-            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Performers</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/performers">Performers</a></li>
             <li id="name" class="breadcrumb-item bc-active" aria-current="page"></li>
         </ol>
     </nav>
 
     <div id="main-container" class="container">
         <div class="row">
-            <div class="col"></div>
+            <div class="col-1 col-md-2 col-lg-3"></div>
             <div class="col-10 col-md-8 col-lg-6">
                 <div class="card">
                     <div class="card-header">
@@ -60,9 +60,7 @@
             </div>
 
             <div id="slider-container" class="container">
-                <div id="slider" class="carousel slide">
 
-                </div>
             </div>
         </div>
 
@@ -79,17 +77,13 @@
         </div>
 
         <div class="row">
-            <div class="col"></div>
-            <div class="col-12">
-                <div class="centralized event-wrapper">
-                    <h2 id="findAuthor" class="title"></h2>
-                    <div id="" class="row d-flex justify-content-center">
-                        <div id="eventsContainer" class="event-box">
-                        </div>
+            <div class="centralized event-wrapper">
+                <h2 id="findAuthor" class="title"></h2>
+                <div id="" class="row d-flex justify-content-center">
+                    <div id="eventsContainer" class="row justify-content-center">
                     </div>
                 </div>
             </div>
-            <div class="col"></div>
         </div>
     </div>
 

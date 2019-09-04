@@ -1,7 +1,7 @@
-const createCard = (container, event, performers) => 
-{
-    var card = 
-            `
+const createCard = (container, event, performers) => {
+    event.photos.shift();
+    var card =
+        `
              <div class="s-wrapper centralized">
                 <div class="quote-wrapper">
                     <h1> <a href="${"/events/" + event.id}" class="title">${event.name}</a></h1>
@@ -9,32 +9,9 @@ const createCard = (container, event, performers) =>
                 </div>
 
                 <div id="slider-container" class="container">
-                    <div id="slider1" class="carousel slide">
-                        <ol class="carousel-indicators">
-                            <li data-target="#slider1" data-slide-to="0" class="active"></li>
-                            <li data-target="#slider1" data-slide-to="1"></li>
-                            <li data-target="#slider1" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="/images/chicago.jpg" alt="First slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/images/la.jpg" alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/images/ny.jpg" alt="Third slide">
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#slider1" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#slider1" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
+                    
+                        ` + createCarousel(event.photos, event.id) + `
+    
                 </div>
 
                 <hr class="hr">
@@ -43,15 +20,15 @@ const createCard = (container, event, performers) =>
                     <h2 class="subtitle">Featuring:</h2>
                 </div>
                 `
-    for(var i=0; i < performers.length; i++)
+    for (var i = 0; i < performers.length; i++)
         card += `
                 <div class="performer-row d-flex flex-row justify-content-center">
-                    <img class="performer-img" src="/images/HarryPotter.jpg">
+                    <img class="performer-img" src="${performers[i].photos[0]?performers[i].photos[0]: "/images/HarryPotter.jpg"}" alt="photo of ${performers[i].name}">
                     <h4 class="title performer-name"><a href="${"/performers/" + performers[i].id}">${performers[i].name}</a></h2>
                 </div>
                 `
-    card +=    
-             `
+    card +=
+        `
             </div>
             `
     container.innerHTML += card;
@@ -59,25 +36,24 @@ const createCard = (container, event, performers) =>
 
 const getPerformerById = async id => (await get(URLS.PERFORMER + "/" + id)).response[0];
 
-const onEventsByTypeLoad = async () =>
-{
-    try
-    {
-        await createCards();
+const onEventsByTypeLoad = async () => {
+    const type = location.href.substring(location.href.lastIndexOf('/') + 1);
+    document.getElementById("actual-breadcrumb").innerHTML = "Events By Type " + type;
+    try {
+        await createCards(type);
+    } catch (e) {
+        console.log(e);
     }
-    catch(e) {console.log(e);}
 }
 
-const createCards = async () =>
-{
+const createCards = async (type) => {
     const container = document.getElementById("container");
-    const type = location.href.substring(location.href.lastIndexOf('/') + 1);
-    
+
+
     var events = (await get(URLS.EVENT + '/type/' + type, 100)).response;
-    for(var i=0; i < events.length; i++)
-    {
+    for (var i = 0; i < events.length; i++) {
         var performers = [];
-        for(var j=0; j < events[i].performer_ids.length; j++)
+        for (var j = 0; j < events[i].performer_ids.length; j++)
             performers.push(await getPerformerById(events[i].performer_ids[j]));
         createCard(container, events[i], performers);
     }

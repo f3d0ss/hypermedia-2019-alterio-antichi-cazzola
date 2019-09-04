@@ -7,9 +7,9 @@
     <%- include('includes/navbar.ejs') %>
     <nav class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb crumb">
-            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Performers</a></li>
-            <li class="breadcrumb-item bc-active" aria-current="page">Derren Brown</li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/seminars">Seminars</a></li>
+            <li id="seminarName" class="breadcrumb-item bc-active" aria-current="page">Derren Brown</li>
         </ol>
     </nav>
 
@@ -23,8 +23,9 @@
                     </div>
                     <div class="card-body">
                         <hr class="line">
+                        <h3 class="title">Discussed events:</h3>
                         <div id="eventsBox">
-                            
+
                         </div>
                     </div>
                 </div>
