@@ -130,7 +130,16 @@ const bookTheEvent = async id => {
 
 const setupBookButton = async id => {
     const bookBtn = document.getElementById("bookBtn");
-    bookBtn.onclick = () => token ? bookTheEvent(id) : goTo("/login");
+    bookBtn.onclick = () =>
+    {
+        if(token)
+            bookTheEvent(id);
+        else
+        {
+            localStorage.setItem("redirect", "/events/" + id + "#bottomPage");
+            goTo("/login");
+        }
+    } 
 }
 
 onArtisticEventLoad();
