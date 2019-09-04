@@ -28,7 +28,7 @@
     margin-bottom: 30px;
     background-color: black;
     border-radius: 25px;
-    width: 90%;
+    width: 100%;
 }
 
 #last-wrapper {
@@ -69,11 +69,11 @@
     color: rgb(248, 232, 203);
 }
 
-.title a {
+a {
     color: rgb(241, 193, 103);
 }
 
-.title a:hover {
+a:hover {
     color: rgb(240, 178, 64);
 }
 

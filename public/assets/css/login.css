@@ -1,3 +1,9 @@
+.container {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    margin-bottom: 123px;
+}
+
 .black-card {
     background-color: rgb(43, 41, 41);
 }

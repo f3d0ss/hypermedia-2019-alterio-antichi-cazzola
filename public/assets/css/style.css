@@ -33,6 +33,10 @@ body {
     text-decoration: none;
 }
 
+.whiter {
+    background-color: white;
+}
+
 /* navbar */
 
 .navbar {
@@ -231,6 +235,10 @@ input:focus {
 
 .footer .row {
     padding-top: 15px;
+}
+
+.fas {
+    line-height: 40px;
 }
 
 @media (min-width: 992px) {
