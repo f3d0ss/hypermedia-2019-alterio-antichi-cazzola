@@ -152,6 +152,21 @@ var performerPost = async () =>
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
         {
+            "name": "John Oates",
+            "achievements": [
+                "BET Awards Winner - 2015"
+            ],
+            "detail": "Although Oates's main role in the duo was guitarist, he also co-wrote many of the top 10 songs that they recorded, including (with Hall): Sara Smile (the song refers to Hall's then-girlfriend, Sara Allen), She's Gone, and Out of Touch, as well as (with Allen and Hall): You Make My Dreams, I Can't Go for That (No Can Do), Maneater, and Adult Education. He also sang lead vocals on several more singles in the Hot 100, such as How Does It Feel to Be Back, You've Lost That Lovin' Feelin' (a remake of the 1965 song performed by the Righteous Brothers that was written by Phil Spector, Barry Mann and Cynthia Weil), on which Oates shared lead vocals with Hall, and Possession Obsession (with Allen & Hall)",
+            "company_id": 2,
+            "age": 56,
+            "birth": "Austin, Texas",
+            "photos": [
+                "/images/p5-1.png", "/images/p5-2.png", "/images/p5-3.png"
+            ]
+        });
+
+    await post(URLS.PERFORMER,  // post can be found in script.js
+        {
             "name": "Shakira",
             "age": "37",
             "birth": "Barranquilla",
@@ -178,32 +193,6 @@ var performerPost = async () =>
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
         {
-            "name": "Rich Little",
-            "age": "42",
-            "birth": "Los Angeles",
-            "achievements": [
-                "Teather"
-            ],
-            "detail": "Little was born in Ottawa, Ontario, Canada, the middle of three sons of Lawrence Peniston Little, a doctor, and Elizabeth Maud (née Wilson). He attended Lisgar Collegiate Institute. In his early teens, he formed a partnership with Geoff Scott, another budding impressionist, concentrating on reproducing the voices of Canadian politicians such as Prime Minister John Diefenbaker and Ottawa mayor Charlotte Whitton. (Scott went on to become a politician.) He and Scott were performing professionally in night clubs by their late teens.",
-            "photos": [
-                "/images/p11-1.png", "/images/p11-2.png", "/images/p11-3.png"
-            ]
-        });
-    await post(URLS.PERFORMER,  // post can be found in script.js
-        {
-            "name": "Lisa Lampanelli",
-            "age": "58",
-            "birth": "Trumbull",
-            "achievements": [
-                "Teather"
-            ],
-            "detail": "Lampanelli, one of three siblings, was born in Trumbull, Connecticut, to a middle class family. Three of her grandparents were of Italian descent, and the fourth of Polish ancestry. Her mother, Gloria (née Velgot), worked for the local police department, where she typed in all the arrests made, and her father, Leonard Lampugnale, worked for Sikorsky Aircraft and later became a painter. Lampanelli attended Roman Catholic schools, studied journalism at Boston College and Syracuse University, and attended the Radcliffe Publishing Course at Harvard. She worked as a copy editor at Popular Mechanics and an assistant at Rolling Stone. She was also a fact checker and the first chief of research for Spy magazine; a book about Spy describes her then as your average decked-out-heavy-metal-head-next-door. Speaking later to Maxim Magazine Online, Lampanelli remarked, I was a real journalist for Rolling Stone, Spy, Hit Parader. I interviewed those fuckin' hair bands: Cinderella, Slaughter.",
-            "photos": [
-                "/images/p12-1.png", "/images/p12-2.png", "/images/p12-3.png"
-            ]
-        });
-    await post(URLS.PERFORMER,  // post can be found in script.js
-        {
             "name": "Yuri Tag",
             "age": "29",
             "birth": "China",
@@ -218,21 +207,100 @@ var performerPost = async () =>
                 "/images/p8-1.jpg", "/images/p8-2.jpg", "/images/p8-3.png"
             ]
         });
-    await post(URLS.PERFORMER,  // post can be found in script.js
-        {
-            "name": "Lawrence Kao",
-            "age": "28",
-            "achievements": [
-                "Win MTV AWM 2013"
-            ],
-            "company_id": 3,
-            "age": 32,
-            "birth": "Hacienda Heights",
-            "detail": "Kao was born and raised in Hacienda Heights, California,[1] where he later graduated from Glen A. Wilson High School. Later, he attended University of California, Irvine and then pursued a full-time career as an hip-hop dancer",
-            "photos": [
-                "/images/p9-1.jpeg", "/images/p9-2.png", "/images/p9-3.jpg"
-            ]
-        });
+        await post(URLS.PERFORMER,  // post can be found in script.js
+            {
+                "name": "Lawrence Kao",
+                "achievements": [
+                    "Win MTV AWM 2013"
+                ],
+                "company_id": 3,
+                "age": 32,
+                "birth": "Hong Kong, China",
+                "detail": "Kao was born and raised in Hacienda Heights, California,[1] where he later graduated from Glen A. Wilson High School. Later, he attended University of California, Irvine and then pursued a full-time career as an hip-hop dancer",
+                "photos": [
+                    "/images/p9-1.jpeg", "/images/p9-2.png", "/images/p9-3.jpg"
+                ]
+            });
+        await post(URLS.PERFORMER,  // post can be found in script.js
+            {
+                "name": "Denis Leary",
+                "achievements": [
+                    "Denis Colin O'Leary (born August 18, 1957) is an American actor, comedian, singer, writer and producer. Leary was the star and co-creator of Rescue Me, which ended its seventh and final season on September 7, 2011. He has starred in many films including playing Captain George Stacy in Marc Webb's film, The Amazing Spider-Man, Cleveland Browns Head Coach Vince Penn in Ivan Reitman's film, Draft Day, and as the voice of Francis in A Bug's Life and Diego in the Ice Age franchise."
+                ],
+                "detail": "",
+                "age": 72,
+                "birth": "Montreal, Canada",
+                "photos": [
+                "/images/p10-1.png", "/images/p10-2.png", "/images/p10-3.png"
+                ]
+            });
+        await post(URLS.PERFORMER,  // post can be found in script.js
+            {
+                "name": "Rich Little",
+                "age": "42",
+                "birth": "Los Angeles",
+                "achievements": [
+                    "Teather"
+                ],
+                "detail": "Little was born in Ottawa, Ontario, Canada, the middle of three sons of Lawrence Peniston Little, a doctor, and Elizabeth Maud (née Wilson). He attended Lisgar Collegiate Institute. In his early teens, he formed a partnership with Geoff Scott, another budding impressionist, concentrating on reproducing the voices of Canadian politicians such as Prime Minister John Diefenbaker and Ottawa mayor Charlotte Whitton. (Scott went on to become a politician.) He and Scott were performing professionally in night clubs by their late teens.",
+                "photos": [
+                    "/images/p11-1.png", "/images/p11-2.png", "/images/p11-3.png"
+                ]
+            });
+        
+        await post(URLS.PERFORMER,  // post can be found in script.js
+            {
+                "name": "Lisa Lampanelli",
+                "age": "58",
+                "birth": "Trumbull",
+                "achievements": [
+                    "Teather"
+                ],
+                "detail": "Lampanelli, one of three siblings, was born in Trumbull, Connecticut, to a middle class family. Three of her grandparents were of Italian descent, and the fourth of Polish ancestry. Her mother, Gloria (née Velgot), worked for the local police department, where she typed in all the arrests made, and her father, Leonard Lampugnale, worked for Sikorsky Aircraft and later became a painter. Lampanelli attended Roman Catholic schools, studied journalism at Boston College and Syracuse University, and attended the Radcliffe Publishing Course at Harvard. She worked as a copy editor at Popular Mechanics and an assistant at Rolling Stone. She was also a fact checker and the first chief of research for Spy magazine; a book about Spy describes her then as your average decked-out-heavy-metal-head-next-door. Speaking later to Maxim Magazine Online, Lampanelli remarked, I was a real journalist for Rolling Stone, Spy, Hit Parader. I interviewed those fuckin' hair bands: Cinderella, Slaughter.",
+                "photos": [
+                    "/images/p12-1.png", "/images/p12-2.png", "/images/p12-3.png"
+                ]
+            });
+
+        await post(URLS.PERFORMER,  // post can be found in script.js
+            {
+                "name": "Maurice Benard",
+                "achievements": [
+                    "Opera"
+                ],
+                "detail": "Benard was born Mauricio Jose Morales in Martinez, California, the son of Martha, a bank employee, and Humberto Morales, a bakery superintendent. He grew up in San Francisco, California, and is of Salvadorian and Nicaraguan ethnicity. He started his acting career as Nico on the soap opera All My Children, from 1987 to 1990. He then went on to start a career on General Hospital, a daytime soap opera on ABC. His role on the show was the fictionalized Sonny Corinthos, a manic depressive mobster King pin. His first air date on GH was August 13, 1993. In addition to guest spots on several television series during the early 1990s, Benard appeared in television movies including the CBS television movie Lucy & Desi: Before the Laughter (1991), in which he portrayed Desi Arnaz. He also starred in the independent film entitled The Ghost and the Whale, executive produced by his wife Paula.",
+                "age": 56,
+                "birth": "Paris, France",
+                "photos": [
+                "/images/p13-1.png", "/images/p13-2.png", "/images/p13-3.png"
+                ]
+            });
+        await post(URLS.PERFORMER,  // post can be found in script.js
+            {
+                "name": "Kristen Alderson",
+                "achievements": [
+                    "Opera"
+                ],
+                "detail": "At six years old, Alderson auditioned for the One Life to Live role of Starr Manning in February 1998 and portrayed the character starting on March 20, 1998. and was put on contract with the series in April 2001. She has appeared in television commercials for JC Penney, Citgo and Soap Network.Alderson received the 2005 Soap Opera Digest Award Favorite Teen for her work in One Life to Live. Alderson's younger brother, Eddie, portrayed Matthew Buchanan on One Life to Live until its cancellation. After One Life to Live finished filming on November 18, 2011, Alderson relocated with her brother to Los Angeles. On April 14, 2011, ABC announced the cancellation of both All My Children and One Life to Live, leaving General Hospital as the last remaining soap opera airing on the network after January 13, 2012.",
+                "age": 35,
+                "birth": "Toronto, Canada",
+                "photos": [
+                "/images/p14-1.png", "/images/p14-2.png", "/images/p14-3.png"
+                ]
+            });
+        await post(URLS.PERFORMER,  // post can be found in script.js
+            {
+                "name": "Anthony Geary",
+                "achievements": [
+                    "Opera"
+                ],
+                "detail": "Anthony Geary (born May 29, 1947) is an American opera actor. He is known for playing the role of Luke Spencer on the ABC daytime drama General Hospital. He originated the role of Luke in 1978 and received a record eight Daytime Emmy Awards for Outstanding Lead Actor in a Drama Series prior to his retirement. Geary had a prominent supporting role in the Weird Al Yankovic comedy UHF (1989); other notable films include Johnny Got His Gun (1971), Disorderlies (1987), Scorchers (1991), Teacher's Pet (2004) and Fish Tank (2009).",
+                "age": 40,
+                "birth": "Madrid, Spain",
+                "photos": [
+                "/images/p15-1.png", "/images/p15-2.png", "/images/p15-3.png"
+                ]
+            });
 };
 
 var newEventType = (name, description) => { return {event_type: name, description: description} };
@@ -255,14 +323,11 @@ var eventPost = async () =>
             "location_id": "A03",
             "vacancy": 17,
             "seminar_id": 2,
-            "performer_ids": [
-                1, 2
-            ],
             "photos": [ 
                 "/images/e1-1.jpg", "/images/e1-2.jpg", "/images/e1-3.jpg"               
             ],
             "company_ids": [
-                1, 2
+                2
             ],
             "event_type": "dance"
         });
@@ -277,12 +342,9 @@ var eventPost = async () =>
             "location_id": "A03",
             "vacancy": 24,
             "performer_ids": [
-                1, 2
+                7
             ],
             "photos": [ "/images/e2-1.jpg", "/images/e2-2.jpg", "/images/e2-3.jpg"               
-            ],
-            "company_ids": [
-                1, 2
             ],
             "event_type": "dance"
         });
@@ -297,12 +359,9 @@ var eventPost = async () =>
             "location_id": "A02",
             "vacancy": 36,
             "performer_ids": [
-                1, 2
+                6
             ],
             "photos": [ "/images/e3-1.jpg", "/images/e3-2.jpg", "/images/e3-3.jpg"                
-            ],
-            "company_ids": [
-                1, 2
             ],
             "event_type": "dance"
         });
@@ -318,12 +377,9 @@ var eventPost = async () =>
             "vacancy": 19,
             "seminar_id": 1,
             "performer_ids": [
-                1, 2
+                1
             ],
             "photos": [  "/images/e4-1.jpg", "/images/e4-2.jpg", "/images/e4-3.jpg"              
-            ],
-            "company_ids": [
-                1, 2
             ],
             "event_type": "music"
         });
@@ -337,14 +393,11 @@ var eventPost = async () =>
             "end": "10:30:00",
             "location_id": "A01",
             "vacancy": 50,
-            "performer_ids": [
-                1, 2
-            ],
             "photos": [      
                 "/images/e5-1.jpg", "/images/e5-2.jpg", "/images/e5-3.jpg"          
             ],
             "company_ids": [
-                1, 2
+                1
             ],
             "event_type": "music"
         });
@@ -358,11 +411,8 @@ var eventPost = async () =>
             "end": "14:00:00",
             "location_id": "A02",
             "vacancy": 15,
-            "performer_ids": [
-                1, 2
-            ],
             "company_ids": [
-                1, 2
+                3
             ],
             "photos": [     
                 "/images/e6-1.jpg", "/images/e6-2.jpg", "/images/e6-3.jpg"           
@@ -381,10 +431,7 @@ var eventPost = async () =>
             "vacancy": 26,
             "seminar_id": 4,
             "performer_ids": [
-                1, 2
-            ],
-            "company_ids": [
-                1, 2
+                14
             ],
             "photos": [  
                 "/images/e7-1.jpg", "/images/e7-2.jpg", "/images/e7-3.jpg"              
@@ -402,10 +449,7 @@ var eventPost = async () =>
             "location_id": "A01",
             "vacancy": 28,
             "performer_ids": [
-                1, 2
-            ],
-            "company_ids": [
-                1, 2
+                13
             ],
             "photos": [    
                 "/images/e8-1.jpg", "/images/e8-2.jpg", "/images/e8-3.jpg"            
@@ -423,10 +467,7 @@ var eventPost = async () =>
             "location_id": "A02",
             "vacancy": 31,
             "performer_ids": [
-                1, 2
-            ],
-            "company_ids": [
-                1, 2
+                14, 15
             ],
             "photos": [  
                 "/images/e9-1.jpg", "/images/e9-2.jpg", "/images/e9-3.jpg"              
@@ -445,10 +486,7 @@ var eventPost = async () =>
             "vacancy": 17,
             "seminar_id": 3,
             "performer_ids": [
-                1, 2
-            ],
-            "company_ids": [
-                1, 2
+                11
             ],
             "photos": [     
                 "/images/e10-1.jpg", "/images/e10-2.jpg", "/images/e10-3.jpg"           
@@ -466,10 +504,7 @@ var eventPost = async () =>
             "location_id": "A01",
             "vacancy": 14,
             "performer_ids": [
-                1, 2
-            ],
-            "company_ids": [
-                1, 2
+                12
             ],
             "photos": [     
                 "/images/e11-1.jpg", "/images/e11-2.jpg", "/images/e11-3.jpg"           
@@ -487,10 +522,7 @@ var eventPost = async () =>
             "location_id": "A03",
             "vacancy": 29,
             "performer_ids": [
-                1, 2
-            ],
-            "company_ids": [
-                1, 2
+                11, 13
             ],
             "photos": [  
                 "/images/e12-1.jpg", "/images/e12-2.jpg", "/images/e12-3.jpg"              
