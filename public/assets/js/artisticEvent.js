@@ -34,9 +34,15 @@ const addReservedLabel = () => {
 const addSeminarBox = seminar => {
     var html =
         `
-            <div id="seminarContainer" class="centralized  artist-wrapper">                                    
-                <h3 class="wheat-item">Want to know more about this event? Check the <a id="s-link"
-                href="${"/seminars/" + seminar.id}">${seminar.title}</a></h3>
+            <div class="row">
+                <div class="col-1"></div>
+                    <div class="col-10">
+                        <div class="centralized artist-wrapper">
+                            <h3 class="wheat-item">Want to know more about this event? Check the <a id="s-link"
+                            href="${"/seminars/" + seminar.id}">${seminar.title}</a></h3>
+                        </div>
+                    </div>
+                <div class="col-1"></div>
             </div>
         `;
     byId("seminarContainer").innerHTML = html;
