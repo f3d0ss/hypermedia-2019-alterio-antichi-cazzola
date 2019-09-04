@@ -17,15 +17,16 @@ address](http://localhost:3000/backend/spec.yaml).
 - Deliverable D4: the source code of D0 is available as a zip file at
 [this address](http://localhost:3000/backend/app.zip).
 - Deliverable D5: the address of the online source control repository
-is available [this address](https://github.com/f-cazzola/hypermedia-2019-alterio-antichi-cazzola). We hereby
-declare that this is a private repository and, upon request, we will
-give access to the instructors.
+is available [this address](https://github.com/f-cazzola/hypermedia-2019-alterio-antichi-cazzola). We hereby declare that this is a private repository and, upon request, we will give access to the instructors.
 ## Specification
 ### Web Architecture
-Describe here, with a diagram, the components of your web application
-and how they interact. Highlight which parts belong to the application
-layer, data layer or presentation layer. How did you ensure that HTML is
-not rendered server side?
+#### Web Architecture Schema 1
+![Web Architecture Schema 1](http://localhost:3000/images/doc/web-arc.png)
+#### Web Architecture Schema 2
+![Web Architecture Schema 2](http://localhost:3000/images/doc/web-arc-2.png)
+
+We render the pages JUST for include piece of html commun in all pages like the navbar or footer. With rendering we avoided any inconsistency with the navbar in all pages.
+We are sure the dynamic data is NEVER rendered by the server beacause we never access the model classes anywhere but in the API logic (in the API folder)
 ### API
 #### REST compliance
 _Describe here to what extent did you follow REST principles and what are
@@ -61,21 +62,10 @@ backend of the application.
 - swagger-ui-express: to provide the a UI to the OpenAPI specification
 ### Discussion
 Describe here:
-- _How did you make sure your web application adheres to the provided
-OpenAPI specification? Which method did you use to test all APIs
-endpoints against the expected response?_
-- We extensevly tested all the API with the help of swaggerui 
-- Why do you think your web application adheres to common practices to
-partition a REST-based web application (static assets vs.
-application data)
-- We crated API that are easy to understand and documented with OpenAPI specification, they accept and return only JSON object with the data, so that anyone can create either a web application, Android application or any other sort of application using the same API.
-- Describe synthetically why and how did you manage session state,
-what are the state change triggering actions (e.g., POST to login
-etc..).
+- We make sure our web application adheres to the provided OpenAPI specification thanks to SwaggerUi because we generete it from the OpenAPI spec file with swagger-ui-express and we used it to extensevly test all the API
+- We think our web application adheres to common practices to partition a REST-based web application because we crated API that are easy to understand and documented with OpenAPI specification, they accept and return only JSON object with the data, so that anyone can create either a web application, Android application or any other sort of application using the same API.
 - We managed the authentication with JSON Web Token, returning the JWT when the POST API for login is called. Then this JWT need to be added in the header of the calls to the API that need authentication
-- Which technology did you use (relational or a no-SQL database) for
-managing the data model?
-- We used MySQL database mainly because we found more documentation about it then other type of relational database
+- For managing the data model we used MySQL database mainly because we found more documentation about it then other type of relational database
 ## Other information
 ### Task assignment
 Describe here how development tasks have been subdivided among members
