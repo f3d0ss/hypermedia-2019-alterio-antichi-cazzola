@@ -97,8 +97,12 @@ const createIcons = async event => {
         addIcon(featuringContainer, companies[i].name, "/companies/" + companies[i].id, companies[i].photos[0]);
     for (var i = 0; i < performers.length; i++)
         addIcon(featuringContainer, performers[i].name, "/performers/" + performers[i].id, performers[i].photos[0]);
+    if (!eventsSameDate || eventsSameDate.length === 0) {
+        eventsContainer.innerHTML = '<h2 class="orange-title">This is the only event for today</h2>';
+    }
     for (var i = 0; i < eventsSameDate.length; i++)
         addIcon(eventsContainer, eventsSameDate[i].name, "/events/" + eventsSameDate[i].id, eventsSameDate[i].photos[0]);
+
 }
 
 const setupBottomPage = async id => {
