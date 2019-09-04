@@ -1,4 +1,5 @@
 const createCard = (container, event, performers) => {
+    event.photos.shift();
     var card =
         `
              <div class="s-wrapper centralized">
