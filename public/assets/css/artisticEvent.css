@@ -61,17 +61,21 @@
     cursor: pointer;
 }
 
-@media (min-width: 765px) {
+.seminarContainer
+{
+    padding: 40px;
+}
 
-    .artist-wrapper {
-        width: 500px;
+@media (max-width: 600px) {
+
+    .carousel-item {
+        height: 250px;
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 600px) {
 
-    .artist-wrapper {
-        width: 700px;
+    .carousel-item {
     }
 }
 

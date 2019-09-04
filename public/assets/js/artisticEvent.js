@@ -15,7 +15,7 @@ const addBookBtn = () => {
     var buttonHTML =
         `
             <div class="col text-center">
-              <button id="bookBtn" type="button" class="btn btn-dark">Book to the Event!</button>
+              <button id="bookBtn" type="button" class="btn btn-dark">GET YOUT TICKET</button>
             </div>
         `;
     byId("bottomContainer").innerHTML = buttonHTML;
