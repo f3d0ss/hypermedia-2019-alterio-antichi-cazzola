@@ -1,0 +1,24 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/calendar.css">
+<title>Calendar</title>
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+    <nav class="crumb" aria-label="breadcrumb">
+        <ol class="breadcrumb crumb">
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
+            <li class="breadcrumb-item bc-active" aria-current="page">Calendar</li>
+        </ol>
+    </nav>
+
+    <div id="container" class="container">
+    </div>
+
+    <%- include('includes/footer.ejs') %>
+    <script src="/js/script.js"></script>
+    <script src="/js/calendar.js"></script>
+
+</body>
+
+</html>

@@ -15,18 +15,17 @@ passport.use(new JwtStrategy({
 }, async (payload, done) => {
 
     // Find the user specified in token
-    const user = User.getUserById(payload.sub).then(([rows, fields]) => {
-        console.log(payload.sub);
-        console.log(rows);
-        if (rows.length > 0) {
-            const user = rows[0];
-            return done(null, user != null ? user : false);
+    try {
+        const user = await User.getUserById(payload.sub);
+        if (user) {
+            return done(null, user);
         } else {
             const err = new Error();
+            err.status = 401;
             throw err;
         }
-    }).catch(err => {
+    } catch (err) {
         console.log(err);
         done(err, false);
-    });
+    };
 }));

@@ -1,0 +1,41 @@
+/* generics */
+
+.flex-row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* card*/
+
+.card {
+    background-color: black;
+    border-radius: 15px;
+    width: 550px;
+}
+
+/* card-header */
+.title {
+    color: rgb(161, 130, 71);
+}
+
+.card-header {
+    padding-bottom: 0;
+}
+
+/* card-body */
+
+.line {
+    background-color: wheat;
+}
+
+.card-link {
+    color: rgb(241, 203, 131);
+}
+
+.card-link:hover {
+    color: rgb(240, 170, 40);
+}
+
+.date {
+    color: wheat;
+}

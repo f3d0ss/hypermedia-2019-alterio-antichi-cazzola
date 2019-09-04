@@ -1,73 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!---awesome 5 icons-->
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Home Page</title>
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/home.css">
+<title>Home Page</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <a id="logo" class="navbar-brand" href="#">
-            <i class="fa fa-dragon"></i>
-        </a>
-        <button class="navbar-toggler burger-menu" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-            aria-controls="navbar-list login-btn search-bar" aria-expanded="false" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div id="navbar-list" class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle wheat-item wheat-link" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Festival Info</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Events</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/performer">Performers</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Seminars</a>
-                    </div>
-                </li>\
-                <li class="nav-item">
-                    <a class="nav-link wheat-item wheat-link" href="#">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link wheat-item wheat-link" href="performer">Performers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link wheat-item wheat-link" href="#">Seminars</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link wheat-item wheat-link" href="#">Get Your Ticket!</a>
-                </li>
-            </ul>
-        </div>
-        <div id="search-bar" class="input-group collapse navbar-collapse">
-            <div class="input-group-prepend"><button id="search-btn" class="btn search" type="button"><i
-                        class="fa fa-search wheat-item"></i></button></div>
-            <input type="text" class="form-control search" placeholder="" aria-label="" aria-describedby="basic-addon1">
-        </div>
-        <button type="button" class="btn collapse navbar-collapse mt-lg-0 mt-2" id="login-btn"><span
-                style="margin-left: 6px;">Login</span></button>
-    </nav>
+    <%- include('includes/navbar.ejs') %>
 
     <nav class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb crumb">
@@ -75,40 +12,24 @@
         </ol>
     </nav>
 
-    <div class="container mt-5">
-        <h1 class="display-3 text-center">Sometimes happens!</h1>
-        <h1 class="display-4 text-center mt-5">Sometimes happens!</h1>
+    <img id="main-img" src="images/home.jpg" alt="really colorefull image">
+
+    <div class="d-flex flex-row justify-content-center">
+        <div id="main-txt">
+            <h1 class="white home-img-text">Most Popular Festival In Miami!</h1>
+            <h2 class="white home-img-text">Don't Miss It!</h2>
+        </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-4 text-center"><a href="#" class="footer-line">FAQ</a></div>
-                <div class="col-4 text-center"><a href="#" class="footer-line">Who We Are</a></div>
-                <div class="col-4 text-center"><a href="#" class="footer-line">Contact Us</a></div>
-            </div>
-            <hr style="background-color: white;">
-            <div class="d-flex flex-row justify-content-center">
-                <i id="logo-icon"><i class="fas fa-dragon" style="line-height: 40px;"></i></i>
-            </div>
-            <div class="d-flex flex-row justify-content-center">
-                <p class="footer-bottom-line">© 2019 COPYRIGHT TURANGA LELLA STUDIOS, INC. ALL
-                    RIGHTS RESERVED.</p>
-            </div>
-    </footer>
+    <div class="container mt-5 home-bottom-container">
+        <h1 class="display-4 text-center mt-5">Don't miss the 10th iteration of the most popular festival in Miami!</h1>
+    </div>
 
-    <script type="text/javascript">
-        $(".burger-menu").on("click", function () {
-            $(".burger-menu").toggleClass("open");
-        });
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+    <%- include('includes/footer.ejs') %>
+    <script src="/js/script.js"></script>
+
+    <!--    <script src="/js/postTest.js"></script> -->
+    <script src="/js/postTest.js"></script>
 </body>
 
 </html>

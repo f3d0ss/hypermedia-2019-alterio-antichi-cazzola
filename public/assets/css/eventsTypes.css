@@ -1,0 +1,120 @@
+/* generics */
+
+.header-container {
+    margin-top: 80px;
+}
+
+.card-header {
+    background-color: black;
+}
+
+.title {
+    color: rgb(236, 192, 109);
+}
+
+.subtitle {
+    color: rgb(180, 165, 138);
+}
+
+.hr {
+    background-color: wheat;
+}
+
+.type-description {
+    height: 3em;
+}
+
+a:hover {
+    color: rgb(233, 166, 43);
+}
+
+/* second wrapper */
+
+.s-wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 50px;
+    background-color: black;
+    border-radius: 25px;
+}
+
+.eventCard {
+    margin: 10px;
+}
+
+#last-wrapper {
+    margin-bottom: 50px;
+}
+
+/* quote wrapper */
+
+.quote-wrapper p {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#slider-container {
+    padding-top: 50px;
+}
+
+.carousel-item img {
+    height: 350px;
+    width: 100%;
+    border-radius: 5px;
+    border: solid 2px rgb(180, 165, 138);
+}
+
+/* performance images */
+
+.display-img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+/* event link */
+
+.footcard {
+    color: rgb(248, 232, 203);
+}
+
+.footcard a {
+    color: rgb(241, 193, 103);
+}
+
+.footcard a:hover {
+    color: rgb(240, 178, 64);
+}
+
+@media (max-width: 1500px) {
+    .carousel-item img {
+        width: 630px;
+        height: 240px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .carousel-item img {
+        width: 450px;
+        height: 150px;
+    }
+
+    .s-wrapper {
+        width: 700px;
+    }
+}
+
+@media (max-width: 765px) {
+    .carousel-item img {
+        width: 320px;
+        height: 140px;
+    }
+
+    .s-wrapper {
+        width: 380px;
+    }
+}

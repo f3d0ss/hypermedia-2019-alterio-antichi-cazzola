@@ -1,0 +1,62 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/seminar.css">
+<title id="title"></title>
+</head>
+
+<body>
+    <%- include('includes/navbar.ejs') %>
+    <nav class="crumb" aria-label="breadcrumb">
+        <ol class="breadcrumb crumb">
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/seminars">Seminars</a></li>
+            <li id="seminarName" class="breadcrumb-item bc-active" aria-current="page">Derren Brown</li>
+        </ol>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-10 col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-header centralized">
+                        <h1 id="seminarNameH1" class="title"></h1>
+                    </div>
+                    <div class="card-body">
+                        <hr class="line">
+                        <h3 class="title">Discussed events:</h3>
+                        <div id="eventsBox">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        <!--
+        <div class="d-flex flex-row justify-content-center">
+            <h2>Discussed Events:</h2>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center">
+            <div class="wrapper centralizeds">
+                <img src="/images/HarryPotter.jpg">
+                <h2><a class="event-link" href="#">Ye ye ye</a></h2>
+            </div>
+            <div class="wrapper centralized">
+                <img src="/images/HarryPotter.jpg">
+                <h2><a class="event-link" href="#">Ye ye ye</a></h2>
+            </div>
+            <div class="wrapper centralized">
+                <img src="/images/HarryPotter.jpg">
+                <h2><a class="event-link" href="#">Ye ye ye</a></h2>
+            </div>
+        </div>
+        -->
+    </div>
+
+    <%- include('includes/footer.ejs') %>
+    <script src="/js/script.js"></script>
+    <script src="/js/seminar.js"></script>
+</body>
+
+</html>

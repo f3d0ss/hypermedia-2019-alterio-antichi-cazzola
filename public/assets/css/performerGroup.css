@@ -1,0 +1,55 @@
+.performer-img {
+    border-radius: 50%;
+    border: solid 4px wheat;
+    width: 200px;
+    height: 200px;
+}
+
+.row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.col {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.performer-name {
+    color: rgb(190, 166, 120);
+}
+
+.title {
+    color: rgb(190, 166, 120);
+}
+
+.performer-link {
+    color: wheat;
+}
+
+.performer-link:hover {
+    color: rgb(236, 178, 69);
+}
+
+.wrapper {
+    background-color: rgba(0, 0, 0, 0.952);
+    border-radius: 25px;
+    border: solid 4px rgb(0, 0, 0);
+    width: 500px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+#title-row {
+    padding-top: 20px;
+    margin-top: 70px;
+}
+
+@media (max-width: 500px) {
+    .wrapper {
+        width: 300px;
+    }
+}
