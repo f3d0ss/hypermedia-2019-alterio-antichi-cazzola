@@ -88,10 +88,13 @@ const createIcons = async event => {
     const abstract = document.getElementById("abstract");
 
     var performers = (await get(URLS.PERFORMER + "/event/" + event.id, 100)).response;
+    var companies = (await get(URLS.COMPANY + "/event/" + event.id, 100)).response;
 
     const date = event.date.substring(0, 10);
     var eventsSameDate = (await get(URLS.EVENT + "/date/" + date, 100)).response;
 
+    for (var i = 0; i < companies.length; i++)
+        addIcon(featuringContainer, companies[i].name, "/companies/" + companies[i].id, companies[i].photos[0]);
     for (var i = 0; i < performers.length; i++)
         addIcon(featuringContainer, performers[i].name, "/performers/" + performers[i].id, performers[i].photos[0]);
     for (var i = 0; i < eventsSameDate.length; i++)
