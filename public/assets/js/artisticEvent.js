@@ -15,7 +15,7 @@ const addBookBtn = () => {
     var buttonHTML =
         `
             <div class="col text-center">
-              <button id="bookBtn" type="button" class="btn bookbtn btn-dark">GET YOUT TICKET</button>
+              <button id="bookBtn" type="button" class="btn bookbtn btn-dark">GET YOUR TICKET</button>
             </div>
         `;
     byId("bottomContainer").innerHTML = buttonHTML;
@@ -130,7 +130,16 @@ const bookTheEvent = async id => {
 
 const setupBookButton = async id => {
     const bookBtn = document.getElementById("bookBtn");
-    bookBtn.onclick = () => token ? bookTheEvent(id) : goTo("/login");
+    bookBtn.onclick = () =>
+    {
+        if(token)
+            bookTheEvent(id);
+        else
+        {
+            localStorage.setItem("redirect", "/events/" + id + "#bottomPage");
+            goTo("/login");
+        }
+    } 
 }
 
 onArtisticEventLoad();
