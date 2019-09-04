@@ -1,9 +1,9 @@
-const addIcon = (container, name, link) => {
+const addIcon = (container, name, link, image) => {
     var performerHtml =
         `
                 <div class="artist-box">
                     <a href="${link}">
-                        <img class="artist-img" src="/images/HarryPotter.jpg">
+                        <img class="artist-img" src="${image}">
                     </a>
                     <p class="wheat-item a-name">${name}</p>
                 </div>
@@ -85,9 +85,9 @@ const createIcons = async event => {
     var eventsSameDate = (await get(URLS.EVENT + "/date/" + date, 100)).response;
 
     for (var i = 0; i < performers.length; i++)
-        addIcon(featuringContainer, performers[i].name, "/performers/" + performers[i].id);
+        addIcon(featuringContainer, performers[i].name, "/performers/" + performers[i].id, performers[i].photos[0]);
     for (var i = 0; i < eventsSameDate.length; i++)
-        addIcon(eventsContainer, eventsSameDate[i].name, "/events/" + eventsSameDate[i].id);
+        addIcon(eventsContainer, eventsSameDate[i].name, "/events/" + eventsSameDate[i].id, eventsSameDate[i].photos[0]);
 }
 
 const setupBottomPage = async id => {
