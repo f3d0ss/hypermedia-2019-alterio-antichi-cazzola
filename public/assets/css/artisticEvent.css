@@ -21,7 +21,8 @@
 /* featuring section */
 
 .artist-wrapper {
-    padding-top: 20px;
+    padding: 20px;
+    margin-top: 30px;
     border: solid 2px wheat;
     background-color: rgb(12, 11, 11);
     border-radius: 15px;
@@ -68,19 +69,9 @@
     }
 }
 
-@media (min-width: 600px) {
-
-    .carousel-item {
-    }
-}
-
 @media (min-width: 1400px) {
     .artist-img:hover {
         height: 230px;
         width: 230px;
-    }
-
-    .artist-wrapper {
-        width: 800px;
     }
 }
