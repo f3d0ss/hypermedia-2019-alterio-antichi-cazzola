@@ -39,3 +39,7 @@
     height: 300px;
     width: 800px;
 }
+
+#slider-container {
+    padding-top: 50px;
+}

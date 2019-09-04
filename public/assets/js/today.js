@@ -1,5 +1,6 @@
-const addEvent = event =>
-{
+const addEvent = event => {
+    event.photos.shift();
+    console.log(event.photos);
     var html =
         `
             <div class="d-flex flex-row justify-content-center">
@@ -9,45 +10,45 @@ const addEvent = event =>
                         <h4 class="subtitle">${event.event_type} - ${event.start}</h4>
                     </div>
                     <div class="card-body">
-                        <div class="d-flex flex-row justify-content-center">
-                            <img src="images/HarryPotter.jpg">
-                        </div>
+                        <div id="slider-container" class="container">`
+
+        +
+        createCarousel(event.photos, event.id) +
+
+        `</div>
                     </div>
                 </div>
             </div>
         `
     byId("eventsContainer").innerHTML += html;
 }
-
-const addLabel = () =>
-{
-    byId("eventsContainer").innerHTML = 
-                    `
-                        <div class="d-flex flex-row justify-content-center">
-                            <h3><a class ="text-dark" href = "/calendar">Nothing for today...<a/></h3>
-                        </div>
-                    `
+const addLabel = () => {
+    byId("eventsContainer").innerHTML =
+        `
+                                <div class="d-flex flex-row justify-content-center">
+                                    <h3>Nothing for today..  <a class ="text-info" href = "/calendar"> Click here to go to the Calendar <a/></h3>
+                                </div>
+                            `
 }
 
-const onTodayLoad = () =>
-{
-    try
-    {
-        byId("today").innerHTML = `${curDay} ${curMonth} ${curYear}, All Events`;   
+const onTodayLoad = () => {
+    try {
+        byId("today").innerHTML = `${curDay} ${curMonth} ${curYear}, All Events`;
         setupEvents();
+    } catch (e) {
+        console.log(e);
     }
-    catch(e){ console.log(e); }
 }
 
-const setupEvents = async () =>
-{
+const setupEvents = async () => {
     const events = (await get(URLS.EVENT + "/date/" + curDate, 100)).response;
-    //const events = (await get(URLS.EVENT + "/date/" + "2019-12-11", 100)).response;
-    
-    if(events.length > 0)
-        for(var i=0; i < events.length; i++)
+    //console.log(URLS.EVENT + "/date/" + "2019-09-06");
+    const events = (await get(URLS.EVENT + "/date/" + "2019-09-06", 100)).response;
+
+    if (events.length > 0)
+        for (var i = 0; i < events.length; i++)
             addEvent(events[i]);
-    else    
+    else
         addLabel();
 }
 
