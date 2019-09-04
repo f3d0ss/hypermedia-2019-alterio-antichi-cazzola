@@ -118,3 +118,11 @@ const setupBookButton = async id => {
 }
 
 onArtisticEventLoad();
+
+$(function () {
+    $(".card-header").on("click", function () {
+        var pId = $(this).attr("panel-id")
+
+        $("#" + pId).toggle();
+    });
+});

@@ -44,7 +44,7 @@
                 <div class="centralized artist-wrapper">
                     <h2 class="wheat-item">Featuring:</h2>
                     <div id="featuringBox" class="row d-flex justify-content-center">
-                    
+
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <div class="centralized artist-wrapper">
                     <h2 class="wheat-item">Other Events The Same Day:</h2>
                     <div id="eventsContainer" class="row d-flex justify-content-center">
-                        
+
                     </div>
                 </div>
             </div>
@@ -76,9 +76,9 @@
             <div class="col"></div>
             <div class="col-8">
                 <div class="abstract centralized">
-                    <h3>Abstract</h3>
+                    <h3>Details on This Event</h3>
                     <p id="abstract">
-                        
+
                     </p>
                 </div>
             </div>
@@ -120,18 +120,8 @@
 
     <%- include('includes/footer.ejs') %>
 
-    <script>
-        $(function () {
-            $(".card-header").on("click", function () {
-                var pId = $(this).attr("panel-id")
-
-                $("#" + pId).toggle();
-            });
-        });
-    </script>
-
-<script src="/js/script.js"></script>
-<script src="/js/artisticEvent.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/artisticEvent.js"></script>
 </body>
 
 </html>

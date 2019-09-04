@@ -24,6 +24,10 @@
     height: 3em;
 }
 
+a:hover {
+    color: rgb(233, 166, 43);
+}
+
 /* second wrapper */
 
 .s-wrapper {
@@ -32,10 +36,8 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 50px;
-    margin-left: 30px;
     background-color: black;
     border-radius: 25px;
-    width: 700px;
 }
 
 .eventCard {
@@ -88,23 +90,31 @@
     color: rgb(240, 178, 64);
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
     .carousel-item img {
         width: 630px;
         height: 240px;
     }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 1200px) {
     .carousel-item img {
         width: 450px;
         height: 150px;
     }
+
+    .s-wrapper {
+        width: 700px;
+    }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 765px) {
     .carousel-item img {
         width: 320px;
         height: 140px;
+    }
+
+    .s-wrapper {
+        width: 380px;
     }
 }
