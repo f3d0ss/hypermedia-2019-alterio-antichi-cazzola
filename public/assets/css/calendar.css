@@ -9,13 +9,17 @@
 
 .card {
     background-color: black;
-    border-radius: 5px;
+    border-radius: 15px;
+    width: 550px;
 }
 
 /* card-header */
-
 .title {
     color: rgb(161, 130, 71);
+}
+
+.card-header {
+    padding-bottom: 0;
 }
 
 /* card-body */

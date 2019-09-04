@@ -23,6 +23,7 @@ exports.getSeminarById = async (req, res, next) => {
 
 exports.postSeminar = async (req, res, next) => {
     const title = req.body.title;
+    const abstract = req.body.abstract;
     const date = req.body.date;
     const start = req.body.start;
     const end = req.body.end;
@@ -30,7 +31,7 @@ exports.postSeminar = async (req, res, next) => {
     const vacancy = req.body.vacancy;
 
     try {
-        const seminar = new Seminar(title, location_id, date, start, end, vacancy);
+        const seminar = new Seminar(title, abstract, location_id, date, start, end, vacancy);
         await seminar.save();
         res.status(201).json(seminar);
     } catch (error) {

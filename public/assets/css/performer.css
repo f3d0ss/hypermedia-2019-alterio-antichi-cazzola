@@ -1,3 +1,9 @@
+/* generics */
+
+.container {
+    padding-bottom: 30px;
+}
+
 /* performer card */
 
 .photo-container {
@@ -97,6 +103,7 @@ a.icoInstagram {
     margin-right: 0px;
     margin-top: 50px;
     background-color: black;
+    border-radius: 15px;
 }
 
 /* quote wrapper */
@@ -105,6 +112,7 @@ a.icoInstagram {
     font-size: 40px;
     margin-left: 0;
     margin-right: 0;
+    border-radius: 15px;
 }
 
 #slider-container {
@@ -113,15 +121,36 @@ a.icoInstagram {
 
 .carousel-item img {
     height: 350px;
-    width: 960px;
+    width: 100%;
     border-radius: 5px;
     border: solid 2px rgb(180, 165, 138);
 }
 
-/* performance images */
+/* related events */
 
-.display-img {
-    border-radius: 50%;
-    width: 200px;
+.event-wrapper {
+    background-color: black;
+    border-radius: 5px;
+    border: solid 4px wheat;
+    padding-top: 20px;
+    border-radius: 15px;
+}
+
+.event-box {
     height: 200px;
+    width: 200px;
+    margin: 10px 7px 10px 7px;
+}
+
+.round-img {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    border: solid 2px wheat;
+}
+
+.round-img:hover {
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
 }

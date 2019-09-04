@@ -44,12 +44,14 @@ async function createTables(promisePoolDb) {
         await createSeminarTable(promisePoolDb);
         await createEventTypeTable(promisePoolDb);
         await createEventTable(promisePoolDb);
+        await createEventPhotoTable(promisePoolDb);
         await createCompanyTable(promisePoolDb);
         await createCompanyPhotoTable(promisePoolDb);
         await createPerformerTable(promisePoolDb);
         await createPerformerPhotoTable(promisePoolDb);
-        await createAchivementTable(promisePoolDb);
+        await createAchievementTable(promisePoolDb);
         await createPerformerEventTable(promisePoolDb);
+        await createCompanyEventTable(promisePoolDb);
         await createSignUpTokenTable(promisePoolDb);
         await createReservationTable(promisePoolDb);
         console.log("Tables created");
@@ -86,7 +88,7 @@ function createEventTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE Event (
         id int PRIMARY KEY AUTO_INCREMENT,
         name varchar(255) NOT NULL UNIQUE,
-        abstract varchar(255) NOT NULL,
+        abstract text NOT NULL,
         date date NOT NULL,
         start time NOT NULL,
         end time NOT NULL,
@@ -104,6 +106,7 @@ function createSeminarTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE Seminar (
             id int PRIMARY KEY AUTO_INCREMENT,
             title varchar(255) NOT NULL UNIQUE,
+            abstract text NOT NULL,
             date date NOT NULL,
             start time NOT NULL,
             end time NOT NULL,
@@ -123,7 +126,8 @@ function createCompanyTable(promisePoolDb) {
 
 function createEventTypeTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE EventType (
-            event_type varchar(255) PRIMARY KEY
+            event_type varchar(255) PRIMARY KEY,
+            description text NOT NULL
         );`);
 }
 
@@ -131,6 +135,8 @@ function createPerformerTable(promisePoolDb) {
     return promisePoolDb.query(`CREATE TABLE Performer (
             id int PRIMARY KEY AUTO_INCREMENT,
             name varchar(255) NOT NULL,
+            age int NOT NULL,
+            birth varchar(255) NOT NULL,
             company_id int,
             detail text NOT NULL,
             FOREIGN KEY (company_id) REFERENCES Company(id)
@@ -153,8 +159,16 @@ function createPerformerPhotoTable(promisePoolDb) {
         );`);
 }
 
-function createAchivementTable(promisePoolDb) {
-    return promisePoolDb.query(`CREATE TABLE Achivement (
+function createEventPhotoTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE EventPhoto (
+            path varchar(255) PRIMARY KEY,
+            event_id int NOT NULL,
+            FOREIGN KEY (event_id) REFERENCES Event(id)
+        );`);
+}
+
+function createAchievementTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE Achievement (
             id int PRIMARY KEY AUTO_INCREMENT,
             name varchar(255) NOT NULL,
             performer_id int NOT NULL,
@@ -169,6 +183,16 @@ function createPerformerEventTable(promisePoolDb) {
         PRIMARY KEY (event_id, performer_id),
         FOREIGN KEY (event_id) REFERENCES Event(id),
         FOREIGN KEY (performer_id) REFERENCES Performer(id)
+    );`);
+}
+
+function createCompanyEventTable(promisePoolDb) {
+    return promisePoolDb.query(`CREATE TABLE CompanyEvent (
+        event_id int NOT NULL,
+        company_id int NOT NULL,
+        PRIMARY KEY (event_id, company_id),
+        FOREIGN KEY (event_id) REFERENCES Event(id),
+        FOREIGN KEY (company_id) REFERENCES Company(id)
     );`);
 }
 

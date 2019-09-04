@@ -1,6 +1,6 @@
 <%- include('includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/login.css">
-    <title>Registration Page</title>
+<link rel="stylesheet" href="/css/login.css">
+<title>Registration Page</title>
 </head>
 
 <body>
@@ -8,11 +8,12 @@
 
     <nav class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb crumb">
-            <li class="breadcrumb-item bc-active" aria-current="page">Home</li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/">Home</a></li>
+            <li class="breadcrumb-item bc-active" aria-current="page">Registration</li>
         </ol>
     </nav>
 
-    <div class="container" style="padding-top: 40px; padding-bottom: 20px; margin-bottom: 45px;">
+    <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header black-card">
@@ -25,7 +26,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="e-mail">
+                                <input id="emailText" type="text" class="form-control" placeholder="e-mail">
 
                             </div>
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
@@ -33,26 +34,24 @@
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="username">
-
-                        </div>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="password">
+                            <input id="passText" type="password" class="form-control" placeholder="password">
 
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Register" class="btn float-right card-item">
+                            <input id="registerBtn" type="button" value="Register" class="btn float-right card-item">
+                        </div>
+
+                        <div class="form-group">
+                            <p id="statusText" type="" value="dsadsa" class="text-warning"></p>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer black-card">
                     <div class="d-flex justify-content-center links">
-                        <span class="wheat-item">Already have an account?&nbsp;</span><a href="#" class="card-link">
+                        <span class="wheat-item">Already have an account?&nbsp;</span><a href="/login"
+                            class="card-link">
                             Log&nbsp;in!</a>
                     </div>
                 </div>
@@ -61,6 +60,8 @@
     </div>
 
     <%- include('includes/footer.ejs') %>
+    <script src="/js/script.js"></script>
+    <script src="/js/registration.js"></script>
 </body>
 
 </html>

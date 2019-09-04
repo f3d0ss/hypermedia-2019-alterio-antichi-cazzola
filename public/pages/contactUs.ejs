@@ -7,8 +7,8 @@
     <%- include('includes/navbar.ejs') %>
     <nav class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb crumb">
-            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="#">Home</a></li>
-            <li class="breadcrumb-item bc-item" aria-current="page"><a class="bc-item" href="#">Contact Us</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a class="bc-item" href="/">Home</a></li>
+            <li class="breadcrumb-item bc-active" aria-current="page">Contact Us</li>
         </ol>
     </nav>
 
@@ -33,8 +33,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <textarea name="txtMsg" class="form-control" placeholder="Your Message *"
-                            style="width: 100%; height: 150px;"></textarea>
+                        <textarea id="msg-form" name="txtMsg" class="form-control"
+                            placeholder="Your Message *"></textarea>
                     </div>
                 </div>
             </div>

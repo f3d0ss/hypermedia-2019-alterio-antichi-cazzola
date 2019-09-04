@@ -1,3 +1,5 @@
+/* contact form */
+
 .black-back {
     background-color: black;
 }
@@ -42,6 +44,15 @@
     cursor: pointer;
 }
 
+#msg-form {
+    width: 100%;
+    height: 150px;
+}
+
 .wheat-line {
     color: wheat;
+}
+
+input {
+    min-width: 150px;
 }

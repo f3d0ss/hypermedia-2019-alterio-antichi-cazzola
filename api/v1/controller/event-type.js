@@ -23,8 +23,9 @@ exports.getEventTypeById = async (req, res, next) => {
 
 exports.postEventType = async (req, res, next) => {
     const event_type = req.body.event_type;
+    const description = req.body.description;
     try {
-        const eventType = new EventType(event_type);
+        const eventType = new EventType(event_type, description);
         await eventType.save();
         res.status(201).json(eventType);
     } catch (error) {

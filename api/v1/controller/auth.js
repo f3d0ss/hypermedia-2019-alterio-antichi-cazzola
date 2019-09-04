@@ -63,12 +63,13 @@ exports.postLogin = async (req, res, next) => {
             return next(error);
         }
 
-        if (!user.isVerified) {
-            const error = new Error();
-            error.status = 403;
-            error.message = "Verify your email";
-            return next(error);
-        }
+        //      Removed after usability evaluation
+        //        if (!user.isVerified) {
+        //            const error = new Error();
+        //            error.status = 403;
+        //            error.message = "Verify your email";
+        //            return next(error);
+        //        }
 
         res.status(200).json({
             token: user.newToken()
@@ -84,7 +85,7 @@ exports.getVerifyEmail = async (req, res, next) => {
     try {
         const user = await User.getUserById(userId);
         user.signUpToken = await user.getSignUpToken();
-        if (user.isVerified) {
+        if (user.isVerified !== '0') {
             const error = new Error();
             error.status = 409;
             error.message = "Already verified";
@@ -96,7 +97,7 @@ exports.getVerifyEmail = async (req, res, next) => {
             error.message = "Wrong token";
             return next(error);
         }
-        user.isVerified = true;
+        user.isVerified = 1;
         await user.save();
         res.status(200).json({
             message: "Email Verified!"
