@@ -9,6 +9,19 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
     }
 }
 
+var del = (url, body, auth) => new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    if (auth)
+        xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+    var json = JSON.stringify(body);
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE)
+            xhr.status === 201 || xhr.status === 200 ? resolve(xhr) : reject(xhr);
+    }
+    xhr.send(json);
+});
 
 var post = (url, body, auth) => new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();

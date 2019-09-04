@@ -1,7 +1,6 @@
-const addIcon = (container, name, link) =>
-{
-    var performerHtml = 
-            `
+const addIcon = (container, name, link) => {
+    var performerHtml =
+        `
                 <div class="artist-box">
                     <a href="${link}">
                         <img class="artist-img" src="/images/HarryPotter.jpg">
@@ -12,9 +11,8 @@ const addIcon = (container, name, link) =>
     container.innerHTML += performerHtml;
 }
 
-const addBookBtn = () =>
-{
-    var buttonHTML = 
+const addBookBtn = () => {
+    var buttonHTML =
         `
             <div class="col text-center">
               <button id="bookBtn" type="button" class="btn btn-dark">Book to the Event!</button>
@@ -23,10 +21,9 @@ const addBookBtn = () =>
     byId("bottomContainer").innerHTML = buttonHTML;
 }
 
-const addReservedLabel = () =>
-{
-    var reservedHTML = 
-                `
+const addReservedLabel = () => {
+    var reservedHTML =
+        `
                     <div class="col text-center">
                         <h1><span class="badge badge-info">RESERVED</span></h1>
                     </div>
@@ -34,8 +31,7 @@ const addReservedLabel = () =>
     byId("bottomContainer").innerHTML = reservedHTML;
 }
 
-const addSeminarBox = seminar =>
-{
+const addSeminarBox = seminar => {
     var html =
         `
             <div id="seminarContainer" class="centralized  artist-wrapper">                                    
@@ -46,10 +42,8 @@ const addSeminarBox = seminar =>
     byId("seminarContainer").innerHTML = html;
 }
 
-const onArtisticEventLoad = async () =>
-{
-    try
-    {
+const onArtisticEventLoad = async () => {
+    try {
         const id = UrlLastPart;
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
         createIcons(event);
@@ -57,53 +51,51 @@ const onArtisticEventLoad = async () =>
         setupBottomPage(id);
         abstract.innerHTML = event.abstract;
         byId("title").innerHTML = event.name;
-        byId("breadCrumbName").innerHTML = event.name;  
-        const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
-        if(seminar)
-           addSeminarBox(seminar);
+
+        byId("breadCrumbName").innerHTML = event.name;
+        if (event.seminar_id) {
+            const seminar = (await get(URLS.SEMINAR + "/" + event.seminar_id)).response;
+            if (seminar)
+                addSeminarBox(seminar);
+        }
+    } catch (e) {
+        console.log(e);
     }
-    catch(e) { console.log(e); }
 }
 
-const setupQuestions = async event => 
-{
+const setupQuestions = async event => {
     var locationText = (await get(URLS.LOCATION + "/" + event.location_id, 100)).response.how_to_reach;
-    var questions =  ["What day does it take place?", `What time does it starts?`, "What time does it ends?", "How many available tickes are there?", "How can i reach the event?"];
-    var answers =  [ `${event.date}`, `${event.start}`, `${event.end}`, `${event.vacancy}`, `${locationText}` ];
+    var questions = ["What day does it take place?", `What time does it starts?`, "What time does it ends?", "How many available tickes are there?", "How can i reach the event?"];
+    var answers = [`${event.date}`, `${event.start}`, `${event.end}`, `${event.vacancy}`, `${locationText}`];
 
-    for(var i=0; i < questions.length; i++)
-    {
+    for (var i = 0; i < questions.length; i++) {
         byId("q" + i).innerHTML = questions[i];
         byId("question-" + i).innerHTML = answers[i];
     }
 }
 
-const createIcons = async event =>
-{
+const createIcons = async event => {
     const featuringContainer = document.getElementById("featuringBox");
     const eventsContainer = document.getElementById("eventsContainer");
     const abstract = document.getElementById("abstract");
 
     var performers = (await get(URLS.PERFORMER + "/event/" + event.id, 100)).response;
 
-    const date = event.date.substring(0,10);
+    const date = event.date.substring(0, 10);
     var eventsSameDate = (await get(URLS.EVENT + "/date/" + date, 100)).response;
 
-    for(var i=0; i < performers.length; i++)
+    for (var i = 0; i < performers.length; i++)
         addIcon(featuringContainer, performers[i].name, "/performers/" + performers[i].id);
-    for(var i=0; i < eventsSameDate.length; i++)
+    for (var i = 0; i < eventsSameDate.length; i++)
         addIcon(eventsContainer, eventsSameDate[i].name, "/events/" + eventsSameDate[i].id);
- }
+}
 
-const setupBottomPage = async id =>
-{
-    if(token)
-    {
+const setupBottomPage = async id => {
+    if (token) {
         const reservations = (await get(URLS.RESERVATION + "/user/" + userID, 100)).response;
-    
-        for(var i=0; i < reservations.length; i++)
-            if(reservations[i].event_id == id)
-            {
+
+        for (var i = 0; i < reservations.length; i++)
+            if (reservations[i].event_id == id) {
                 addReservedLabel();
                 return;
             }
@@ -113,17 +105,14 @@ const setupBottomPage = async id =>
     setupBookButton(id);
 }
 
-const bookTheEvent = async id =>
-{
-    await post(URLS.RESERVATION, 
-        {
-            "eventId": id
-        }, true)
+const bookTheEvent = async id => {
+    await post(URLS.RESERVATION, {
+        "eventId": id
+    }, true)
     location.reload();
 }
 
-const setupBookButton = async id =>
-{
+const setupBookButton = async id => {
     const bookBtn = document.getElementById("bookBtn");
     bookBtn.onclick = () => token ? bookTheEvent(id) : goTo("/login");
 }
