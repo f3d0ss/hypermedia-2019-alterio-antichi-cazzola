@@ -143,6 +143,13 @@ a.icoInstagram {
     margin-left: 15px;
 }
 
+.performer-box {
+    height: 200px;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
 .round-img {
     border-radius: 50%;
     width: 140px;
@@ -157,12 +164,10 @@ a.icoInstagram {
 }
 
 .dark-p {
+    align-content: center;
     color: black;
 }
 
 .round-img.dark {
-    border-radius: 50%;
-    width: 140px;
-    height: 140px;
     border: solid 2px black;
 }
