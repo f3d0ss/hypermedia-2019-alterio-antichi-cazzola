@@ -95,6 +95,15 @@ body {
     background-color: rgb(243, 195, 105);
 }
 
+#signup-btn {
+    background-color: wheat;
+}
+
+#signup-btn:hover {
+    background-color: rgb(243, 195, 105);
+}
+
+
 /* nav-toggler */
 
 .burger-menu {
@@ -228,5 +237,11 @@ input:focus {
 
     #login-btn {
         max-width: 80px;
+    }
+
+    #signup-btn {
+        max-width: 80px;
+        margin-right: 10px;
+        padding-left: 1px;
     }
 }

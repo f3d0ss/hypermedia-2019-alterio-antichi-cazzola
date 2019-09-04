@@ -32,9 +32,10 @@ module.exports = class Event {
             let query = "INSERT INTO PerformerEvent (event_id, performer_id) VALUES ";
             const params = [];
             for (const performer_id of this.performer_ids) {
-                query = query + "(?, ?) ";
+                query = query + "(?, ?) ,";
                 params.push(this.id, performer_id);
             }
+            query = query.substring(0, query.length - 1);
             await db.query(query, params);
         }
         if (this.company_ids && this.company_ids.length > 0) {
