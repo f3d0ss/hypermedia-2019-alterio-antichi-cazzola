@@ -22,14 +22,13 @@ const addEvent = event => {
         `
     byId("eventsContainer").innerHTML += html;
 }
-
 const addLabel = () => {
     byId("eventsContainer").innerHTML =
         `
-                        <div class="d-flex flex-row justify-content-center">
-                            <h3><a class ="text-dark" href = "/calendar">Nothing for today...<a/></h3>
-                        </div>
-                    `
+                                <div class="d-flex flex-row justify-content-center">
+                                    <h3>Nothing for today..  <a class ="text-info" href = "/calendar"> Click here to go to the Calendar <a/></h3>
+                                </div>
+                            `
 }
 
 const onTodayLoad = () => {
@@ -42,8 +41,8 @@ const onTodayLoad = () => {
 }
 
 const setupEvents = async () => {
-    //const events = (await get(URLS.EVENT + "/date/" + curDate, 100)).response;
-    console.log(URLS.EVENT + "/date/" + "2019-09-06");
+    const events = (await get(URLS.EVENT + "/date/" + curDate, 100)).response;
+    //console.log(URLS.EVENT + "/date/" + "2019-09-06");
     const events = (await get(URLS.EVENT + "/date/" + "2019-09-06", 100)).response;
 
     if (events.length > 0)

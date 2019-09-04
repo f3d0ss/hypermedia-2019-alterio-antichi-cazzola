@@ -37,7 +37,7 @@ const addHint = () =>
     byId("container").innerHTML = 
                 `
                     <div class="d-flex flex-row justify-content-center">
-                        <h3><a class ="text-dark" href = "/eventsTypes">Are you looking for an event?<a/></h3>
+                        <h3>Are you looking for an event? <a class ="text-info" href = "/eventsTypes"> Click here to explore.. <a/></h3>
                     </div>
                 `
 }
