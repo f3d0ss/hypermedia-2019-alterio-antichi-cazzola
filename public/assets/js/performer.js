@@ -14,8 +14,9 @@ const onPerformerLoad = async () => {
         const performerID = UrlLastPart;
         const performer = (await get(URLS.PERFORMER + "/" + performerID, 100)).response[0];
 
-        byId("headImage").innerHTML = `<img src="${performer.photos.pop()}" class="performer-img"></img>`
-        byId("followName").innerHTML = `Follow ${ byId("title").innerHTML = byId("name").innerHTML = byId("name2").innerHTML = performer.name } on social media!`;
+        byId("headImage").innerHTML = `<img src="${performer.photos[0]}" class="performer-img"></img>`
+        performer.photos.shift();
+        byId("followName").innerHTML = `Follow ${byId("title").innerHTML = byId("name").innerHTML = byId("name2").innerHTML = performer.name} on social media!`;
         byId("moreAbout").innerHTML = `More about ${performer.name}`;
         byId("findAuthor").innerHTML = `Find ${performer.name} Performing in: `;
         byId("description").innerHTML = performer.detail;
