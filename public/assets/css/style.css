@@ -33,6 +33,10 @@ body {
     text-decoration: none;
 }
 
+.whiter {
+    background-color: white;
+}
+
 /* navbar */
 
 .navbar {
@@ -89,7 +93,7 @@ body {
     color: black;
 }
 
-/* login button */
+/* login and registratino buttons */
 
 #login-btn {
     background-color: wheat;
@@ -106,7 +110,6 @@ body {
 #signup-btn:hover {
     background-color: rgb(243, 195, 105);
 }
-
 
 /* nav-toggler */
 
@@ -231,6 +234,10 @@ input:focus {
 
 .footer .row {
     padding-top: 15px;
+}
+
+.fas {
+    line-height: 40px;
 }
 
 @media (min-width: 992px) {

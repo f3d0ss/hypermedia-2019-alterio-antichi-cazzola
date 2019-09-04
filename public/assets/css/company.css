@@ -139,8 +139,7 @@ a.icoInstagram {
 .event-box {
     height: 200px;
     width: 200px;
-    margin-top: 20px;
-    margin-left: 15px;
+    margin: 10px 7px 10px 7px;
 }
 
 .performer-box {
@@ -164,7 +163,7 @@ a.icoInstagram {
 }
 
 .dark-p {
-    align-content: center;
+    text-align: center;
     color: black;
 }
 

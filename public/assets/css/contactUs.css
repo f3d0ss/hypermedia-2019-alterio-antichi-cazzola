@@ -44,6 +44,11 @@
     cursor: pointer;
 }
 
+#msg-form {
+    width: 100%;
+    height: 150px;
+}
+
 .wheat-line {
     color: wheat;
 }
