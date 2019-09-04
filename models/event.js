@@ -42,9 +42,10 @@ module.exports = class Event {
             let query = "INSERT INTO CompanyEvent (event_id, company_id) VALUES ";
             const params = [];
             for (const company_id of this.company_ids) {
-                query = query + "(?, ?) ";
+                query = query + "(?, ?) ,";
                 params.push(this.id, company_id);
             }
+            query = query.substring(0, query.length - 1);
             await db.query(query, params);
         }
         if (this.photos && this.photos.length > 0) {
