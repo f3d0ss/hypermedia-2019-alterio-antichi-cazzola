@@ -23,8 +23,7 @@
 /* second wrapper */
 
 .s-wrapper {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding: 30px 15px;
     margin-bottom: 30px;
     background-color: black;
     border-radius: 25px;
@@ -35,8 +34,7 @@ hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 10;
-    border-top: 20px solid rgba(0, 0, 0, 0.1);
-  }
+}
 
 #last-wrapper {
     margin-bottom: 50px;
@@ -96,7 +94,7 @@ a:hover {
     border: solid 4px wheat;
     height: 130px;
     width: 130px;
-    margin-right: 20px;
+    margin-right: 15px;
 }
 
 .performer-name {

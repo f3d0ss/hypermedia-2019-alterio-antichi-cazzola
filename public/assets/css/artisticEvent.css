@@ -29,32 +29,27 @@
     border-radius: 15px;
 }
 
-.reservedLabel
-{
+.reservedLabel {
     font-size: 40px;
 }
 
-.card-header
-{
+.card-header {
     font-size: 25px;
     color: #34495e;
 }
 
-.card-body
-{
+.card-body {
     font-size: 20px;
     color: darkcyan;
 }
 
-.titleLabel
-{
+.titleLabel {
     font-size: 110px;
     letter-spacing: 2px;
     color: rgb(97, 75, 35);
 }
 
-.titleDiv
-{
+.titleDiv {
     margin-top: 40px;
     margin-bottom: 60px;
 }
@@ -79,13 +74,11 @@
 
 /* seminar link */
 
-.display-2
-{
-    margin-top:45px;
+.display-2 {
+    margin-top: 45px;
 }
 
-.abstractLabel
-{
+.abstractLabel {
     margin-top: 25px;
     font-size: 30px;
 }
@@ -109,8 +102,7 @@
     margin: 0 2%;
 }
 
-.bookbtn
-{
+.bookbtn {
     font-size: 30px;
 }
 
@@ -118,6 +110,10 @@
 
     .carousel-item {
         height: 250px;
+    }
+
+    .titleLabel {
+        font-size: 70px;
     }
 }
 

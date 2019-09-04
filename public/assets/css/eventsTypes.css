@@ -20,10 +20,6 @@
     background-color: wheat;
 }
 
-.type-description {
-    height: 3em;
-}
-
 a:hover {
     color: rgb(233, 166, 43);
 }
