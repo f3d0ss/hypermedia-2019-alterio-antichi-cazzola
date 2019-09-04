@@ -3,7 +3,7 @@
 #main-img {
     margin-top: -16px;
     height: 900px;
-    width: 1520px;
+    width: 100% !important;
 }
 
 #main-txt {

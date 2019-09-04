@@ -20,6 +20,10 @@
     background-color: wheat;
 }
 
+.type-description {
+    height: 3em;
+}
+
 /* second wrapper */
 
 .s-wrapper {
@@ -33,8 +37,8 @@
     border-radius: 25px;
     width: 700px;
 }
-.eventCard
-{
+
+.eventCard {
     margin: 10px;
 }
 
@@ -57,7 +61,7 @@
 
 .carousel-item img {
     height: 350px;
-    width: 960px;
+    width: 100%;
     border-radius: 5px;
     border: solid 2px rgb(180, 165, 138);
 }

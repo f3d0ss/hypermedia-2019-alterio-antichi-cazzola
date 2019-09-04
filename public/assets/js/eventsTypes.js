@@ -3,11 +3,11 @@ const createCard = (container, event) => {
                         <div class="s-wrapper centralized">
                             <div class="quote-wrapper">
                             <a href="/events/type/${event.event_type}"><h1 class="title">${event.event_type}</h1></a>
-                                <p class="subtitle"> ${event.description} </p>
+                                <p class="subtitle type-description "> ${event.description} </p>
                             </div>
 
                             <div id="slider-container" class="container">
-                                <div id="slider" class="carousel slide">
+                                <div id="slider-${event.event_type}" class="carousel slide">
                                     <ol class="carousel-indicators">
                                         <li data-target="#slider" data-slide-to="0" class="active"></li>
                                         <li data-target="#slider" data-slide-to="1"></li>
@@ -24,11 +24,11 @@ const createCard = (container, event) => {
                                             <img src="/images/event-type/${event.event_type}03.jpg" alt="Third slide">
                                         </div>
                                     </div>
-                                    <a class="carousel-control-prev" href="#slider" role="button" data-slide="prev">
+                                    <a class="carousel-control-prev" href="#slider-${event.event_type}" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Previous</span>
                                     </a>
-                                    <a class="carousel-control-next" href="#slider" role="button" data-slide="next">
+                                    <a class="carousel-control-next" href="#slider-${event.event_type}" role="button" data-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
