@@ -15,7 +15,7 @@ const addBookBtn = () => {
     var buttonHTML =
         `
             <div class="col text-center">
-              <button id="bookBtn" type="button" class="btn btn-dark">GET YOUT TICKET</button>
+              <button id="bookBtn" type="button" class="btn bookbtn btn-dark">GET YOUT TICKET</button>
             </div>
         `;
     byId("bottomContainer").innerHTML = buttonHTML;
@@ -25,7 +25,7 @@ const addReservedLabel = () => {
     var reservedHTML =
         `
                     <div class="col text-center">
-                        <h1><span class="badge badge-info">RESERVED</span></h1>
+                        <h1><span class="badge reservedLabel badge-info">RESERVED</span></h1>
                     </div>
                 `;
     byId("bottomContainer").innerHTML = reservedHTML;
@@ -54,6 +54,7 @@ const onArtisticEventLoad = async () => {
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
         byId("img1").src = event.photos[1];
         byId("img2").src = event.photos[2];
+        byId("titleLabel").innerHTML = event.name;
         createIcons(event);
         setupQuestions(event);
         setupBottomPage(id);

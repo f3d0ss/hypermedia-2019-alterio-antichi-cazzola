@@ -31,6 +31,13 @@
     width: 100%;
 }
 
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 10;
+    border-top: 20px solid rgba(0, 0, 0, 0.1);
+  }
+
 #last-wrapper {
     margin-bottom: 50px;
 }

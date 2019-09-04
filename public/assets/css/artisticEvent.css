@@ -22,10 +22,41 @@
 
 .artist-wrapper {
     padding: 20px;
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     border: solid 2px wheat;
     background-color: rgb(12, 11, 11);
     border-radius: 15px;
+}
+
+.reservedLabel
+{
+    font-size: 40px;
+}
+
+.card-header
+{
+    font-size: 25px;
+    color: #34495e;
+}
+
+.card-body
+{
+    font-size: 20px;
+    color: darkcyan;
+}
+
+.titleLabel
+{
+    font-size: 110px;
+    letter-spacing: 2px;
+    color: rgb(97, 75, 35);
+}
+
+.titleDiv
+{
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
 .artist-box {
@@ -48,6 +79,17 @@
 
 /* seminar link */
 
+.display-2
+{
+    margin-top:45px;
+}
+
+.abstractLabel
+{
+    margin-top: 25px;
+    font-size: 30px;
+}
+
 #s-link {
     color: rgb(245, 184, 71);
 }
@@ -65,6 +107,11 @@
 .orange-title {
     color: orange;
     margin: 0 2%;
+}
+
+.bookbtn
+{
+    font-size: 30px;
 }
 
 @media (max-width: 600px) {
