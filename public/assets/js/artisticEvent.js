@@ -46,6 +46,8 @@ const onArtisticEventLoad = async () => {
     try {
         const id = UrlLastPart;
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
+        byId("img1").src = event.photos[1];
+        byId("img2").src = event.photos[2];
         createIcons(event);
         setupQuestions(event);
         setupBottomPage(id);
