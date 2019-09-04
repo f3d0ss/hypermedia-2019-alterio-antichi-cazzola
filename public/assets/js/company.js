@@ -4,7 +4,7 @@ const addevent = event => {
         <div class = "row event-box"> 
             <div class = "col"> 
                 <a href=${"/events/" + event.id}>
-                    <img class="round-img" src="/images/HarryPotter.jpg">
+                    <img class="round-img" src="${event.photos[0]}" alt="photo of event: ${event.title}">
                 </a>
             </div>
             <div class = "col"> 
@@ -18,7 +18,7 @@ const addevent = event => {
 const addPerformer = performer => {
     var html =
         `
-        <div class="row event-box"> 
+        <div class="row performer-box"> 
             <div class="col"> 
                 <a href="/performers/${performer.id}">
                     <img class="round-img dark" src="${performer.photos[0]}" alt="photo of ${performer.name}">
@@ -37,7 +37,7 @@ const onCompanyLoad = async () => {
         const companyID = UrlLastPart;
         const company = (await get(URLS.COMPANY + "/" + companyID, 100)).response;
 
-        byId("headImage").innerHTML = `<img src="${company.photos[0]}" class="company-img"></img>`
+        byId("headImage").innerHTML = `<img src="${company.photos[0]}" class="company-img" alt="photo of ${company.name}"></img>`
         company.photos.shift();
         byId("followName").innerHTML = `Follow ${byId("title").innerHTML = byId("name").innerHTML = byId("name2").innerHTML = company.name} on social media!`;
         byId("moreAbout").innerHTML = `More about ${company.name}`;

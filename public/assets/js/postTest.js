@@ -76,10 +76,10 @@ var companyPost = async () =>
         });
     await post(URLS.COMPANY,  // post can be found in script.js
         {
-            "name": "The Best Company",
-            "detail": "This is a company of dances",
+            "name": "Hall & Oates",
+            "detail": "Hall and Oates have sold an estimated 40 million records, making them the best selling music duo in history. They are best known for their six No. 1 hits on the Billboard Hot 100: Rich Girl, Kiss on My List, Private Eyes, I Can't Go for That (No Can Do), Maneater, and Out of Touch, as well as many other songs which charted in the Top 40 including the singles You Make My Dreams, She’s Gone and Sara Smile. In total, they had 34 chart hits on the US Billboard Hot 100, seven RIAA platinum albums, and six RIAA gold albums. Billboard magazine named them the most successful duo of the rock era, surpassing Simon & Garfunkel and The Everly Brothers. They have achieved moderate success in the United Kingdom with two UK top ten albums, spending a total of one-hundred and seventeen weeks in the UK top 75 album charts and eighty-four weeks in the top seventy-five of the UK Singles Chart.",
             "photos": [
-                "/images/c3-1.png"
+                "/images/c3-1.jpg", "/images/c3-2.jpg", "/images/c3-3.jpg"
             ]
         });
     await post(URLS.COMPANY,  // post can be found in script.js
@@ -105,7 +105,7 @@ var performerPost = async () =>
             "detail": "Pierre is the leading vocalist of the uprising rock band Simple Plan. When Bouvier was 13 or 14 years old, he founded the punk rock band Reset with his best friend Chuck Comeau in which he was the bass guitarist and lead vocalist. He was not happy with Reset and left the band in 1999, a year after Comeau's departure in 1998. His current bandmate David Desrosiers took his place as lead vocalist and bass guitarist. He later met Comeau at a Sugar Ray concert and joined him in creating Simple Plan with old schoolmates David Desrosiers, Jeff Stinco and Sébastien Lefebvre.",
             "company_id": 1,
             "photos": [
-                "/images/p1-1.png"
+                "/images/p1-1.jpg", "/images/p1-2.png", "/images/p1-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -119,7 +119,7 @@ var performerPost = async () =>
             "detail": "Comeau start his music career in 1993, when he was 13 years old along with bandmate Pierre Bouvier. Comeau left Reset in 1998 to study law on McGill University, and left to pursue music career, he later reunited with Bouvier at a Sugar Ray concert, they later formed Simple Plan in 1999 along with old schoolmates Sébastien Lefebvre and Jeff Stinco. Later, David Desrosiers replaced Bouvier and Reset but only last for 6 months and left Reset to join Simple Plan.",
             "company_id": 1,
             "photos": [
-                "/images/p2-1.png"
+                "/images/p2-1.png", "/images/p2-2.png", "/images/p2-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -133,7 +133,7 @@ var performerPost = async () =>
             "detail": "In early 2009, Lefebvre recorded an acoustic EP entitled You Are Here / Vous Êtes Ici. It was released on October 20, 2009, under Coalition Entertainment Inc. The first single I Fall for You was released on September 8, 2009. A music video was also released on YouTube, directed by Simple Plan bandmate, Chuck Comeau.",
             "company_id": 1,
             "photos": [
-                "/images/p3-1.png"
+                "/images/p3-1.png", "/images/p3-2.png", "/images/p3-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -147,20 +147,7 @@ var performerPost = async () =>
             "detail": "Signed to Atlantic by Ahmet Ertegun and managed by Tommy Mottola in the early 1970s, Hall & Oates have sold more albums than any other duo in music history[citation needed]. Their second album, Abandoned Luncheonette, produced by Arif Mardin and released in 1973, yielded the single, She's Gone, which went to No. 7 in the U.S. Top 10 on re-release in 1976 after reaching No. 1 on the R&B charts when it was covered by Tavares. The duo recorded one more album with Atlantic, War Babies (produced by Todd Rundgren), before they were dropped and promptly signed to RCA. During their tenure at RCA the duo catapulted to international superstardom",
             "company_id": 2,
             "photos": [
-                "/images/p4-1.png"
-            ]
-        });
-    await post(URLS.PERFORMER,  // post can be found in script.js
-        {
-            "name": "Chris Brown",
-            "age": "24",
-            "birth": "Tappahannock",
-            "achievements": [
-                "BET Awards Winner - 2017"
-            ],
-            "detail": "Christopher Maurice Brown was born on May 5, 1989, in the small town of Tappahannock, Virginia, to Joyce Hawkins, a former day care center director, and Clinton Brown, a corrections officer at a local prison. He has an older sister, Lytrell Bundy, who works in a bank. Music was always present in Brown's life beginning in his childhood. He would listen to soul albums that his parents owned, and eventually began to show interest in the hip-hop scene. Brown taught himself to sing and dance at a young age and often cites Michael Jackson as his inspiration. He began to perform in his church choir and in several local talent shows. When he mimicked an Usher performance of My Way, his mother recognized his vocal talent, and they began to look for the opportunity of a record deal. At the same time, Brown was going through personal issues. His parents had divorced, and his mother's boyfriend terrified him by subjecting her to domestic violence.",
-            "photos": [
-                "/images/p6-1.png"
+                "/images/p4-1.png", "/images/p4-2.png", "/images/p4-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -173,7 +160,7 @@ var performerPost = async () =>
             ],
             "detail": "In early 2008, Forbes named Shakira the fourth top-earning female artist in music industry. Then, in July of that year, Shakira signed a $300 million contract with Live Nation, an international touring giant, which contract was to remain in effect for ten years. The touring group also doubles as a record label which promotes, but does not control, the music its artists release. Shakira's contract with Epic Records called for three more albums as well – one in English, one in Spanish, and a compilation, but the touring and other rights of the Live Nation deal were confirmed to begin immediately.",
             "photos": [
-                "/images/p7-1.png"
+                "/images/p6-1.png", "/images/p6-2.png", "/images/p6-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -186,7 +173,7 @@ var performerPost = async () =>
             ],
             "detail": "After the Super Bowl incident, Timberlake put his recording career on hold to act in several films, having starred in a few feature films earlier in his career. The first role he took during this time was as a journalist in Edison Force, filmed in 2004 and received a direct-to-video release on July 18, 2006. He also appeared in the films Alpha Dog, Black Snake Moan, Richard Kelly's Southland Tales, and voiced Prince Artie Pendragon in the animated film Shrek the Third, released on May 18, 2007. He also appeared as a young Elton John, in the video for John's song This Train Don't Stop There Anymore. Timberlake was considered to play the role of Roger Davis in the film version of the rock musical Rent, but director Chris Columbus had insisted that only the original Broadway members could convey the true meaning of Rent, so the role was reprised by Adam Pascal",
             "photos": [
-                "/images/p8-1.png"
+                "/images/p7-1.png", "/images/p7-2.png", "/images/p7-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -199,7 +186,7 @@ var performerPost = async () =>
             ],
             "detail": "Little was born in Ottawa, Ontario, Canada, the middle of three sons of Lawrence Peniston Little, a doctor, and Elizabeth Maud (née Wilson). He attended Lisgar Collegiate Institute. In his early teens, he formed a partnership with Geoff Scott, another budding impressionist, concentrating on reproducing the voices of Canadian politicians such as Prime Minister John Diefenbaker and Ottawa mayor Charlotte Whitton. (Scott went on to become a politician.) He and Scott were performing professionally in night clubs by their late teens.",
             "photos": [
-                "/images/p9-1.png"
+                "/images/p11-1.png", "/images/p11-2.png", "/images/p11-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -212,7 +199,7 @@ var performerPost = async () =>
             ],
             "detail": "Lampanelli, one of three siblings, was born in Trumbull, Connecticut, to a middle class family. Three of her grandparents were of Italian descent, and the fourth of Polish ancestry. Her mother, Gloria (née Velgot), worked for the local police department, where she typed in all the arrests made, and her father, Leonard Lampugnale, worked for Sikorsky Aircraft and later became a painter. Lampanelli attended Roman Catholic schools, studied journalism at Boston College and Syracuse University, and attended the Radcliffe Publishing Course at Harvard. She worked as a copy editor at Popular Mechanics and an assistant at Rolling Stone. She was also a fact checker and the first chief of research for Spy magazine; a book about Spy describes her then as your average decked-out-heavy-metal-head-next-door. Speaking later to Maxim Magazine Online, Lampanelli remarked, I was a real journalist for Rolling Stone, Spy, Hit Parader. I interviewed those fuckin' hair bands: Cinderella, Slaughter.",
             "photos": [
-                "/images/p9-1.png"
+                "/images/p12-1.png", "/images/p12-2.png", "/images/p12-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -228,7 +215,7 @@ var performerPost = async () =>
             "birth": "Hong Kong",
             "detail": "He is one of the member of Kaba Modern HIP-HOP dancer",
             "photos": [
-                "/images/p10-0.jpg", "/images/p10-1.jpg"
+                "/images/p8-1.jpg", "/images/p8-2.jpg", "/images/p8-3.png"
             ]
         });
     await post(URLS.PERFORMER,  // post can be found in script.js
@@ -243,7 +230,7 @@ var performerPost = async () =>
             "birth": "Hacienda Heights",
             "detail": "Kao was born and raised in Hacienda Heights, California,[1] where he later graduated from Glen A. Wilson High School. Later, he attended University of California, Irvine and then pursued a full-time career as an hip-hop dancer",
             "photos": [
-                "/images/p11-0.jpeg", "/images/p11-1.jpg"
+                "/images/p9-1.jpeg", "/images/p9-2.png", "/images/p9-3.jpg"
             ]
         });
 };
@@ -271,7 +258,8 @@ var eventPost = async () =>
             "performer_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [ 
+                "/images/e1-1.jpg", "/images/e1-2.jpg", "/images/e1-3.jpg"               
             ],
             "company_ids": [
                 1, 2
@@ -291,7 +279,7 @@ var eventPost = async () =>
             "performer_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [ "/images/e2-1.jpg", "/images/e2-2.jpg", "/images/e2-3.jpg"               
             ],
             "company_ids": [
                 1, 2
@@ -311,7 +299,7 @@ var eventPost = async () =>
             "performer_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [ "/images/e3-1.jpg", "/images/e3-2.jpg", "/images/e3-3.jpg"                
             ],
             "company_ids": [
                 1, 2
@@ -332,7 +320,7 @@ var eventPost = async () =>
             "performer_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [  "/images/e4-1.jpg", "/images/e4-2.jpg", "/images/e4-3.jpg"              
             ],
             "company_ids": [
                 1, 2
@@ -352,7 +340,8 @@ var eventPost = async () =>
             "performer_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [      
+                "/images/e5-1.jpg", "/images/e5-2.jpg", "/images/e5-3.jpg"          
             ],
             "company_ids": [
                 1, 2
@@ -375,7 +364,8 @@ var eventPost = async () =>
             "company_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [     
+                "/images/e6-1.jpg", "/images/e6-2.jpg", "/images/e6-3.jpg"           
             ],
             "event_type": "music"
         });
@@ -396,7 +386,8 @@ var eventPost = async () =>
             "company_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [  
+                "/images/e7-1.jpg", "/images/e7-2.jpg", "/images/e7-3.jpg"              
             ],
             "event_type": "opera"
         });
@@ -416,7 +407,8 @@ var eventPost = async () =>
             "company_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [    
+                "/images/e8-1.jpg", "/images/e8-2.jpg", "/images/e8-3.jpg"            
             ],
             "event_type": "opera"
         });
@@ -436,7 +428,8 @@ var eventPost = async () =>
             "company_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [  
+                "/images/e9-1.jpg", "/images/e9-2.jpg", "/images/e9-3.jpg"              
             ],
             "event_type": "opera"
         });
@@ -457,7 +450,8 @@ var eventPost = async () =>
             "company_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [     
+                "/images/e10-1.jpg", "/images/e10-2.jpg", "/images/e10-3.jpg"           
             ],
             "event_type": "theater"
         });
@@ -477,7 +471,8 @@ var eventPost = async () =>
             "company_ids": [
                 1, 2
             ],
-            "photos": [                
+            "photos": [     
+                "/images/e11-1.jpg", "/images/e11-2.jpg", "/images/e11-3.jpg"           
             ],
             "event_type": "theater"
         });
@@ -497,24 +492,8 @@ var eventPost = async () =>
             "company_ids": [
                 1, 2
             ],
-            "photos": [                
-            ],
-            "event_type": "theater"
-        });
-        
-        await post(URLS.EVENT,  // post can be found in script.js
-        {
-            "name": "HIP HOP NIGHT",
-            "abstract": "Set on the old fashone hip hop culture, the kaba modern team will show you a really great preformernce",
-            "date": "2019-09-07",
-            "start": "20:00:00",
-            "end": "21:30:00",
-            "location_id": "A03",
-            "vacancy": 29,
-            "company_ids": [
-                2
-            ],
-            "photos": [                
+            "photos": [  
+                "/images/e12-1.jpg", "/images/e12-2.jpg", "/images/e12-3.jpg"              
             ],
             "event_type": "theater"
         });
