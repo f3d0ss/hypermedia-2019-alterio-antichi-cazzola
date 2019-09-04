@@ -62,6 +62,10 @@ body {
     margin-bottom: 10px;
 }
 
+.btn {
+    text-align: center;
+}
+
 /* search button */
 
 .search {
