@@ -48,9 +48,17 @@ const addSeminarBox = seminar => {
     byId("seminarContainer").innerHTML = html;
 }
 
+const getID = () =>
+{
+    var tmp = UrlLastPart;
+    if(tmp.includes("#"))
+        tmp = tmp.substring(0, tmp.indexOf("#"));
+    return tmp;
+}
+
 const onArtisticEventLoad = async () => {
     try {
-        const id = UrlLastPart;
+        var id = getID();
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
         byId("img1").src = event.photos[1];
         byId("img2").src = event.photos[2];
@@ -73,6 +81,9 @@ const onArtisticEventLoad = async () => {
 }
 
 const setupQuestions = async event => {
+
+    event.date = event.date.substring(0, 10);
+    removeSeconds(event);
     var locationText = (await get(URLS.LOCATION + "/" + event.location_id, 100)).response.how_to_reach;
     var questions = ["What day does it take place?", `What time does it starts?`, "What time does it ends?", "How many available tickes are there?", "How can i reach the event?"];
     var answers = [`${event.date}`, `${event.start}`, `${event.end}`, `${event.vacancy}`, `${locationText}`];

@@ -27,17 +27,15 @@ is available [this address](https://github.com/f-cazzola/hypermedia-2019-alterio
 ![Web Architecture Schema 2](https://festival-hypermedia.herokuapp.com/images/doc/web-arc-2.png)
 
 
-We render the pages JUST for include piece of html commun in all pages like the navbar or footer. With rendering we avoided any inconsistency with the navbar in all pages.
+We rendered the pages JUST to include piece of html commun in all pages like the navbar or footer. By rendering we avoided any type of inconsistency with the navbar among the pages.
 We are sure the dynamic data is NEVER rendered by the server beacause we never access the model classes anywhere but in the API logic (in the API folder)
 ### API
 #### REST compliance
 _Describe here to what extent did you follow REST principles and what are
 the reasons for which you might have decided to diverge. Note, you must
 not describe the whole API here, just the design decisions._
-We have create complete REST API, we didn't implemented all CRUD operations for each model if not necessary for the web application with exeption for the POST API used by our team to populate the database
+We have created a complete REST API, we didn't implemented all CRUD operations for each model if not necessary for the web application with exeption for the POST API used by our team to populate the database
 #### OpenAPI Resource models
-_Describe here synthetically, which models you have introduced for
-resources._
 - Event
 - Seminar
 - Location
@@ -49,40 +47,44 @@ resources._
 ### Data model
 ![ER diagram](https://festival-hypermedia.herokuapp.com/images/doc/ER-diagram.png)
 
-All OpenAPI models have also an Entity in the ER diagram except for Reservation, which is represented in the diagram as a reletionship from User to Event
+All OpenAPI models have also an Entity in the ER diagram except for Reservation, which is represented in the diagram as a relationship from User to Event
 ## Implementation
 ### Tools used
-Describe here which tools, languages and frameworks did you use for the
-backend of the application.
 - express: to simplyfy the creation of a web server and devide routing
 - passposrt (with passwport-jwt): to simplify the login and authentication verification process through a JWT
-- ejs: just to use the `include` function to avoid for example the need of change every paga for a mistake in the navigation bar (we never render data from the model)
+- ejs: just to use the `include` function to smoothen the development of the pages. Makes it easier to apply small changes in
+        elements like the navbar without going through all pages
 - mysql2: to interact with the MySql server
 - bcrypt: to hash the password before save them into the DB
-- nodemon: to avoid restarting the server after any change
-- nodemailer: to send the email for the email verification (removed the need of verify the email after usability evaluation)
+- nodemon: to avoid restarting the server after every change
+- nodemailer: to send the email for the email verification (removed the need of verifyig the email after usability evaluation)
 - express-openapi-validator: to validate the input of the API in line with the OpenAPI specification
 - swagger-ui-express: to provide the a UI to the OpenAPI specification
 ### Discussion
 - We make sure our web application adheres to the provided OpenAPI specification thanks to SwaggerUi because we generete it from the OpenAPI spec file with swagger-ui-express and we used it to extensevly test all the API
-- We think our web application adheres to common practices to partition a REST-based web application because we crated API that are easy to understand and documented with OpenAPI specification, they accept and return only JSON object with the data, so that anyone can create either a web application, Android application or any other sort of application using the same API.
-- We managed the authentication with JSON Web Token, returning the JWT when the POST API for login is called. Then this JWT need to be added in the header of the calls to the API that need authentication
-- For managing the data model we used MySQL database mainly because we found more documentation about it then other type of relational database
+- We think our web application adheres to common practices to partition a REST-based web application because we crated API that's easy to understand and documented it with OpenAPI specification. Our API accepts and returns JSON objects with the data, so that anyone can create either a web application, Android application or any other sort of application using the same API.
+- We managed the authentication by using the JSON Web Token, returning the JWT when the POST API for login is called. This JWT then needs to be added in the header of the calls to the API that need authentication.
+- For managing the data model we used MySQL database mainly because we found more documentation about it than other types of relational databases.
 ## Other information
 ### Task assignment
 - Clarence Antichi worked on front end (70%) and documentation (30% of the time)
 - Federico Alterio worked on front end (80%) and back end (20%)
 - Federico Cazzola worked on back end (80%), front end (10%) and documentation (10%)
 ### Analysis of existing API
-For almost all API we watch [this course](https://www.udemy.com/course/nodejs-the-complete-guide/)
-because it is one of the most complete course on NodeJs and has two section dedicated to REST APIs 
+To fully prepare on how to properly create an API we watched [this course](https://www.udemy.com/course/nodejs-the-complete-guide/)
+because it is one of the most complete courses on NodeJs and has two sections dedicated to REST APIs 
 ### Learning outcome
-What was the most important thing all the members have learned while
-developing this part of the project, what questions remained unanswered,
-how you will use what you've learned in your everyday life?
-Examples:
-- Foo learned to write SQL queries and Javascript but wanted to know
-more about caching, he's probably going to create his own startup
-with what she has learned
-- Bar learned how to deploy on a cloud platform, he would have liked
-to know more about promises for asynchronous code..
+- Federico Alterio learned both how to write javascript and 
+the overall necessary skills to create and manage a database.
+Also, made practice by creating the web server and worked on the
+layout of the pages as well. Would like to reinforce his skills
+on the API side of the project.
+
+- Federico Cazzola learned how to create and fully document an API. He has also learned how to use SQL in order to manage data from an existing database. He has also acquired the necessary skills to produce effective tasks to test the usability of a web site. Would like to deepen his knoledge on how to create and manage a database.
+
+- Clarence Antichi learned how to properly present a piece of work by documenting it. He also learned how to organize the layout of a website, taking into account general page structure guidelines. He would like to dive down a little bit more on how to create and manage a database.
+
+All three memebers intend on applying what was learned on this
+course by creating a startup together. The skills acquired will
+also be useful from a general standpoint as they can be applied in
+a lot of different contexts.

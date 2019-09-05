@@ -32,8 +32,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
-      summary: This is a list of the events
-      description: This is a list of the events
+      summary: This is a list of events
+      description: Contains all events the festival is made up of
       responses:
         200:
           description: A list of events
@@ -50,8 +50,8 @@ paths:
     post:
       tags:
         - event
-      description: Add an event to the database
-      summary: Add an event to the database
+      description: Adds an event to the database
+      summary: Adds an event to the database
       requestBody:
         content:
           application/json:
@@ -78,8 +78,8 @@ paths:
           schema:
             type: integer
             example: 1
-      summary: This is a list of the events performed by a performer
-      description: This is a list of the events performed by a performer
+      summary: This is a list of events
+      description: Contains all events in which the performer with id {performerId} is featured
       responses:
         200:
           description: A list of events
@@ -107,8 +107,8 @@ paths:
           schema:
             type: integer
             example: 1
-      summary: This is a list of the events performed by a company
-      description: This is a list of the events performed by a company
+      summary: This is a list of events
+      description:  Contains all events in which the company with id {companyId} is featured
       responses:
         200:
           description: A list of events
@@ -137,8 +137,8 @@ paths:
           schema:
             type: string
             example: A01
-      summary: This is a list of the events filtered by location
-      description: This is a list of the events filtered by location
+      summary: This is a list of events
+      description: Contains all events of the festival that take place in the location with id {locationId}
       responses:
         200:
           description: A list of events
@@ -167,8 +167,8 @@ paths:
             type: string
             format: date
             example: 2019-12-12
-      summary: This is a list of the events filtered by date
-      description: This is a list of the events filtered by date
+      summary: This is a list of events
+      description: Contains all events of the festival that take place the day with id {date}
       responses:
         200:
           description: A list of events
@@ -196,8 +196,8 @@ paths:
           schema:
             type: integer
             example: 1
-      summary: This is a list of the events presented in a seminar
-      description: This is a list of the events presented in a seminar
+      summary: This is a list events
+      description: Contains all events discussed in the seminar with id {seminarId}
       responses:
         200:
           description: A list of events
@@ -226,8 +226,8 @@ paths:
           schema:
             type: string
             example: dance
-      summary: This is a list of the events filtered by type
-      description: This is a list of the events filtered by type
+      summary: This is a list of events
+      description: Contains all events that belong to the type with id {event_type}
       responses:
         200:
           description: A list of events
@@ -254,7 +254,7 @@ paths:
             type: integer
             example: 12345
       summary: Get a specific event
-      description: Get a specific event
+      description: Get the specific event with id {eventId}
       responses:
         200:
             description: A list of events
@@ -274,8 +274,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
-      summary: This is a list of performer
-      description: This is a list of performer
+      summary: This is a list of performers
+      description: Contains all performers who perform in at least an event during the festival
       responses:
         200:
           description: This is a list of performer
@@ -298,8 +298,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Performer'
-      summary: Add a performer to the database
-      description: Add a performer to the database
+      summary: Adds a performer to the database
+      description: Adds a performer to the database
       responses:
         201:
           description: The performer has been added
@@ -312,8 +312,8 @@ paths:
     get:
       tags: 
         - performer
-      summary: This is a list of the event's performers
-      description: This is a list of the event's performers
+      summary: This is a list of performers
+      description: Contains all performers who are featured in the event with id {eventId}
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
@@ -341,8 +341,8 @@ paths:
     get:
       tags: 
         - performer
-      summary: This is a list of the performer forming the company
-      description: This is a list of the performer forming the company
+      summary: This is a list of performers
+      description: Contains all performers the company with id {companyId} is made up of
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
@@ -378,7 +378,7 @@ paths:
             type: integer
             example: 12345
       summary: Get a specific performer
-      description: Get a specific performer
+      description: Get the specific performer with id {performerId}
       responses:
         200:
           description: This is the performer
@@ -398,8 +398,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
-      summary: This is a list of the seminares
-      description: This is a list of the seminares
+      summary: This is a list of seminars
+      description: Contains all seminars that are going to take place during the festival
       responses:
         200:
           description: A list of seminares
@@ -417,6 +417,7 @@ paths:
     post:
       tags:
         - seminar
+      summary: Add an seminar to the database
       description: Add an seminar to the database
       requestBody:
         content:
@@ -442,6 +443,8 @@ paths:
           schema:
             type: integer
             example: 12345
+      summary: Get a specific seminar
+      description: Get the seminar with the id {seminarId}
       responses:
         200:
             description: A list of seminares
@@ -462,8 +465,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
-      summary: This is a list of the companies
-      description: This is a list of the companies
+      summary: This is a list of companies
+      description: Contains all companies that are going to perform at least an event during the festival
       responses:
         200:
           description: A list of companies
@@ -481,7 +484,8 @@ paths:
     post:
       tags:
         - company
-      description: Add an company to the database
+      summary: Adds an company to the database
+      description: Adds an company to the database
       requestBody:
         content:
           application/json:
@@ -499,8 +503,8 @@ paths:
     get:
       tags: 
         - company
-      summary: This is a list of the event's companies
-      description: This is a list of the event's companies
+      summary: This is a list of companies
+      description: Contains all companies that are featured in the event with id {eventId}
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
@@ -535,7 +539,8 @@ paths:
           schema:
             type: integer
             example: 12345
-
+      summary: Gets a specifc company
+      description: Gets the company with id {companyId}
       responses:
         200:
             description: A list of companies
@@ -557,8 +562,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
-      summary: This is a list of the locations
-      description: This is a list of the locations
+      summary: This is a list of locations
+      description: Contains all locations used during the festival to host artistic events and seminars
       responses:
         200:
           description: A list of locations
@@ -576,7 +581,8 @@ paths:
     post:
       tags:
         - location
-      description: Add an location to the database
+      summary: Adds an location to the database
+      description: Adds an location to the database
       requestBody:
         content:
           application/json:
@@ -601,6 +607,8 @@ paths:
           schema:
             type: string
             example: A01
+      summary: Gets a specific location
+      description: Gets the location with id {locationId}
 
       responses:
         200:
@@ -622,8 +630,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
-      summary: This is a list of the event-types
-      description: This is a list of the event-types
+      summary: This is a list of event-types
+      description: Contains all the types of events
       responses:
         200:
           description: A list of event-types
@@ -641,7 +649,8 @@ paths:
     post:
       tags:
         - event-type
-      description: Add an event-type to the database
+      summary: Adds an event-type to the database
+      description: Adds an event-type to the database
       requestBody:
         content:
           application/json:
@@ -666,8 +675,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
-      summary: This signup a user
-      description: This signup a user
+      summary: Signs up a user
+      description: Signs up a user
       responses:
         201:
           description: User registered
@@ -680,7 +689,8 @@ paths:
     post:
       tags:
         - authentication
-      description: Get the JWT to access the locked functionality
+      description: Get the JWT to access the locked functionalities
+      description: Get the JWT to access the locked functionalities
       requestBody:
         content:
           application/json:
@@ -730,6 +740,8 @@ paths:
           schema:
             type: string
             example: ToCxF5fSE9QP_R4Z9ICw7uxZ3ec7AbDRTyBVoQFyY80
+      summary: Verifies the email
+      description: Verifies the email of the user with id {userId} by using a token system
       responses:
         200:
           description: Email verified
@@ -749,8 +761,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/PageSize'
-      summary: This is a list of the reservations
-      description: This is a list of the reservations
+      summary: This is a list of reserved events' IDs
+      description: Contains all reserved events' IDs. Each event ID is associated with the ID of the user who booked it
       responses:
         200:
           description: A list of reservations
@@ -769,7 +781,8 @@ paths:
         - jwt: []
       tags:
         - reservation
-      description: Insert a reservation
+      summary: Inserts a reservation
+      description: Adds a pair of reserved event ID and user's ID
       requestBody:
         content:
           application/json:
@@ -800,7 +813,7 @@ paths:
             type: integer
             example: 1
       summary: This is a list of the user's reservations
-      description: This is a list of the user's reservations
+      description: Contains all events the user with id {userId} has booked so far
       responses:
         200:
           description: A list of user's reservations
@@ -828,8 +841,8 @@ paths:
           schema:
             type: string
             example: 1
-      summary: Delete the reservation with reservationId
-      description: Delete the reservation with reservationId
+      summary: Deletes a specific reservation
+      description: Removes the reservation with id {reservationId} from the list
       responses:
         200:
           description: The reservation has been deleted

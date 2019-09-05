@@ -1,6 +1,6 @@
 const addEvent = event => {
     event.photos.shift();
-    console.log(event.photos);
+    removeSeconds(event);
     var html =
         `
             <div class="d-flex flex-row justify-content-center">

@@ -47,6 +47,12 @@ var get = (url, pageSize) => new Promise((resolve, reject) => {
     xhr.send();
 });
 
+const removeSeconds = obj => 
+{
+    obj.start = obj.start.substring(0, obj.start.lastIndexOf(":"));
+    obj.end = obj.end.substring(0, obj.end.lastIndexOf(":"));
+}
+
 const token = localStorage.getItem("token");
 const UrlLastPart = location.href.substring(location.href.lastIndexOf('/') + 1);
 const goTo = url => window.location.href = url;
