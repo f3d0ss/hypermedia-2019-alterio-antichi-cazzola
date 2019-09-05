@@ -83,4 +83,49 @@ module.exports = class Company {
         }
         return companies;
     }
+
+    static async getCompaniesByEvent(pageNumber, pageSize, eventId) {
+        const companies = [];
+        if (!pageNumber)
+            pageNumber = 0;
+        if (!pageSize)
+            pageSize = 10;
+        const startRow = pageNumber * pageSize;
+
+        const res = await db.query("SELECT company_id FROM CompanyEvent WHERE event_id = ?", [eventId]);
+        const companyIds = res[0].map(row => row.company_id);
+
+        if (companyIds.length === 0)
+            return [];
+        const params = [];
+        let query = "SELECT * FROM Company WHERE id IN (";
+        params.push(companyIds.pop());
+        query += "?";
+        for (const companyId of companyIds) {
+            params.push(companyId);
+            query += ",?";
+        }
+        query += ") ";
+        query += "LIMIT ?,?";
+        params.push(startRow, startRow + +pageSize);
+        const [rows] = await db.query(
+            query,
+            params
+        );
+
+        for (const company of rows) {
+            const res = await db.query(
+                " SELECT path FROM CompanyPhoto WHERE company_id = ?",
+                [company.id]
+            );
+            const photos = res[0].map(pathObj => pathObj.path);
+            companies.push(new Company(
+                company.name,
+                company.detail,
+                photos,
+                company.id
+            ));
+        }
+        return companies;
+    }
 }

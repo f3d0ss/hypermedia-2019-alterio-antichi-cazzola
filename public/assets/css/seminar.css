@@ -51,3 +51,7 @@ img {
 .event-link:hover {
     color: rgb(233, 163, 34);
 }
+
+.subtitle {
+    color: rgb(180, 165, 138);
+}

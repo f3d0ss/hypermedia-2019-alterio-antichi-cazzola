@@ -21,10 +21,10 @@ const onPerformerGroupLoad = async () => {
         var performers;
 
         if (UrlLastPart === "performers") {
-            title = "All performers";
+            title = "Performers";
             performers = (await get(URLS.PERFORMER, 100)).response;
         } else {
-            title = "All companies";
+            title = "Companies";
             performers = (await get(URLS.COMPANY, 100)).response;
         }
         await createCards(title, performers);
