@@ -77,12 +77,17 @@ backend of the application.
 For almost all API we watch [this course](https://www.udemy.com/course/nodejs-the-complete-guide/)
 because it is one of the most complete course on NodeJs and has two section dedicated to REST APIs 
 ### Learning outcome
-What was the most important thing all the members have learned while
-developing this part of the project, what questions remained unanswered,
-how you will use what you've learned in your everyday life?
-Examples:
-- Foo learned to write SQL queries and Javascript but wanted to know
-more about caching, he's probably going to create his own startup
-with what she has learned
-- Bar learned how to deploy on a cloud platform, he would have liked
-to know more about promises for asynchronous code..
+- Federico Alterio learned both how to write javascript and 
+the overall necessary skills to create and manage a database.
+Also, made practice by creating the web server and worked on the
+layout of the pages as well. Would like to reinforce his skills
+on the API side of the project.
+
+- Federico Cazzola learned how to create and fully document an API. He has also learned how to use SQL in order to manage data from an existing database. He has also acquired the necessary skills to produce effective tasks to test the usability of a web site. Would like to deepen his knoledge on how to create and manage a database.
+
+- Clarence Antichi learned how to properly present a piece of work by documenting it. He also learned how to organize the layout of a website, taking into account general page structure guidelines. He would like to dive down a little bit more on how to create and manage a database.
+
+All three memebers intend on applying what was learned on this
+course by creating a startup together. The skills acquired will
+also be useful from a general standpoint as they can be applied in
+a lot of different contexts.
