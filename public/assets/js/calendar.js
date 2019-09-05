@@ -30,17 +30,27 @@ const onCalendarLoad = async () =>
 const eventsByDate = (date, events) => 
 {
     const ret = [];
+    const toDel = [];
     for(var i=0; i < events.length; i++)
-        if(events[i].date === date)
+        if(events[i].date == date)
         {
-            ret.push(events[i])
-            events.splice(i, 1);
+            ret.push(events[i]);
+            toDel.push(events[i]);
         }
+    for(var i=0; i < toDel.length; i++)
+        for(var j=0; j < events.length; j++)
+            if(events[j] === toDel[i])
+            {
+                events.splice(j, 1);
+                break;
+            }
     return ret;
 }
 
 const newEvent = (name, date, start, end, link) =>
 {
+    start = start.substring(0, start.lastIndexOf(":"));
+    end = end.substring(0, end.lastIndexOf(":"));
     return {
         link: link,
         name: name,
@@ -68,6 +78,7 @@ const createCards = async () =>
     var seminars = (await get(URLS.SEMINAR, 100)).response;
 
     var tot = joinLists(events, seminars);
+    console.log(tot);
     
     while(tot.length > 0)
         createCard(container, eventsByDate(tot[0].date, tot));
