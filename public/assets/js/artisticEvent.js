@@ -48,9 +48,17 @@ const addSeminarBox = seminar => {
     byId("seminarContainer").innerHTML = html;
 }
 
+const getID = () =>
+{
+    var tmp = UrlLastPart;
+    if(tmp.includes("#"))
+        tmp = tmp.substring(0, tmp.indexOf("#"));
+    return tmp;
+}
+
 const onArtisticEventLoad = async () => {
     try {
-        const id = UrlLastPart;
+        var id = getID();
         const event = (await get(URLS.EVENT + "/" + id, 1)).response;
         byId("img1").src = event.photos[1];
         byId("img2").src = event.photos[2];
