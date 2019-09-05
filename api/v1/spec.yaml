@@ -494,6 +494,35 @@ paths:
           $ref: '#/components/responses/400ValidationError'
         500:
           $ref: '#/components/responses/500ApiError'
+
+  /company/event/{eventId}:
+    get:
+      tags: 
+        - company
+      summary: This is a list of the event's companies
+      description: This is a list of the event's companies
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: This is a list of company
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CompanyWithId'
+        400:
+          $ref: '#/components/responses/400ValidationError'
+        500:
+          $ref: '#/components/responses/500ApiError'
         
   /company/{companyId}:
     get:
@@ -918,10 +947,14 @@ components:
         - start
         - end
         - vacancy
+        - abstract
       properties:
         title:
           type: string
           example: Amazing seminar
+        abstract:
+          type: string
+          example: This seminar discusses what's the correct approach to introduce new people to dancing in our times. Some dance instructors are going to explain their stance on the evergreen topic of the education and how much of a relevance it has in today's art of dancing.
         location_id:
           type: string
           example: A01

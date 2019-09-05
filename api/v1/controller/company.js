@@ -34,3 +34,15 @@ exports.postCompany = async (req, res, next) => {
         next(error);
     }
 }
+
+exports.getCompaniesByEvent = async (req, res, next) => {
+    const pageNumber = req.query.pageNumber;
+    const pageSize = req.query.pageSize;
+    const eventId = req.params.eventId;
+    try {
+        const companies = await Company.getCompaniesByEvent(pageNumber, pageSize, eventId);
+        res.status(200).json(companies);
+    } catch (error) {
+        next(error);
+    }
+}

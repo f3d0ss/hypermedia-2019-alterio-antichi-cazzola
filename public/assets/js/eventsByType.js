@@ -1,4 +1,4 @@
-const createCard = (container, event, performers) => {
+const createCard = (container, event, performers, links) => {
     event.photos.shift();
     var card =
         `
@@ -24,7 +24,7 @@ const createCard = (container, event, performers) => {
         card += `
                 <div class="performer-row d-flex flex-row justify-content-center">
                     <img class="performer-img" src="${performers[i].photos[0]?performers[i].photos[0]: "/images/HarryPotter.jpg"}" alt="photo of ${performers[i].name}">
-                    <h4 class="title performer-name"><a href="${"/performers/" + performers[i].id}">${performers[i].name}</a></h2>
+                    <h4 class="title performer-name"><a href="${links[i]}">${performers[i].name}</a></h2>
                 </div>
                 `
     card +=
@@ -35,6 +35,7 @@ const createCard = (container, event, performers) => {
 }
 
 const getPerformerById = async id => (await get(URLS.PERFORMER + "/" + id)).response[0];
+const getCompanyById = async id => (await get(URLS.COMPANY + "/" + id)).response;
 
 const onEventsByTypeLoad = async () => {
     const type = location.href.substring(location.href.lastIndexOf('/') + 1);
@@ -53,9 +54,18 @@ const createCards = async (type) => {
     var events = (await get(URLS.EVENT + '/type/' + type, 100)).response;
     for (var i = 0; i < events.length; i++) {
         var performers = [];
+        var links = [];
         for (var j = 0; j < events[i].performer_ids.length; j++)
+        {
             performers.push(await getPerformerById(events[i].performer_ids[j]));
-        createCard(container, events[i], performers);
+            links.push("/performers/" + performers[performers.length - 1].id);
+        } 
+        for (var j = 0; j < events[i].company_ids.length; j++)
+        {
+            performers.push(await getCompanyById(events[i].company_ids[j]));
+            links.push("/companies/" + performers[performers.length - 1].id);
+        } 
+        createCard(container, events[i], performers, links);
     }
 }
 
