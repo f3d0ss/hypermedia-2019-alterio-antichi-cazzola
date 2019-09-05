@@ -82,8 +82,7 @@ const onArtisticEventLoad = async () => {
 
 const setupQuestions = async event => {
 
-    event.start = event.start.substring(0, event.start.lastIndexOf(":"));
-    event.end = event.end.substring(0, event.end.lastIndexOf(":"));
+    removeSeconds(event);
     var locationText = (await get(URLS.LOCATION + "/" + event.location_id, 100)).response.how_to_reach;
     var questions = ["What day does it take place?", `What time does it starts?`, "What time does it ends?", "How many available tickes are there?", "How can i reach the event?"];
     var answers = [`${event.date}`, `${event.start}`, `${event.end}`, `${event.vacancy}`, `${locationText}`];

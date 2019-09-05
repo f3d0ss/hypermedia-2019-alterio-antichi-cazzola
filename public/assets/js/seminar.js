@@ -1,4 +1,5 @@
 const addEvent = (container, event) => {
+    removeSeconds(event);
     var eventLine =
         `
                     <div class="d-flex flex-row justify-content-center">
