@@ -1,6 +1,6 @@
 const addEvent = event => {
     event.photos.shift();
-    console.log(event.photos);
+    removeSeconds(event);
     var html =
         `
             <div class="d-flex flex-row justify-content-center">
@@ -43,7 +43,6 @@ const onTodayLoad = () => {
 const setupEvents = async () => {
     const events = (await get(URLS.EVENT + "/date/" + curDate, 100)).response;
     //console.log(URLS.EVENT + "/date/" + "2019-09-06");
-    const events = (await get(URLS.EVENT + "/date/" + "2019-09-06", 100)).response;
 
     if (events.length > 0)
         for (var i = 0; i < events.length; i++)
