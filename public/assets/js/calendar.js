@@ -49,6 +49,8 @@ const eventsByDate = (date, events) =>
 
 const newEvent = (name, date, start, end, link) =>
 {
+    start = start.substring(0, start.lastIndexOf(":"));
+    end = end.substring(0, end.lastIndexOf(":"));
     return {
         link: link,
         name: name,
